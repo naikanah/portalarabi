@@ -20,6 +20,36 @@
             direction: rtl;
         }
         
+        .arabic-quiz {
+            font-family: 'Noto Sans Arabic', Arial, sans-serif;
+            font-size: 1.8em;
+            line-height: 1.6;
+            direction: rtl;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .arabic-text {
+                font-size: 1.4em;
+                line-height: 1.7;
+            }
+            
+            .arabic-quiz {
+                font-size: 2em;
+                line-height: 1.5;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .arabic-text {
+                font-size: 1.3em;
+            }
+            
+            .arabic-quiz {
+                font-size: 1.9em;
+            }
+        }
+        
         .latin-heading {
             font-family: 'Nunito', Arial, sans-serif;
             font-weight: 800;
@@ -128,6 +158,64 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        /* Mobile Responsive Improvements */
+        @media (max-width: 768px) {
+            .latin-heading {
+                font-size: 1.1em;
+            }
+            
+            .latin-body {
+                font-size: 1em;
+                line-height: 1.5;
+            }
+            
+            .adventure-card {
+                padding: 1rem;
+            }
+            
+            .floating-element .w-32.h-32 {
+                width: 6rem;
+                height: 6rem;
+            }
+            
+            .quiz-option {
+                padding: 1rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .quiz-option .latin-body {
+                font-size: 0.95em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .latin-heading {
+                font-size: 1em;
+            }
+            
+            .latin-body {
+                font-size: 0.9em;
+            }
+            
+            .adventure-card {
+                padding: 0.75rem;
+            }
+            
+            .floating-element .w-32.h-32 {
+                width: 5rem;
+                height: 5rem;
+                font-size: 2.5rem;
+            }
+            
+            .quiz-option {
+                padding: 0.875rem;
+            }
+            
+            .quiz-option .latin-body {
+                font-size: 0.9em;
+            }
+        }
     </style>
   <style>@view-transition { navigation: auto; }</style>
  </head>
@@ -205,19 +293,19 @@
    </div>
   </nav><!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><!-- Welcome Screen -->
-   <div id="welcome-screen" class="text-center">
-    <div class="mb-8">
+   <div id="welcome-screen" class="text-center px-4">
+    <div class="mb-6 md:mb-8">
      <div class="floating-element inline-block">
-      <div class="w-32 h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-6xl mb-6 mx-auto shadow-2xl">
+      <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-6xl mb-4 md:mb-6 mx-auto shadow-2xl">
        🏛️
       </div>
      </div>
-     <h1 id="welcome-message" class="latin-heading text-4xl md:text-5xl text-gray-800 mb-4">Assalamu'alaikum, petualang. Ahlan wasahlan</h1>
-     <p id="ready-message" class="latin-body text-xl text-gray-600 mb-8">Siap berpetualang hari ini?</p>
+     <h1 id="welcome-message" class="latin-heading text-2xl md:text-4xl lg:text-5xl text-gray-800 mb-3 md:mb-4 px-2">Assalamu'alaikum, petualang. Ahlan wasahlan</h1>
+     <p id="ready-message" class="latin-body text-lg md:text-xl text-gray-600 mb-6 md:mb-8 px-2">Siap berpetualang hari ini?</p>
     </div>
-    <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
-     <div class="mb-6"><label for="student-name" class="block latin-body text-lg font-semibold text-gray-700 mb-3"> Siapa nama petualang hari ini? </label> <input type="text" id="student-name" placeholder="Masukkan nama kamu..." class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-sky-400 focus:outline-none latin-body text-lg">
-     </div><button onclick="startAdventure()" id="start-btn" class="w-full btn-primary text-white py-3 px-6 rounded-xl latin-body text-lg font-semibold shadow-lg"> Mulai Petualangan! 🚀 </button>
+    <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl">
+     <div class="mb-6"><label for="student-name" class="block latin-body text-base md:text-lg font-semibold text-gray-700 mb-3"> Siapa nama petualang hari ini? </label> <input type="text" id="student-name" placeholder="Masukkan nama kamu..." class="w-full px-3 md:px-4 py-2 md:py-3 border-2 border-gray-200 rounded-xl focus:border-sky-400 focus:outline-none latin-body text-base md:text-lg">
+     </div><button onclick="startAdventure()" id="start-btn" class="w-full btn-primary text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body text-base md:text-lg font-semibold shadow-lg"> Mulai Petualangan! 🚀 </button>
     </div>
    </div><!-- Dashboard -->
    <div id="dashboard" class="hidden">
@@ -370,38 +458,38 @@
     </div>
    </div><!-- Quiz Interface -->
    <div id="quiz-interface" class="hidden">
-    <div class="mb-6"><button onclick="backToLesson()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold"> <span>←</span> <span>Kembali ke Materi</span> </button>
+    <div class="mb-4 md:mb-6"><button onclick="backToLesson()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold text-sm md:text-base"> <span>←</span> <span>Kembali ke Materi</span> </button>
     </div>
-    <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
-     <div class="text-center mb-8">
-      <h2 class="latin-heading text-2xl text-gray-800 mb-2">Latihan Soal</h2>
-      <div class="flex justify-center items-center space-x-4"><span id="question-counter" class="latin-body text-gray-600">Soal 1 dari 20</span>
-       <div class="flex-1 max-w-xs">
+    <div class="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl">
+     <div class="text-center mb-6 md:mb-8">
+      <h2 class="latin-heading text-xl md:text-2xl text-gray-800 mb-2">Latihan Soal</h2>
+      <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4"><span id="question-counter" class="latin-body text-gray-600 text-sm md:text-base">Soal 1 dari 20</span>
+       <div class="w-full md:flex-1 max-w-xs">
         <div class="bg-gray-200 rounded-full h-2">
          <div id="quiz-progress" class="progress-bar h-2 rounded-full" style="width: 5%"></div>
         </div>
        </div>
       </div>
      </div>
-     <div id="quiz-question" class="mb-8"><!-- Question content -->
+     <div id="quiz-question" class="mb-6 md:mb-8"><!-- Question content -->
      </div>
-     <div id="quiz-options" class="space-y-3 mb-8"><!-- Options will be loaded here -->
+     <div id="quiz-options" class="space-y-2 md:space-y-3 mb-6 md:mb-8"><!-- Options will be loaded here -->
      </div>
-     <div class="flex justify-between items-center"><button id="prev-question" onclick="previousQuestion()" class="btn-primary text-white py-2 px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed" disabled> ← Sebelumnya </button> <button id="next-question" onclick="nextQuestion()" class="btn-accent text-white py-2 px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed" disabled> Selanjutnya → </button>
+     <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0"><button id="prev-question" onclick="previousQuestion()" class="w-full md:w-auto btn-primary text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base" disabled> ← Sebelumnya </button> <button id="next-question" onclick="nextQuestion()" class="w-full md:w-auto btn-accent text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base" disabled> Selanjutnya → </button>
      </div>
     </div>
    </div><!-- Quiz Results -->
    <div id="quiz-results" class="hidden">
-    <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl text-center">
+    <div class="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl text-center">
      <div class="mb-6">
-      <div id="result-icon" class="text-6xl mb-4">
+      <div id="result-icon" class="text-4xl md:text-6xl mb-4">
        🎉
       </div>
-      <h2 class="latin-heading text-3xl text-gray-800 mb-2">Hasil Latihan</h2>
-      <p id="score-display" class="latin-body text-xl text-gray-600 mb-4"></p>
-      <div id="score-message" class="latin-body text-lg text-gray-700 mb-6"></div>
+      <h2 class="latin-heading text-2xl md:text-3xl text-gray-800 mb-2">Hasil Latihan</h2>
+      <p id="score-display" class="latin-body text-lg md:text-xl text-gray-600 mb-4"></p>
+      <div id="score-message" class="latin-body text-base md:text-lg text-gray-700 mb-6 px-2"></div>
      </div>
-     <div class="flex flex-col sm:flex-row gap-4 justify-center"><button onclick="retryQuiz()" class="btn-primary text-white py-3 px-6 rounded-xl latin-body font-semibold"> Coba Lagi 🔄 </button> <button onclick="backToLesson()" class="btn-accent text-white py-3 px-6 rounded-xl latin-body font-semibold"> Kembali ke Materi 📚 </button>
+     <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"><button onclick="retryQuiz()" class="btn-primary text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base"> Coba Lagi 🔄 </button> <button onclick="backToLesson()" class="btn-accent text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base"> Kembali ke Materi 📚 </button>
      </div>
     </div>
    </div><!-- Guide/Help Page -->
@@ -2212,7 +2300,7 @@
             
             questionContainer.innerHTML = `
                 <div class="text-center">
-                    <h3 class="latin-body text-xl text-gray-800 mb-4">${question.question}</h3>
+                    <h3 class="latin-body text-lg md:text-xl text-gray-800 mb-4 px-2">${question.question}</h3>
                 </div>
             `;
             
@@ -2223,11 +2311,11 @@
                     quizAnswers[currentQuizQuestion] === index ? 'selected' : ''
                 }`;
                 optionDiv.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center">
-                            <div class="w-3 h-3 rounded-full bg-sky-500 ${quizAnswers[currentQuizQuestion] === index ? '' : 'hidden'}"></div>
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0">
+                            <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-sky-500 ${quizAnswers[currentQuizQuestion] === index ? '' : 'hidden'}"></div>
                         </div>
-                        <span class="latin-body text-gray-700">${option}</span>
+                        <span class="${/[\u0600-\u06FF]/.test(option) ? 'arabic-quiz' : 'latin-body'} text-gray-700 flex-1 text-right md:text-left">${option}</span>
                     </div>
                 `;
                 optionDiv.onclick = () => selectQuizOption(index);
@@ -2437,5 +2525,5 @@
         // Initialize app when DOM is loaded
         document.addEventListener('DOMContentLoaded', initApp);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99ddd80dd503445e',t:'MTc2MzAzMjQ1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dde6ad3325fdf0',t:'MTc2MzAzMzA0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
