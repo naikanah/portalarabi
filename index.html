@@ -384,7 +384,7 @@
           </div></button>
         </div>
        </div>
-      </div><button onclick="showGuide()" class="latin-body text-gray-600 hover:text-sky-600 transition-colors"> 💡 Petunjuk </button>
+      </div><button onclick="showGames()" class="latin-body text-gray-600 hover:text-sky-600 transition-colors"> 🎮 Game </button> <button onclick="showGuide()" class="latin-body text-gray-600 hover:text-sky-600 transition-colors"> 💡 Petunjuk </button>
      </div><!-- Mobile Menu Button -->
      <div class="md:hidden"><button onclick="toggleMobileMenu()" id="mobile-menu-btn" class="text-gray-600 hover:text-sky-600"> <span class="text-xl">☰</span> </button>
      </div>
@@ -397,7 +397,7 @@
        <div class="latin-body text-sm font-semibold text-gray-500 mb-2">
         📚 Materi:
        </div><button onclick="openChapter(1); toggleMobileMenu()" class="w-full text-left p-2 rounded-lg hover:bg-sky-50 latin-body text-gray-600 text-sm"> 📊 Bab 1: Isim Tafdil </button> <button onclick="openChapter(2); toggleMobileMenu()" class="w-full text-left p-2 rounded-lg hover:bg-purple-50 latin-body text-gray-600 text-sm"> 🔷 Bab 2: Bentuk </button> <button onclick="openChapter(3); toggleMobileMenu()" class="w-full text-left p-2 rounded-lg hover:bg-red-50 latin-body text-gray-600 text-sm"> 🎨 Bab 3: Warna </button> <button onclick="openChapter(4); toggleMobileMenu()" class="w-full text-left p-2 rounded-lg hover:bg-amber-50 latin-body text-gray-600 text-sm"> 🌙 Bab 4: Kalender Hijriah </button>
-      </div><button onclick="showGuide(); toggleMobileMenu()" class="w-full text-left p-2 rounded-lg hover:bg-gray-50 latin-body text-gray-600"> 💡 Petunjuk </button>
+      </div><button onclick="showGames(); toggleMobileMenu()" class="w-full text-left p-2 rounded-lg hover:bg-gray-50 latin-body text-gray-600"> 🎮 Game </button> <button onclick="showGuide(); toggleMobileMenu()" class="w-full text-left p-2 rounded-lg hover:bg-gray-50 latin-body text-gray-600"> 💡 Petunjuk </button>
      </div>
     </div>
    </div>
@@ -605,6 +605,95 @@
        <div id="score-message" class="latin-body text-base md:text-lg text-gray-700 mb-6 px-2"></div>
       </div>
       <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"><button onclick="retryQuiz()" class="btn-primary text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base"> Coba Lagi 🔄 </button> <button onclick="backToLesson()" class="btn-accent text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base"> Kembali ke Materi 📚 </button>
+      </div>
+     </div>
+    </div><!-- Games Page -->
+    <div id="games-page" class="hidden">
+     <div class="mb-6"><button onclick="backToDashboard()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold"> <span>←</span> <span>Kembali ke Dashboard</span> </button>
+     </div>
+     <div class="bg-white/65 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+      <div class="text-center mb-8">
+       <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
+        🎮
+       </div>
+       <h2 class="latin-heading text-3xl text-gray-800 mb-2">Game Interaktif</h2>
+       <p class="latin-body text-gray-600">Belajar sambil bermain dengan game seru!</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8"><!-- Maze Game -->
+       <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-2xl border-2 border-purple-100 hover:border-purple-300 transition-all">
+        <div class="flex items-center mb-4">
+         <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+          🧩
+         </div>
+         <div>
+          <h3 class="latin-heading text-xl text-gray-800">Labirin Soal</h3>
+          <p class="latin-body text-gray-600">Petualangan Menjawab</p>
+         </div>
+        </div>
+        <p class="latin-body text-gray-700 mb-4">Jelajahi labirin sambil menjawab soal bahasa Arab. Kumpulkan poin dan capai finish!</p>
+        <div class="bg-white p-3 rounded-xl mb-4">
+         <div class="flex justify-between text-sm"><span class="latin-body text-gray-600">Tingkat Kesulitan:</span> <span class="latin-body text-purple-600 font-semibold">Mudah - Sulit</span>
+         </div>
+        </div><button onclick="startMazeGame()" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Petualangan 🚀 </button>
+       </div><!-- Memory Game -->
+       <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border-2 border-green-100 hover:border-green-300 transition-all">
+        <div class="flex items-center mb-4">
+         <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+          🧠
+         </div>
+         <div>
+          <h3 class="latin-heading text-xl text-gray-800">Memory Match</h3>
+          <p class="latin-body text-gray-600">Cocokkan Kata</p>
+         </div>
+        </div>
+        <p class="latin-body text-gray-700 mb-4">Cocokkan kata Arab dengan artinya. Latih daya ingat sambil belajar vocabulary!</p>
+        <div class="bg-white p-3 rounded-xl mb-4">
+         <div class="flex justify-between text-sm"><span class="latin-body text-gray-600">Mode:</span> <span class="latin-body text-green-600 font-semibold">Segera Hadir</span>
+         </div>
+        </div><button class="w-full bg-gray-300 text-gray-500 py-3 px-4 rounded-xl latin-body font-semibold cursor-not-allowed"> Segera Hadir 🔜 </button>
+       </div>
+      </div>
+     </div>
+    </div><!-- Maze Game Interface -->
+    <div id="maze-game" class="hidden">
+     <div class="mb-4"><button onclick="backToGames()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold"> <span>←</span> <span>Kembali ke Game</span> </button>
+     </div>
+     <div class="bg-white/65 backdrop-blur-sm rounded-3xl p-4 md:p-8 shadow-xl">
+      <div class="text-center mb-6">
+       <h2 class="latin-heading text-2xl text-gray-800 mb-2">🧩 Labirin Soal</h2>
+       <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6"><span id="maze-score" class="latin-body text-gray-600">Skor: 0</span> <span id="maze-level" class="latin-body text-gray-600">Level: 1</span> <span id="maze-lives" class="latin-body text-gray-600">❤️ 3</span>
+       </div>
+      </div><!-- Maze Canvas -->
+      <div class="bg-white rounded-2xl p-4 mb-6 shadow-inner">
+       <canvas id="maze-canvas" width="600" height="400" class="w-full max-w-full border-2 border-gray-200 rounded-xl"></canvas>
+      </div><!-- Game Controls -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6"><button onclick="movePlayer('up')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ↑ Atas </button> <button onclick="movePlayer('down')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ↓ Bawah </button> <button onclick="movePlayer('left')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ← Kiri </button> <button onclick="movePlayer('right')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> → Kanan </button>
+      </div><!-- Question Modal -->
+      <div id="maze-question-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+       <div class="bg-white rounded-2xl p-6 max-w-md w-full">
+        <h3 class="latin-heading text-xl text-gray-800 mb-4 text-center">Jawab Soal untuk Lanjut!</h3>
+        <div id="maze-question-content" class="mb-6"><!-- Question content will be inserted here -->
+        </div>
+        <div id="maze-question-options" class="space-y-3"><!-- Options will be inserted here -->
+        </div>
+       </div>
+      </div><!-- Game Over Modal -->
+      <div id="maze-game-over" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+       <div class="bg-white rounded-2xl p-6 max-w-md w-full text-center">
+        <div id="maze-result-icon" class="text-6xl mb-4">
+         🎉
+        </div>
+        <h3 id="maze-result-title" class="latin-heading text-2xl text-gray-800 mb-2">Selamat!</h3>
+        <p id="maze-result-message" class="latin-body text-gray-600 mb-4">Kamu berhasil menyelesaikan labirin!</p>
+        <div id="maze-final-score" class="latin-body text-xl font-bold text-purple-600 mb-6">
+         Skor Akhir: 0
+        </div>
+        <div class="flex gap-3"><button onclick="restartMazeGame()" class="flex-1 btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Main Lagi 🔄 </button> <button onclick="backToGames()" class="flex-1 btn-accent text-white py-3 px-4 rounded-xl latin-body font-semibold"> Kembali 🏠 </button>
+        </div>
+       </div>
+      </div>
+      <div class="text-center">
+       <p class="latin-body text-gray-600 text-sm">💡 Tip: Kumpulkan koin emas dan jawab soal dengan benar untuk mendapat poin bonus!</p>
       </div>
      </div>
     </div><!-- Guide/Help Page -->
@@ -846,22 +935,25 @@
                             <div class="bg-gradient-to-r from-red-100 to-pink-100 p-6 rounded-2xl mb-8">
                                 <h4 class="latin-heading text-lg text-gray-800 mb-3">📹 Video Pembelajaran Isim Tafdil</h4>
                                 <p class="latin-body text-gray-700 mb-4">
-                                    Tonton video pembelajaran untuk memahami Isim Tafdil dengan lebih mudah!
+                                    Video pembelajaran akan ditampilkan oleh guru di kelas untuk penjelasan yang lebih interaktif!
                                 </p>
                                 <div class="bg-white p-4 rounded-xl">
-                                    <div class="aspect-video w-full">
-                                        <iframe 
-                                            width="100%" 
-                                            height="100%" 
-                                            src="https://www.youtube.com/embed/eT0zRmw5Wzw" 
-                                            title="Video Pembelajaran Isim Tafdil"
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen
-                                            class="rounded-lg">
-                                        </iframe>
+                                    <div class="flex items-center justify-center p-8 bg-gradient-to-br from-red-50 to-pink-50 rounded-xl border-2 border-dashed border-red-200">
+                                        <div class="text-center">
+                                            <div class="text-5xl mb-4">📺</div>
+                                            <h5 class="latin-heading text-xl text-red-600 mb-3">Video Pembelajaran</h5>
+                                            <p class="latin-body text-gray-600 mb-4">Materi video akan diputar oleh guru</p>
+                                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                                <h6 class="latin-heading text-sm font-semibold text-gray-700 mb-2">Topik Video:</h6>
+                                                <ul class="latin-body text-sm text-gray-600 text-left space-y-1">
+                                                    <li>• Pengertian dan ciri-ciri Isim Tafdil</li>
+                                                    <li>• Pola pembentukan أَفْعَلُ</li>
+                                                    <li>• Contoh penggunaan dalam kalimat</li>
+                                                    <li>• Latihan pelafalan yang benar</li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="latin-body text-sm text-gray-500 mt-2 text-center">Video: Penjelasan lengkap tentang Isim Tafdil</p>
                                 </div>
                             </div>
 
@@ -1031,28 +1123,23 @@
                             <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-2xl">
                                 <h4 class="latin-heading text-lg text-gray-800 mb-3">🎵 Lagu Bentuk-bentuk</h4>
                                 <p class="latin-body text-gray-700 mb-4">
-                                    Tonton lagu ini untuk memudahkan menghapal nama-nama bentuk!
+                                    Dengarkan lagu ini untuk memudahkan menghapal nama-nama bentuk!
                                 </p>
                                 <div class="bg-white p-4 rounded-xl">
-                                    <div class="aspect-video w-full">
-                                        <iframe 
-                                            width="100%" 
-                                            height="100%" 
-                                            src="https://www.youtube.com/embed/GazglNz6RYM" 
-                                            title="Lagu Bentuk-bentuk"
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen
-                                            class="rounded-lg">
-                                        </iframe>
+                                    <div class="flex items-center justify-center p-8 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border-2 border-dashed border-purple-200">
+                                        <div class="text-center">
+                                            <div class="text-4xl mb-3">🎵</div>
+                                            <h5 class="latin-heading text-lg text-purple-600 mb-2">Audio Lagu Bentuk</h5>
+                                            <p class="latin-body text-sm text-gray-600 mb-4">Lagu akan diputar oleh guru di kelas</p>
+                                            <div class="bg-white p-3 rounded-lg shadow-sm">
+                                                <p class="arabic-text text-lg text-purple-600 leading-relaxed">
+                                                    مُرَبَّعٌ مُسْتَدِيْرٌ مُثَلَّثٌ<br>
+                                                    مُسْتَطِيْلٌ نَجْمَةٌ مُكَعَّبٌ<br>
+                                                    كُرَوِيٌّ مَخْرُوْطٌ أُسْطُوَانِيٌّ
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="latin-body text-sm text-gray-500 mt-2 text-center">Lagu: Bentuk-bentuk dalam bahasa Arab</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-xl mt-4">
-                                    <p class="arabic-text text-center text-lg text-purple-600">
-                                        مُرَبَّعٌ مُسْتَدِيْرٌ مُثَلَّثٌ<br>
-                                        مُسْتَطِيْلٌ نَجْمَةٌ مُكَعَّبٌ
-                                    </p>
                                 </div>
                             </div>
                         `
@@ -1065,22 +1152,25 @@
                             <div class="bg-gradient-to-r from-purple-100 to-indigo-100 p-6 rounded-2xl mb-8">
                                 <h4 class="latin-heading text-lg text-gray-800 mb-3">📹 Video Pembelajaran Bentuk</h4>
                                 <p class="latin-body text-gray-700 mb-4">
-                                    Tonton video pembelajaran untuk memahami bentuk-bentuk dalam bahasa Arab!
+                                    Video pembelajaran akan ditampilkan oleh guru di kelas untuk penjelasan yang lebih interaktif!
                                 </p>
                                 <div class="bg-white p-4 rounded-xl">
-                                    <div class="aspect-video w-full">
-                                        <iframe 
-                                            width="100%" 
-                                            height="100%" 
-                                            src="https://www.youtube.com/embed/BNaAljYR7Jo" 
-                                            title="Video Pembelajaran Bentuk"
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen
-                                            class="rounded-lg">
-                                        </iframe>
+                                    <div class="flex items-center justify-center p-8 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl border-2 border-dashed border-purple-200">
+                                        <div class="text-center">
+                                            <div class="text-5xl mb-4">📺</div>
+                                            <h5 class="latin-heading text-xl text-purple-600 mb-3">Video Pembelajaran</h5>
+                                            <p class="latin-body text-gray-600 mb-4">Materi video akan diputar oleh guru</p>
+                                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                                <h6 class="latin-heading text-sm font-semibold text-gray-700 mb-2">Topik Video:</h6>
+                                                <ul class="latin-body text-sm text-gray-600 text-left space-y-1">
+                                                    <li>• Nama-nama bentuk dalam bahasa Arab</li>
+                                                    <li>• Perbedaan muzakkar dan muannats</li>
+                                                    <li>• Penggunaan pola شَكْلُهُ dan شَكْلُهَا</li>
+                                                    <li>• Contoh benda di sekitar kita</li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="latin-body text-sm text-gray-500 mt-2 text-center">Video: Penjelasan lengkap tentang bentuk-bentuk</p>
                                 </div>
                             </div>
                             
@@ -1244,32 +1334,26 @@
                             <div class="bg-gradient-to-r from-red-100 via-yellow-100 to-green-100 p-6 rounded-2xl mb-8">
                                 <h4 class="latin-heading text-lg text-gray-800 mb-3">🎵 Lagu Mufradat Warna</h4>
                                 <p class="latin-body text-gray-700 mb-4">
-                                    Tonton lagu ini dengan nada ceria untuk menghapal warna-warna!
+                                    Dengarkan lagu ini dengan nada ceria untuk menghapal warna-warna!
                                 </p>
                                 <div class="bg-white p-4 rounded-xl">
-                                    <div class="aspect-video w-full">
-                                        <iframe 
-                                            width="100%" 
-                                            height="100%" 
-                                            src="https://www.youtube.com/embed/55GRyfQG_oM" 
-                                            title="Lagu Mufradat Warna"
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen
-                                            class="rounded-lg">
-                                        </iframe>
+                                    <div class="flex items-center justify-center p-8 bg-gradient-to-br from-red-50 via-yellow-50 to-green-50 rounded-xl border-2 border-dashed border-red-200">
+                                        <div class="text-center">
+                                            <div class="text-4xl mb-3">🎵</div>
+                                            <h5 class="latin-heading text-lg text-red-600 mb-2">Audio Lagu Warna</h5>
+                                            <p class="latin-body text-sm text-gray-600 mb-4">Lagu akan diputar oleh guru di kelas</p>
+                                            <div class="bg-white p-3 rounded-lg shadow-sm">
+                                                <p class="arabic-text text-lg text-gray-800 leading-relaxed">
+                                                    أَسْوَدُ أَبْيَضُ بُنِّيٌّ<br>
+                                                    رَمَادِيٌّ أَحْمَرُ أَصْفَرُ<br>
+                                                    أَخْضَرُ جَمِيْلٌ جِدًّا
+                                                </p>
+                                                <p class="latin-body text-center text-gray-600 mt-3 text-sm">
+                                                    (Hitam, putih, coklat - Abu-abu, merah, kuning - Hijau sangat indah)
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="latin-body text-sm text-gray-500 mt-2 text-center">Lagu: Warna-warna dalam bahasa Arab</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-xl mt-4">
-                                    <p class="arabic-text text-center text-lg text-gray-800 leading-relaxed">
-                                        أَسْوَدُ أَبْيَضُ بُنِّيٌّ<br>
-                                        رَمَادِيٌّ أَحْمَرُ أَصْفَرُ<br>
-                                        أَخْضَرُ جَمِيْلٌ جِدًّا
-                                    </p>
-                                    <p class="latin-body text-center text-gray-600 mt-3 text-sm">
-                                        (Hitam, putih, coklat - Abu-abu, merah, kuning - Hijau sangat indah)
-                                    </p>
                                 </div>
                             </div>
 
@@ -1385,22 +1469,25 @@
                             <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-2xl">
                                 <h4 class="latin-heading text-lg text-gray-800 mb-3">📹 Video Pembelajaran Warna</h4>
                                 <p class="latin-body text-gray-700 mb-4">
-                                    Tonton video pembelajaran tentang warna-warna dalam bahasa Arab untuk pemahaman yang lebih baik!
+                                    Video pembelajaran akan ditampilkan oleh guru di kelas untuk penjelasan yang lebih interaktif!
                                 </p>
                                 <div class="bg-white p-4 rounded-xl">
-                                    <div class="aspect-video w-full">
-                                        <iframe 
-                                            width="100%" 
-                                            height="100%" 
-                                            src="https://www.youtube.com/embed/gcy-b0KsPNo" 
-                                            title="Video Pembelajaran Warna"
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen
-                                            class="rounded-lg">
-                                        </iframe>
+                                    <div class="flex items-center justify-center p-8 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl border-2 border-dashed border-yellow-200">
+                                        <div class="text-center">
+                                            <div class="text-5xl mb-4">📺</div>
+                                            <h5 class="latin-heading text-xl text-yellow-600 mb-3">Video Pembelajaran</h5>
+                                            <p class="latin-body text-gray-600 mb-4">Materi video akan diputar oleh guru</p>
+                                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                                <h6 class="latin-heading text-sm font-semibold text-gray-700 mb-2">Topik Video:</h6>
+                                                <ul class="latin-body text-sm text-gray-600 text-left space-y-1">
+                                                    <li>• Nama-nama warna dalam bahasa Arab</li>
+                                                    <li>• Penggunaan pola لَوْنُهُ dan لَوْنُهَا</li>
+                                                    <li>• Contoh warna benda di sekitar kita</li>
+                                                    <li>• Tips menghapal warna dengan mudah</li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="latin-body text-sm text-gray-500 mt-2 text-center">Video: Penjelasan lengkap tentang warna-warna</p>
                                 </div>
                             </div>
                         `
@@ -1448,34 +1535,28 @@
                             <div class="bg-gradient-to-r from-amber-100 to-yellow-100 p-6 rounded-2xl mb-8">
                                 <h4 class="latin-heading text-lg text-gray-800 mb-3">🎵 Lagu Mufradat Bulan Hijriah</h4>
                                 <p class="latin-body text-gray-700 mb-4">
-                                    Tonton lagu ini untuk menghapal urutan bulan-bulan Hijriah!
+                                    Dengarkan lagu ini untuk menghapal urutan bulan-bulan Hijriah!
                                 </p>
                                 <div class="bg-white p-4 rounded-xl">
-                                    <div class="aspect-video w-full">
-                                        <iframe 
-                                            width="100%" 
-                                            height="100%" 
-                                            src="https://www.youtube.com/embed/JDjhCxmRNqw" 
-                                            title="Lagu Mufradat Bulan Hijriah"
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen
-                                            class="rounded-lg">
-                                        </iframe>
+                                    <div class="flex items-center justify-center p-8 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl border-2 border-dashed border-amber-200">
+                                        <div class="text-center">
+                                            <div class="text-4xl mb-3">🎵</div>
+                                            <h5 class="latin-heading text-lg text-amber-600 mb-2">Audio Lagu Bulan Hijriah</h5>
+                                            <p class="latin-body text-sm text-gray-600 mb-4">Lagu akan diputar oleh guru di kelas</p>
+                                            <div class="bg-white p-3 rounded-lg shadow-sm">
+                                                <p class="arabic-text text-lg text-gray-800 leading-relaxed">
+                                                    مُحَرَّمٌ صَفَرٌ رَبِيْعُ الْأَوَّلِ<br>
+                                                    رَبِيْعُ الْآخِرِ جُمَادَى الْأُوْلَى<br>
+                                                    جُمَادَى الْآخِرَةِ رَجَبٌ شَعْبَانُ<br>
+                                                    رَمَضَانُ شَوَّالٌ ذُو الْقَعْدَةِ<br>
+                                                    ذُو الْحِجَّةِ تَمَّ الْعَامُ
+                                                </p>
+                                                <p class="latin-body text-center text-gray-600 mt-3 text-sm">
+                                                    (Muharram, Safar, Rabiul Awwal... sampai Dzulhijjah, tahun telah selesai)
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="latin-body text-sm text-gray-500 mt-2 text-center">Lagu: Bulan-bulan Hijriah dalam bahasa Arab</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-xl mt-4">
-                                    <p class="arabic-text text-center text-lg text-gray-800 leading-relaxed">
-                                        مُحَرَّمٌ صَفَرٌ رَبِيْعُ الْأَوَّلِ<br>
-                                        رَبِيْعُ الْآخِرِ جُمَادَى الْأُوْلَى<br>
-                                        جُمَادَى الْآخِرَةِ رَجَبٌ شَعْبَانُ<br>
-                                        رَمَضَانُ شَوَّالٌ ذُو الْقَعْدَةِ<br>
-                                        ذُو الْحِجَّةِ تَمَّ الْعَامُ
-                                    </p>
-                                    <p class="latin-body text-center text-gray-600 mt-3 text-sm">
-                                        (Muharram, Safar, Rabiul Awwal... sampai Dzulhijjah, tahun telah selesai)
-                                    </p>
                                 </div>
                             </div>
 
@@ -1556,22 +1637,25 @@
                             <div class="bg-gradient-to-r from-yellow-100 to-amber-100 p-6 rounded-2xl mb-6">
                                 <h4 class="latin-heading text-lg text-gray-800 mb-3">📹 Video Pembelajaran Kalender Hijriah</h4>
                                 <p class="latin-body text-gray-700 mb-4">
-                                    Tonton video pembelajaran tentang kalender Hijriah dan peristiwa-peristiwa penting di setiap bulannya!
+                                    Video pembelajaran akan ditampilkan oleh guru di kelas untuk penjelasan yang lebih interaktif!
                                 </p>
                                 <div class="bg-white p-4 rounded-xl">
-                                    <div class="aspect-video w-full">
-                                        <iframe 
-                                            width="100%" 
-                                            height="100%" 
-                                            src="https://www.youtube.com/embed/K3WZ2pG7KlU" 
-                                            title="Video Pembelajaran Kalender Hijriah"
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowfullscreen
-                                            class="rounded-lg">
-                                        </iframe>
+                                    <div class="flex items-center justify-center p-8 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl border-2 border-dashed border-yellow-200">
+                                        <div class="text-center">
+                                            <div class="text-5xl mb-4">📺</div>
+                                            <h5 class="latin-heading text-xl text-yellow-600 mb-3">Video Pembelajaran</h5>
+                                            <p class="latin-body text-gray-600 mb-4">Materi video akan diputar oleh guru</p>
+                                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                                <h6 class="latin-heading text-sm font-semibold text-gray-700 mb-2">Topik Video:</h6>
+                                                <ul class="latin-body text-sm text-gray-600 text-left space-y-1">
+                                                    <li>• Sejarah kalender Hijriah</li>
+                                                    <li>• Nama-nama 12 bulan Hijriah</li>
+                                                    <li>• Peristiwa penting di setiap bulan</li>
+                                                    <li>• Perbedaan dengan kalender Masehi</li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="latin-body text-sm text-gray-500 mt-2 text-center">Video: Penjelasan lengkap tentang kalender Hijriah</p>
                                 </div>
                             </div>
 
@@ -2698,7 +2782,19 @@
             document.getElementById('quiz-interface').classList.add('hidden');
             document.getElementById('quiz-results').classList.add('hidden');
             document.getElementById('guide-page').classList.add('hidden');
+            document.getElementById('games-page').classList.add('hidden');
+            document.getElementById('maze-game').classList.add('hidden');
             document.getElementById('dashboard').classList.remove('hidden');
+        }
+
+        function showGames() {
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('chapter-content').classList.add('hidden');
+            document.getElementById('quiz-interface').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('guide-page').classList.add('hidden');
+            document.getElementById('maze-game').classList.add('hidden');
+            document.getElementById('games-page').classList.remove('hidden');
         }
 
         function showGuide() {
@@ -2706,6 +2802,8 @@
             document.getElementById('chapter-content').classList.add('hidden');
             document.getElementById('quiz-interface').classList.add('hidden');
             document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('games-page').classList.add('hidden');
+            document.getElementById('maze-game').classList.add('hidden');
             document.getElementById('guide-page').classList.remove('hidden');
         }
 
@@ -2730,11 +2828,17 @@
             document.getElementById('quiz-interface').classList.add('hidden');
             document.getElementById('quiz-results').classList.add('hidden');
             document.getElementById('guide-page').classList.add('hidden');
+            document.getElementById('games-page').classList.add('hidden');
+            document.getElementById('maze-game').classList.add('hidden');
             document.getElementById('student-info').classList.add('hidden');
             document.getElementById('nav-menu').classList.add('hidden');
             document.getElementById('mobile-menu').classList.add('hidden');
             document.getElementById('welcome-screen').classList.remove('hidden');
             document.getElementById('student-name').value = '';
+            
+            // Clean up game
+            mazeGame.gameRunning = false;
+            document.removeEventListener('keydown', handleMazeKeyboard);
             
             // Reset mobile menu button
             document.getElementById('mobile-menu-btn').innerHTML = '<span class="text-xl">☰</span>';
@@ -2766,8 +2870,392 @@
 
 
 
+        // Maze Game Variables
+        let mazeGame = {
+            canvas: null,
+            ctx: null,
+            cellSize: 30,
+            maze: [],
+            player: { x: 1, y: 1 },
+            finish: { x: 0, y: 0 },
+            coins: [],
+            score: 0,
+            level: 1,
+            lives: 3,
+            questions: [],
+            currentQuestion: null,
+            gameRunning: false
+        };
+
+        // Maze Game Functions
+        function startMazeGame() {
+            document.getElementById('games-page').classList.add('hidden');
+            document.getElementById('maze-game').classList.remove('hidden');
+            
+            mazeGame.canvas = document.getElementById('maze-canvas');
+            mazeGame.ctx = mazeGame.canvas.getContext('2d');
+            
+            // Set responsive canvas size
+            const container = mazeGame.canvas.parentElement;
+            const containerWidth = container.clientWidth - 32; // Account for padding
+            const maxWidth = Math.min(containerWidth, 600);
+            const aspectRatio = 400 / 600;
+            
+            mazeGame.canvas.width = maxWidth;
+            mazeGame.canvas.height = maxWidth * aspectRatio;
+            mazeGame.canvas.style.width = maxWidth + 'px';
+            mazeGame.canvas.style.height = (maxWidth * aspectRatio) + 'px';
+            
+            // Adjust cell size based on canvas size
+            mazeGame.cellSize = Math.floor(maxWidth / 20);
+            
+            initMazeGame();
+        }
+
+        function initMazeGame() {
+            mazeGame.score = 0;
+            mazeGame.level = 1;
+            mazeGame.lives = 3;
+            mazeGame.gameRunning = true;
+            
+            generateMaze();
+            generateCoins();
+            loadMazeQuestions();
+            updateMazeUI();
+            drawMaze();
+            
+            // Add keyboard controls
+            document.addEventListener('keydown', handleMazeKeyboard);
+        }
+
+        function generateMaze() {
+            const width = Math.floor(mazeGame.canvas.width / mazeGame.cellSize);
+            const height = Math.floor(mazeGame.canvas.height / mazeGame.cellSize);
+            
+            // Initialize maze with walls
+            mazeGame.maze = Array(height).fill().map(() => Array(width).fill(1));
+            
+            // Simple maze generation - create paths
+            for (let y = 1; y < height - 1; y += 2) {
+                for (let x = 1; x < width - 1; x += 2) {
+                    mazeGame.maze[y][x] = 0; // Create path
+                    
+                    // Randomly create connections
+                    if (Math.random() > 0.3) {
+                        if (x + 2 < width - 1) mazeGame.maze[y][x + 1] = 0;
+                    }
+                    if (Math.random() > 0.3) {
+                        if (y + 2 < height - 1) mazeGame.maze[y + 1][x] = 0;
+                    }
+                }
+            }
+            
+            // Set player start position
+            mazeGame.player = { x: 1, y: 1 };
+            mazeGame.maze[1][1] = 0;
+            
+            // Set finish position
+            mazeGame.finish = { x: width - 2, y: height - 2 };
+            mazeGame.maze[height - 2][width - 2] = 0;
+            
+            // Ensure path to finish exists
+            for (let x = width - 3; x >= 1; x--) {
+                mazeGame.maze[height - 2][x] = 0;
+            }
+        }
+
+        function generateCoins() {
+            mazeGame.coins = [];
+            const width = mazeGame.maze[0].length;
+            const height = mazeGame.maze.length;
+            
+            // Place coins randomly in empty spaces
+            for (let i = 0; i < 5 + mazeGame.level; i++) {
+                let x, y;
+                do {
+                    x = Math.floor(Math.random() * (width - 2)) + 1;
+                    y = Math.floor(Math.random() * (height - 2)) + 1;
+                } while (mazeGame.maze[y][x] === 1 || 
+                         (x === mazeGame.player.x && y === mazeGame.player.y) ||
+                         (x === mazeGame.finish.x && y === mazeGame.finish.y) ||
+                         mazeGame.coins.some(coin => coin.x === x && coin.y === y));
+                
+                mazeGame.coins.push({ x, y, collected: false });
+            }
+        }
+
+        function loadMazeQuestions() {
+            // Mix questions from all chapters
+            mazeGame.questions = [];
+            Object.keys(quizQuestions).forEach(chapter => {
+                const chapterQuestions = quizQuestions[chapter].slice(0, 5); // Take 5 from each chapter
+                mazeGame.questions.push(...chapterQuestions);
+            });
+            
+            // Shuffle questions
+            for (let i = mazeGame.questions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [mazeGame.questions[i], mazeGame.questions[j]] = [mazeGame.questions[j], mazeGame.questions[i]];
+            }
+        }
+
+        function drawMaze() {
+            const ctx = mazeGame.ctx;
+            const cellSize = mazeGame.cellSize;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, mazeGame.canvas.width, mazeGame.canvas.height);
+            
+            // Draw maze
+            for (let y = 0; y < mazeGame.maze.length; y++) {
+                for (let x = 0; x < mazeGame.maze[y].length; x++) {
+                    if (mazeGame.maze[y][x] === 1) {
+                        // Wall
+                        ctx.fillStyle = '#374151';
+                        ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                    } else {
+                        // Path
+                        ctx.fillStyle = '#f9fafb';
+                        ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                    }
+                }
+            }
+            
+            // Draw coins
+            mazeGame.coins.forEach(coin => {
+                if (!coin.collected) {
+                    ctx.fillStyle = '#fbbf24';
+                    ctx.beginPath();
+                    ctx.arc(
+                        coin.x * cellSize + cellSize / 2,
+                        coin.y * cellSize + cellSize / 2,
+                        cellSize / 4,
+                        0,
+                        2 * Math.PI
+                    );
+                    ctx.fill();
+                }
+            });
+            
+            // Draw finish
+            ctx.fillStyle = '#10b981';
+            ctx.fillRect(
+                mazeGame.finish.x * cellSize + 2,
+                mazeGame.finish.y * cellSize + 2,
+                cellSize - 4,
+                cellSize - 4
+            );
+            
+            // Draw player
+            ctx.fillStyle = '#3b82f6';
+            ctx.beginPath();
+            ctx.arc(
+                mazeGame.player.x * cellSize + cellSize / 2,
+                mazeGame.player.y * cellSize + cellSize / 2,
+                cellSize / 3,
+                0,
+                2 * Math.PI
+            );
+            ctx.fill();
+        }
+
+        function movePlayer(direction) {
+            if (!mazeGame.gameRunning) return;
+            
+            let newX = mazeGame.player.x;
+            let newY = mazeGame.player.y;
+            
+            switch (direction) {
+                case 'up': newY--; break;
+                case 'down': newY++; break;
+                case 'left': newX--; break;
+                case 'right': newX++; break;
+            }
+            
+            // Check boundaries and walls
+            if (newX >= 0 && newX < mazeGame.maze[0].length &&
+                newY >= 0 && newY < mazeGame.maze.length &&
+                mazeGame.maze[newY][newX] === 0) {
+                
+                mazeGame.player.x = newX;
+                mazeGame.player.y = newY;
+                
+                // Check for coin collection
+                const coin = mazeGame.coins.find(c => 
+                    c.x === newX && c.y === newY && !c.collected
+                );
+                if (coin) {
+                    coin.collected = true;
+                    mazeGame.score += 10;
+                    updateMazeUI();
+                    
+                    // Show question for coin
+                    showMazeQuestion();
+                }
+                
+                // Check for finish
+                if (newX === mazeGame.finish.x && newY === mazeGame.finish.y) {
+                    completeMazeLevel();
+                }
+                
+                drawMaze();
+            }
+        }
+
+        function handleMazeKeyboard(event) {
+            if (!mazeGame.gameRunning) return;
+            
+            switch (event.key) {
+                case 'ArrowUp':
+                case 'w':
+                case 'W':
+                    event.preventDefault();
+                    movePlayer('up');
+                    break;
+                case 'ArrowDown':
+                case 's':
+                case 'S':
+                    event.preventDefault();
+                    movePlayer('down');
+                    break;
+                case 'ArrowLeft':
+                case 'a':
+                case 'A':
+                    event.preventDefault();
+                    movePlayer('left');
+                    break;
+                case 'ArrowRight':
+                case 'd':
+                case 'D':
+                    event.preventDefault();
+                    movePlayer('right');
+                    break;
+            }
+        }
+
+        function showMazeQuestion() {
+            if (mazeGame.questions.length === 0) return;
+            
+            mazeGame.gameRunning = false;
+            const question = mazeGame.questions[Math.floor(Math.random() * mazeGame.questions.length)];
+            mazeGame.currentQuestion = question;
+            
+            const modal = document.getElementById('maze-question-modal');
+            const content = document.getElementById('maze-question-content');
+            const options = document.getElementById('maze-question-options');
+            
+            content.innerHTML = `
+                <div class="text-center">
+                    <p class="latin-body text-lg text-gray-800 font-semibold">${question.question}</p>
+                </div>
+            `;
+            
+            options.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'w-full p-3 text-left rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all';
+                button.innerHTML = `
+                    <span class="${/[\u0600-\u06FF]/.test(option) ? 'arabic-text text-xl' : 'latin-body'} text-gray-700">${option}</span>
+                `;
+                button.onclick = () => answerMazeQuestion(index);
+                options.appendChild(button);
+            });
+            
+            modal.classList.remove('hidden');
+        }
+
+        function answerMazeQuestion(selectedIndex) {
+            const correct = selectedIndex === mazeGame.currentQuestion.correct;
+            
+            if (correct) {
+                mazeGame.score += 20;
+                showToast('Benar! +20 poin 🎉', 'success');
+            } else {
+                mazeGame.lives--;
+                showToast('Salah! -1 nyawa 💔', 'error');
+                
+                if (mazeGame.lives <= 0) {
+                    gameOverMaze();
+                    return;
+                }
+            }
+            
+            document.getElementById('maze-question-modal').classList.add('hidden');
+            mazeGame.gameRunning = true;
+            updateMazeUI();
+        }
+
+        function completeMazeLevel() {
+            mazeGame.level++;
+            mazeGame.score += 50;
+            
+            if (mazeGame.level > 3) {
+                // Game completed
+                showMazeGameOver(true);
+            } else {
+                showToast(`Level ${mazeGame.level - 1} selesai! +50 poin 🎊`, 'success');
+                // Generate new maze for next level
+                setTimeout(() => {
+                    generateMaze();
+                    generateCoins();
+                    updateMazeUI();
+                    drawMaze();
+                }, 1500);
+            }
+        }
+
+        function gameOverMaze() {
+            showMazeGameOver(false);
+        }
+
+        function showMazeGameOver(won) {
+            mazeGame.gameRunning = false;
+            document.removeEventListener('keydown', handleMazeKeyboard);
+            
+            const modal = document.getElementById('maze-game-over');
+            const icon = document.getElementById('maze-result-icon');
+            const title = document.getElementById('maze-result-title');
+            const message = document.getElementById('maze-result-message');
+            const finalScore = document.getElementById('maze-final-score');
+            
+            if (won) {
+                icon.textContent = '🏆';
+                title.textContent = 'Selamat!';
+                message.textContent = 'Kamu berhasil menyelesaikan semua level labirin!';
+            } else {
+                icon.textContent = '💪';
+                title.textContent = 'Game Over';
+                message.textContent = 'Jangan menyerah! Coba lagi untuk skor yang lebih baik.';
+            }
+            
+            finalScore.textContent = `Skor Akhir: ${mazeGame.score}`;
+            modal.classList.remove('hidden');
+        }
+
+        function updateMazeUI() {
+            document.getElementById('maze-score').textContent = `Skor: ${mazeGame.score}`;
+            document.getElementById('maze-level').textContent = `Level: ${mazeGame.level}`;
+            document.getElementById('maze-lives').textContent = `❤️ ${mazeGame.lives}`;
+        }
+
+        function restartMazeGame() {
+            document.getElementById('maze-game-over').classList.add('hidden');
+            initMazeGame();
+        }
+
+        function backToGames() {
+            document.getElementById('maze-game').classList.add('hidden');
+            document.getElementById('maze-game-over').classList.add('hidden');
+            document.getElementById('maze-question-modal').classList.add('hidden');
+            document.getElementById('games-page').classList.remove('hidden');
+            
+            // Clean up
+            mazeGame.gameRunning = false;
+            document.removeEventListener('keydown', handleMazeKeyboard);
+        }
+
         // Initialize app when DOM is loaded
         document.addEventListener('DOMContentLoaded', initApp);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99de289321ca3fca',t:'MTc2MzAzNTc0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99de393eb252a8d5',t:'MTc2MzAzNjQzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
