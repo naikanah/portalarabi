@@ -3147,7 +3147,7 @@
       </div>
       <div class="challenge-info">
        <h3>Tantangan Hari Ini</h3>
-       <p>Tebak 5 Kosa Kata Benda di Dapur!</p>
+       <p>Tebak 5 Kosa Kata Benda!</p>
       </div>
      </div><button class="challenge-btn">🏃‍♂️ Ikut Tantangan!</button>
     </div>
@@ -3682,8 +3682,10 @@
         <div class="tafdil"><span class="arabic-text">أَضْعَفُ</span> <span class="meaning">lebih lemah</span>
         </div>
        </div>
+       </div><!-- Navigation Buttons -->
+     <div class="material-navigation"><button class="nav-btn back-to-chapter" onclick="backToMain()">← Kembali ke Daftar Bab</button>
+       <div class="nav-btn-group"><button class="nav-btn prev-material" onclick="showMaterial('bentuk', 1)">← Materi Sebelumnya</button> <button class="nav-btn next-material" onclick="showMaterial('bentuk', 3)">Latihan →</button>
       </div>
-     </div>
     </div><!-- Materi 3: Contoh Kalimat -->
     <div id="isim-tafdil-material-3" class="material-content">
      <h3>✍️ Materi 3: Contoh Kalimat</h3>
@@ -4075,14 +4077,6 @@
       </div>
      </div><!-- Navigation Buttons -->
      <div class="material-navigation"><button class="nav-btn back-to-chapter" onclick="backToMain()">← Kembali ke Daftar Bab</button>
-      <div class="nav-btn-group"><button class="nav-btn prev-material" onclick="showMaterial('isim-tafdil', 1)">← Materi Sebelumnya</button> <button class="nav-btn next-material" onclick="showMaterial('isim-tafdil', 3)">Materi Selanjutnya →</button>
-      </div>
-     </div><!-- Navigation Buttons -->
-     <div class="material-navigation"><button class="nav-btn back-to-chapter" onclick="backToMain()">← Kembali ke Daftar Bab</button>
-      <div class="nav-btn-group"><button class="nav-btn prev-material" onclick="showMaterial('isim-tafdil', 2)">← Materi Sebelumnya</button> <button class="nav-btn next-material" onclick="showMaterial('isim-tafdil', 4)">Latihan →</button>
-      </div>
-     </div><!-- Navigation Buttons -->
-     <div class="material-navigation"><button class="nav-btn back-to-chapter" onclick="backToMain()">← Kembali ke Daftar Bab</button>
       <div class="nav-btn-group"><button class="nav-btn prev-material" onclick="showMaterial('bentuk', 1)">← Materi Sebelumnya</button> <button class="nav-btn next-material" onclick="showMaterial('bentuk', 3)">Latihan →</button>
       </div>
      </div>
@@ -4216,10 +4210,6 @@
        <div class="shape-description">
         Bentuk silinder
        </div>
-      </div>
-     </div><!-- Navigation Buttons -->
-     <div class="material-navigation"><button class="nav-btn back-to-chapter" onclick="backToMain()">← Kembali ke Daftar Bab</button>
-      <div class="nav-btn-group"><button class="nav-btn prev-material" onclick="showMaterial('isim-tafdil', 1)">← Materi Sebelumnya</button> <button class="nav-btn next-material" onclick="showMaterial('isim-tafdil', 3)">Materi Selanjutnya →</button>
       </div>
      </div><!-- Navigation Buttons -->
      <div class="material-navigation"><button class="nav-btn back-to-chapter" onclick="backToMain()">← Kembali ke Daftar Bab</button> <button class="nav-btn next-material" onclick="showMaterial('bentuk', 2)">Materi Selanjutnya →</button>
@@ -5323,7 +5313,7 @@
     <div id="quiz-result" style="display: none;">
      <div class="question-card">
       <h3>🎉 Hasil Kuis</h3>
-      <p>Skor Akhir: <span id="final-score"></span>/10</p>
+      <p>Skor Akhir: <span id="final-score"></span>/20</p>
       <p id="score-message"></p>
      </div><button class="quiz-btn primary" onclick="restartQuiz()">🔄 Ulangi Kuis</button>
     </div>
