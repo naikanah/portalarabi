@@ -13,6 +13,158 @@
             box-sizing: border-box;
         }
         
+        /* Modern animated background */
+        .animated-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                        linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%), 
+                        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+            animation: backgroundMove 20s linear infinite;
+        }
+        
+        @keyframes backgroundMove {
+            0% { background-position: 0 0, 0 30px, 30px -30px, -30px 0px; }
+            100% { background-position: 60px 60px, 60px 90px, 90px 30px, 30px 60px; }
+        }
+        
+        /* Floating clouds animation */
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            opacity: 0.7;
+            animation: float-cloud linear infinite;
+        }
+        
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+        }
+        
+        .cloud-1 {
+            width: 80px;
+            height: 30px;
+            top: 20%;
+            left: -100px;
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+        
+        .cloud-1::before {
+            width: 50px;
+            height: 40px;
+            top: -20px;
+            left: 10px;
+        }
+        
+        .cloud-1::after {
+            width: 40px;
+            height: 35px;
+            top: -15px;
+            right: 15px;
+        }
+        
+        .cloud-2 {
+            width: 60px;
+            height: 25px;
+            top: 40%;
+            left: -80px;
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+        
+        .cloud-2::before {
+            width: 40px;
+            height: 30px;
+            top: -15px;
+            left: 8px;
+        }
+        
+        .cloud-2::after {
+            width: 35px;
+            height: 28px;
+            top: -12px;
+            right: 12px;
+        }
+        
+        .cloud-3 {
+            width: 100px;
+            height: 35px;
+            top: 60%;
+            left: -120px;
+            animation-duration: 35s;
+            animation-delay: 10s;
+        }
+        
+        .cloud-3::before {
+            width: 60px;
+            height: 45px;
+            top: -25px;
+            left: 15px;
+        }
+        
+        .cloud-3::after {
+            width: 50px;
+            height: 40px;
+            top: -20px;
+            right: 20px;
+        }
+        
+        .cloud-4 {
+            width: 70px;
+            height: 28px;
+            top: 80%;
+            left: -90px;
+            animation-duration: 28s;
+            animation-delay: 15s;
+        }
+        
+        .cloud-4::before {
+            width: 45px;
+            height: 35px;
+            top: -18px;
+            left: 12px;
+        }
+        
+        .cloud-4::after {
+            width: 38px;
+            height: 32px;
+            top: -15px;
+            right: 18px;
+        }
+        
+        @keyframes float-cloud {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+        
+        /* Content overlay */
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
         .arabic-text {
             font-family: 'Noto Sans Arabic', Arial, sans-serif;
             font-size: 1.25em;
@@ -219,12 +371,16 @@
     </style>
   <style>@view-transition { navigation: auto; }</style>
  </head>
- <body class="min-h-full bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50"><!-- Navigation -->
-  <nav class="bg-white/90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+ <body class="min-h-full animated-bg"><!-- Floating Clouds -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+  <div class="cloud cloud-4"></div><!-- Navigation -->
+  <nav class="bg-white/95 backdrop-blur-md shadow-xl sticky top-0 z-50 border-b border-white/20">
    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
      <div class="flex items-center space-x-3">
-      <div class="w-10 h-10 bg-gradient-to-br from-sky-400 to-blue-600 rounded-xl flex items-center justify-center"><span class="text-white text-xl">🕌</span>
+      <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-600 rounded-xl flex items-center justify-center shadow-lg"><span class="text-white text-xl">🦅</span>
       </div>
       <h1 id="site-title" class="latin-heading text-xl text-gray-800">Portal Pelajar Bahasa Arab</h1>
      </div><!-- Navigation Menu -->
@@ -292,293 +448,318 @@
     </div>
    </div>
   </nav><!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><!-- Welcome Screen -->
-   <div id="welcome-screen" class="text-center px-4">
-    <div class="mb-6 md:mb-8">
-     <div class="floating-element inline-block">
-      <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-6xl mb-4 md:mb-6 mx-auto shadow-2xl">
-       🏛️
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+   <div class="content-overlay p-6 md:p-8"><!-- Welcome Screen -->
+    <div id="welcome-screen" class="text-center px-4">
+     <div class="mb-6 md:mb-8">
+      <div class="floating-element inline-block">
+       <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-6xl mb-4 md:mb-6 mx-auto shadow-2xl">
+        🏛️
+       </div>
       </div>
+      <h1 id="welcome-message" class="latin-heading text-2xl md:text-4xl lg:text-5xl text-gray-800 mb-3 md:mb-4 px-2">Assalamu'alaikum, petualang. Ahlan wasahlan</h1>
+      <p id="ready-message" class="latin-body text-lg md:text-xl text-gray-600 mb-6 md:mb-8 px-2">Siap berpetualang hari ini?</p>
      </div>
-     <h1 id="welcome-message" class="latin-heading text-2xl md:text-4xl lg:text-5xl text-gray-800 mb-3 md:mb-4 px-2">Assalamu'alaikum, petualang. Ahlan wasahlan</h1>
-     <p id="ready-message" class="latin-body text-lg md:text-xl text-gray-600 mb-6 md:mb-8 px-2">Siap berpetualang hari ini?</p>
-    </div>
-    <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl">
-     <div class="mb-6"><label for="student-name" class="block latin-body text-base md:text-lg font-semibold text-gray-700 mb-3"> Siapa nama petualang hari ini? </label> <input type="text" id="student-name" placeholder="Masukkan nama kamu..." class="w-full px-3 md:px-4 py-2 md:py-3 border-2 border-gray-200 rounded-xl focus:border-sky-400 focus:outline-none latin-body text-base md:text-lg">
-     </div><button onclick="startAdventure()" id="start-btn" class="w-full btn-primary text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body text-base md:text-lg font-semibold shadow-lg"> Mulai Petualangan! 🚀 </button>
-    </div>
-   </div><!-- Dashboard -->
-   <div id="dashboard" class="hidden">
-    <div class="text-center mb-8">
-     <h2 class="latin-heading text-3xl text-gray-800 mb-2">Selamat Datang Kembali!</h2>
-     <p class="latin-body text-gray-600">Lanjutkan petualangan bahasa Arabmu</p>
-    </div><!-- Progress Overview -->
-    <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 mb-8 shadow-xl">
-     <h3 class="latin-heading text-xl text-gray-800 mb-4">Progress Petualangan</h3>
-     <div class="flex items-center space-x-4">
-      <div class="flex-1">
-       <div class="bg-gray-200 rounded-full h-3">
-        <div id="overall-progress" class="progress-bar h-3 rounded-full" style="width: 0%"></div>
-       </div>
-      </div><span id="progress-text" class="latin-body text-sm text-gray-600">0% Selesai</span>
+     <div class="max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl">
+      <div class="mb-6"><label for="student-name" class="block latin-body text-base md:text-lg font-semibold text-gray-700 mb-3"> Siapa nama petualang hari ini? </label> <input type="text" id="student-name" placeholder="Masukkan nama kamu..." class="w-full px-3 md:px-4 py-2 md:py-3 border-2 border-gray-200 rounded-xl focus:border-sky-400 focus:outline-none latin-body text-base md:text-lg">
+      </div><button onclick="startAdventure()" id="start-btn" class="w-full btn-primary text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body text-base md:text-lg font-semibold shadow-lg"> Mulai Petualangan! 🚀 </button>
      </div>
-    </div><!-- Tips & Guide Section -->
-    <div class="grid lg:grid-cols-3 gap-6 mb-8"><!-- Learning Tips -->
-     <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-3xl shadow-lg border border-green-100">
-      <div class="flex items-center mb-4">
-       <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-2xl mr-3">
-        💡
-       </div>
-       <h3 class="latin-heading text-lg text-gray-800">Tips Pembelajaran</h3>
-      </div>
-      <div class="space-y-3">
-       <div class="flex items-start space-x-2"><span class="text-green-600 mt-1">✓</span>
-        <p class="latin-body text-sm text-gray-700">Dengarkan lagu mufradat untuk menghapal lebih mudah</p>
-       </div>
-       <div class="flex items-start space-x-2"><span class="text-green-600 mt-1">✓</span>
-        <p class="latin-body text-sm text-gray-700">Tonton video pembelajaran sebelum mengerjakan latihan</p>
-       </div>
-       <div class="flex items-start space-x-2"><span class="text-green-600 mt-1">✓</span>
-        <p class="latin-body text-sm text-gray-700">Ulangi materi yang belum dipahami</p>
-       </div>
-      </div>
-     </div><!-- Usage Guide -->
-     <div class="bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-3xl shadow-lg border border-blue-100">
-      <div class="flex items-center mb-4">
-       <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-sky-600 rounded-2xl flex items-center justify-center text-2xl mr-3">
-        📖
-       </div>
-       <h3 class="latin-heading text-lg text-gray-800">Petunjuk Penggunaan</h3>
-      </div>
-      <div class="space-y-3">
-       <div class="flex items-start space-x-2"><span class="text-blue-600 mt-1">1.</span>
-        <p class="latin-body text-sm text-gray-700">Pilih bab yang ingin dipelajari</p>
-       </div>
-       <div class="flex items-start space-x-2"><span class="text-blue-600 mt-1">2.</span>
-        <p class="latin-body text-sm text-gray-700">Pelajari materi secara berurutan</p>
-       </div>
-       <div class="flex items-start space-x-2"><span class="text-blue-600 mt-1">3.</span>
-        <p class="latin-body text-sm text-gray-700">Kerjakan latihan soal di akhir bab</p>
-       </div>
-      </div>
-     </div><!-- Quick Stats -->
-     <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-3xl shadow-lg border border-purple-100">
-      <div class="flex items-center mb-4">
-       <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-2xl mr-3">
-        📊
-       </div>
-       <h3 class="latin-heading text-lg text-gray-800">Statistik Belajar</h3>
-      </div>
-      <div class="space-y-3">
-       <div class="flex justify-between items-center"><span class="latin-body text-sm text-gray-600">Total Bab:</span> <span class="latin-body text-sm font-semibold text-purple-600">4 Bab</span>
-       </div>
-       <div class="flex justify-between items-center"><span class="latin-body text-sm text-gray-600">Total Materi:</span> <span class="latin-body text-sm font-semibold text-purple-600">12 Pelajaran</span>
-       </div>
-       <div class="flex justify-between items-center"><span class="latin-body text-sm text-gray-600">Video:</span> <span class="latin-body text-sm font-semibold text-purple-600">4 Video</span>
-       </div>
-       <div class="flex justify-between items-center"><span class="latin-body text-sm text-gray-600">Lagu:</span> <span class="latin-body text-sm font-semibold text-purple-600">4 Lagu</span>
-       </div>
-      </div>
-     </div>
-    </div><!-- Chapter Cards -->
-    <div class="grid md:grid-cols-2 gap-8"><!-- Chapter 1: Isim Tafdil -->
-     <div class="adventure-card p-6">
-      <div class="flex items-center mb-4">
-       <div class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-green-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
-        📊
-       </div>
-       <div>
-        <h3 class="latin-heading text-xl text-gray-800">Bab 1: Isim Tafdil</h3>
-        <p class="latin-body text-gray-600">Kata Perbandingan</p>
-       </div>
-      </div>
-      <p class="latin-body text-gray-700 mb-4">Pelajari cara membandingkan benda dalam bahasa Arab dengan pola أَفْعَلُ</p>
-      <div class="arabic-text text-center text-sky-600 mb-4 bg-sky-50 p-3 rounded-xl">
-       أَكْبَرُ - أَصْغَرُ - أَطْوَلُ
-      </div><button onclick="openChapter(1)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 1 🎯 </button>
-     </div><!-- Chapter 2: Bentuk -->
-     <div class="adventure-card p-6">
-      <div class="flex items-center mb-4">
-       <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
-        🔷
-       </div>
-       <div>
-        <h3 class="latin-heading text-xl text-gray-800">Bab 2: Bentuk</h3>
-        <p class="latin-body text-gray-600">Shapes &amp; Forms</p>
-       </div>
-      </div>
-      <p class="latin-body text-gray-700 mb-4">Kenali berbagai bentuk geometri dalam bahasa Arab</p>
-      <div class="arabic-text text-center text-purple-600 mb-4 bg-purple-50 p-3 rounded-xl">
-       مُرَبَّعٌ - مُسْتَدِيْرٌ - مُثَلَّثٌ
-      </div><button onclick="openChapter(2)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 2 🔺 </button>
-     </div><!-- Chapter 3: Warna -->
-     <div class="adventure-card p-6">
-      <div class="flex items-center mb-4">
-       <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-pink-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
-        🎨
-       </div>
-       <div>
-        <h3 class="latin-heading text-xl text-gray-800">Bab 3: Warna</h3>
-        <p class="latin-body text-gray-600">Colors in Arabic</p>
-       </div>
-      </div>
-      <p class="latin-body text-gray-700 mb-4">Pelajari nama-nama warna dalam bahasa Arab dan penggunaannya</p>
-      <div class="arabic-text text-center text-red-600 mb-4 bg-red-50 p-3 rounded-xl">
-       أَحْمَرُ - أَبْيَضُ - أَسْوَدُ
-      </div><button onclick="openChapter(3)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 3 🎨 </button>
-     </div><!-- Chapter 4: Kalender Hijriah -->
-     <div class="adventure-card p-6">
-      <div class="flex items-center mb-4">
-       <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
-        🌙
-       </div>
-       <div>
-        <h3 class="latin-heading text-xl text-gray-800">Bab 4: Kalender Hijriah</h3>
-        <p class="latin-body text-gray-600">Islamic Calendar</p>
-       </div>
-      </div>
-      <p class="latin-body text-gray-700 mb-4">Kenali nama-nama bulan dalam kalender Hijriah dan peristiwa pentingnya</p>
-      <div class="arabic-text text-center text-amber-600 mb-4 bg-amber-50 p-3 rounded-xl">
-       مُحَرَّمٌ - رَمَضَانُ - شَوَّالٌ
-      </div><button onclick="openChapter(4)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 4 🌙 </button>
-     </div>
-    </div>
-   </div><!-- Chapter Content -->
-   <div id="chapter-content" class="hidden">
-    <div class="mb-6"><button onclick="backToDashboard()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold"> <span>←</span> <span>Kembali ke Dashboard</span> </button>
-    </div>
-    <div id="chapter-header" class="text-center mb-8">
-     <h2 id="chapter-title" class="latin-heading text-3xl text-gray-800 mb-2"></h2>
-     <p id="chapter-subtitle" class="latin-body text-gray-600"></p>
-    </div><!-- Lesson Navigation -->
-    <div id="lesson-nav" class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 mb-8 shadow-lg">
-     <div class="flex flex-wrap gap-2" id="lesson-buttons"></div>
-    </div><!-- Lesson Content -->
-    <div id="lesson-content" class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl"><!-- Content will be dynamically loaded -->
-    </div>
-   </div><!-- Quiz Interface -->
-   <div id="quiz-interface" class="hidden">
-    <div class="mb-4 md:mb-6"><button onclick="backToLesson()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold text-sm md:text-base"> <span>←</span> <span>Kembali ke Materi</span> </button>
-    </div>
-    <div class="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl">
-     <div class="text-center mb-6 md:mb-8">
-      <h2 class="latin-heading text-xl md:text-2xl text-gray-800 mb-2">Latihan Soal</h2>
-      <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4"><span id="question-counter" class="latin-body text-gray-600 text-sm md:text-base">Soal 1 dari 20</span>
-       <div class="w-full md:flex-1 max-w-xs">
-        <div class="bg-gray-200 rounded-full h-2">
-         <div id="quiz-progress" class="progress-bar h-2 rounded-full" style="width: 5%"></div>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div id="quiz-question" class="mb-6 md:mb-8"><!-- Question content -->
-     </div>
-     <div id="quiz-options" class="space-y-2 md:space-y-3 mb-6 md:mb-8"><!-- Options will be loaded here -->
-     </div>
-     <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0"><button id="prev-question" onclick="previousQuestion()" class="w-full md:w-auto btn-primary text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base" disabled> ← Sebelumnya </button> <button id="next-question" onclick="nextQuestion()" class="w-full md:w-auto btn-accent text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base" disabled> Selanjutnya → </button>
-     </div>
-    </div>
-   </div><!-- Quiz Results -->
-   <div id="quiz-results" class="hidden">
-    <div class="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl text-center">
-     <div class="mb-6">
-      <div id="result-icon" class="text-4xl md:text-6xl mb-4">
-       🎉
-      </div>
-      <h2 class="latin-heading text-2xl md:text-3xl text-gray-800 mb-2">Hasil Latihan</h2>
-      <p id="score-display" class="latin-body text-lg md:text-xl text-gray-600 mb-4"></p>
-      <div id="score-message" class="latin-body text-base md:text-lg text-gray-700 mb-6 px-2"></div>
-     </div>
-     <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"><button onclick="retryQuiz()" class="btn-primary text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base"> Coba Lagi 🔄 </button> <button onclick="backToLesson()" class="btn-accent text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base"> Kembali ke Materi 📚 </button>
-     </div>
-    </div>
-   </div><!-- Guide/Help Page -->
-   <div id="guide-page" class="hidden">
-    <div class="mb-6"><button onclick="backToDashboard()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold"> <span>←</span> <span>Kembali ke Dashboard</span> </button>
-    </div>
-    <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+    </div><!-- Dashboard -->
+    <div id="dashboard" class="hidden">
      <div class="text-center mb-8">
-      <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
-       💡
+      <h2 class="latin-heading text-3xl text-gray-800 mb-2">Selamat Datang Kembali!</h2>
+      <p class="latin-body text-gray-600">Lanjutkan petualangan bahasa Arabmu</p>
+     </div><!-- Progress Overview -->
+     <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-6 mb-8 shadow-xl">
+      <h3 class="latin-heading text-xl text-gray-800 mb-4">Progress Petualangan</h3>
+      <div class="flex items-center space-x-4">
+       <div class="flex-1">
+        <div class="bg-gray-200 rounded-full h-3">
+         <div id="overall-progress" class="progress-bar h-3 rounded-full" style="width: 0%"></div>
+        </div>
+       </div><span id="progress-text" class="latin-body text-sm text-gray-600">0% Selesai</span>
       </div>
-      <h2 class="latin-heading text-3xl text-gray-800 mb-2">Petunjuk Penggunaan Portal</h2>
-      <p class="latin-body text-gray-600">Panduan lengkap untuk memaksimalkan pembelajaran bahasa Arab</p>
-     </div>
-     <div class="grid md:grid-cols-2 gap-8"><!-- Cara Menggunakan -->
-      <div class="space-y-6">
-       <h3 class="latin-heading text-xl text-gray-800 mb-4 flex items-center"><span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-sm font-bold mr-3">1</span> Cara Menggunakan Portal</h3>
-       <div class="space-y-4">
-        <div class="bg-blue-50 p-4 rounded-xl">
-         <h4 class="latin-body font-semibold text-gray-800 mb-2">📚 Memilih Materi</h4>
-         <p class="latin-body text-sm text-gray-700">Klik menu "Materi" di bagian atas atau pilih kartu bab di dashboard. Setiap bab memiliki beberapa pelajaran yang harus dipelajari secara berurutan.</p>
+     </div><!-- Tips & Guide Section -->
+     <div class="grid lg:grid-cols-3 gap-6 mb-8"><!-- Learning Tips -->
+      <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-3xl shadow-lg border border-green-100">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-2xl mr-3">
+         💡
         </div>
-        <div class="bg-green-50 p-4 rounded-xl">
-         <h4 class="latin-body font-semibold text-gray-800 mb-2">🎵 Mendengarkan Lagu</h4>
-         <p class="latin-body text-sm text-gray-700">Setiap bab memiliki lagu mufradat yang membantu menghapal kosakata. Dengarkan lagu sambil membaca teks Arab untuk hasil maksimal.</p>
+        <h3 class="latin-heading text-lg text-gray-800">Tips Pembelajaran</h3>
+       </div>
+       <div class="space-y-3">
+        <div class="flex items-start space-x-2"><span class="text-green-600 mt-1">✓</span>
+         <p class="latin-body text-sm text-gray-700">Dengarkan lagu mufradat untuk menghapal lebih mudah</p>
         </div>
-        <div class="bg-purple-50 p-4 rounded-xl">
-         <h4 class="latin-body font-semibold text-gray-800 mb-2">📹 Menonton Video</h4>
-         <p class="latin-body text-sm text-gray-700">Video pembelajaran dapat diputar langsung di portal. Tonton video sebelum mengerjakan latihan untuk pemahaman yang lebih baik.</p>
+        <div class="flex items-start space-x-2"><span class="text-green-600 mt-1">✓</span>
+         <p class="latin-body text-sm text-gray-700">Tonton video pembelajaran sebelum mengerjakan latihan</p>
         </div>
-        <div class="bg-amber-50 p-4 rounded-xl">
-         <h4 class="latin-body font-semibold text-gray-800 mb-2">✏️ Mengerjakan Latihan</h4>
-         <p class="latin-body text-sm text-gray-700">Setiap bab diakhiri dengan latihan soal. Kerjakan dengan teliti dan jangan ragu untuk mengulang jika skor belum memuaskan.</p>
+        <div class="flex items-start space-x-2"><span class="text-green-600 mt-1">✓</span>
+         <p class="latin-body text-sm text-gray-700">Ulangi materi yang belum dipahami</p>
         </div>
        </div>
-      </div><!-- Tips Pembelajaran -->
-      <div class="space-y-6">
-       <h3 class="latin-heading text-xl text-gray-800 mb-4 flex items-center"><span class="w-8 h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-sm font-bold mr-3">2</span> Tips Pembelajaran Efektif</h3>
-       <div class="space-y-4">
-        <div class="bg-gradient-to-r from-red-50 to-pink-50 p-4 rounded-xl">
-         <h4 class="latin-body font-semibold text-gray-800 mb-2">🎯 Konsistensi</h4>
-         <p class="latin-body text-sm text-gray-700">Belajar sedikit tapi rutin lebih baik daripada belajar banyak sekali waktu. Luangkan 15-30 menit setiap hari untuk hasil optimal.</p>
+      </div><!-- Usage Guide -->
+      <div class="bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-3xl shadow-lg border border-blue-100">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-sky-600 rounded-2xl flex items-center justify-center text-2xl mr-3">
+         📖
         </div>
-        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-xl">
-         <h4 class="latin-body font-semibold text-gray-800 mb-2">🔄 Pengulangan</h4>
-         <p class="latin-body text-sm text-gray-700">Ulangi materi yang sudah dipelajari secara berkala. Ini membantu memindahkan informasi dari memori jangka pendek ke jangka panjang.</p>
+        <h3 class="latin-heading text-lg text-gray-800">Petunjuk Penggunaan</h3>
+       </div>
+       <div class="space-y-3">
+        <div class="flex items-start space-x-2"><span class="text-blue-600 mt-1">1.</span>
+         <p class="latin-body text-sm text-gray-700">Pilih bab yang ingin dipelajari</p>
         </div>
-        <div class="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-xl">
-         <h4 class="latin-body font-semibold text-gray-800 mb-2">🗣️ Praktik</h4>
-         <p class="latin-body text-sm text-gray-700">Ucapkan kosakata dengan suara keras. Dengarkan lagu dan ikuti pelafalannya. Praktik berbicara membantu mengingat lebih baik.</p>
+        <div class="flex items-start space-x-2"><span class="text-blue-600 mt-1">2.</span>
+         <p class="latin-body text-sm text-gray-700">Pelajari materi secara berurutan</p>
         </div>
-        <div class="bg-gradient-to-r from-teal-50 to-cyan-50 p-4 rounded-xl">
-         <h4 class="latin-body font-semibold text-gray-800 mb-2">📝 Catatan</h4>
-         <p class="latin-body text-sm text-gray-700">Buat catatan kecil untuk kosakata yang sulit. Tulis contoh kalimat sendiri menggunakan kosakata yang baru dipelajari.</p>
+        <div class="flex items-start space-x-2"><span class="text-blue-600 mt-1">3.</span>
+         <p class="latin-body text-sm text-gray-700">Kerjakan latihan soal di akhir bab</p>
         </div>
        </div>
-      </div>
-     </div><!-- Fitur Portal -->
-     <div class="mt-8 bg-gradient-to-r from-gray-50 to-slate-50 p-6 rounded-2xl">
-      <h3 class="latin-heading text-xl text-gray-800 mb-4 flex items-center"><span class="w-8 h-8 bg-gray-100 text-gray-600 rounded-lg flex items-center justify-center text-sm font-bold mr-3">3</span> Fitur-fitur Portal</h3>
-      <div class="grid md:grid-cols-3 gap-4">
-       <div class="text-center p-4">
-        <div class="text-3xl mb-2">
+      </div><!-- Quick Stats -->
+      <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-3xl shadow-lg border border-purple-100">
+       <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-2xl mr-3">
          📊
         </div>
-        <h4 class="latin-body font-semibold text-gray-800 mb-1">Progress Tracking</h4>
-        <p class="latin-body text-xs text-gray-600">Pantau kemajuan belajar secara real-time</p>
+        <h3 class="latin-heading text-lg text-gray-800">Statistik Belajar</h3>
        </div>
-       <div class="text-center p-4">
-        <div class="text-3xl mb-2">
-         🎵
+       <div class="space-y-3">
+        <div class="flex justify-between items-center"><span class="latin-body text-sm text-gray-600">Total Bab:</span> <span class="latin-body text-sm font-semibold text-purple-600">4 Bab</span>
         </div>
-        <h4 class="latin-body font-semibold text-gray-800 mb-1">Lagu Mufradat</h4>
-        <p class="latin-body text-xs text-gray-600">Belajar kosakata dengan cara yang menyenangkan</p>
-       </div>
-       <div class="text-center p-4">
-        <div class="text-3xl mb-2">
-         📱
+        <div class="flex justify-between items-center"><span class="latin-body text-sm text-gray-600">Total Materi:</span> <span class="latin-body text-sm font-semibold text-purple-600">12 Pelajaran</span>
         </div>
-        <h4 class="latin-body font-semibold text-gray-800 mb-1">Responsive Design</h4>
-        <p class="latin-body text-xs text-gray-600">Dapat diakses di semua perangkat</p>
+        <div class="flex justify-between items-center"><span class="latin-body text-sm text-gray-600">Video:</span> <span class="latin-body text-sm font-semibold text-purple-600">4 Video</span>
+        </div>
+        <div class="flex justify-between items-center"><span class="latin-body text-sm text-gray-600">Lagu:</span> <span class="latin-body text-sm font-semibold text-purple-600">4 Lagu</span>
+        </div>
        </div>
       </div>
+     </div><!-- Chapter Cards -->
+     <div class="grid md:grid-cols-2 gap-8"><!-- Chapter 1: Isim Tafdil -->
+      <div class="adventure-card p-6">
+       <div class="flex items-center mb-4">
+        <div class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-green-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+         📊
+        </div>
+        <div>
+         <h3 class="latin-heading text-xl text-gray-800">Bab 1: Isim Tafdil</h3>
+         <p class="latin-body text-gray-600">Kata Perbandingan</p>
+        </div>
+       </div>
+       <p class="latin-body text-gray-700 mb-4">Pelajari cara membandingkan benda dalam bahasa Arab dengan pola أَفْعَلُ</p>
+       <div class="arabic-text text-center text-sky-600 mb-4 bg-sky-50 p-3 rounded-xl">
+        أَكْبَرُ - أَصْغَرُ - أَطْوَلُ
+       </div><button onclick="openChapter(1)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 1 🎯 </button>
+      </div><!-- Chapter 2: Bentuk -->
+      <div class="adventure-card p-6">
+       <div class="flex items-center mb-4">
+        <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+         🔷
+        </div>
+        <div>
+         <h3 class="latin-heading text-xl text-gray-800">Bab 2: Bentuk</h3>
+         <p class="latin-body text-gray-600">Shapes &amp; Forms</p>
+        </div>
+       </div>
+       <p class="latin-body text-gray-700 mb-4">Kenali berbagai bentuk geometri dalam bahasa Arab</p>
+       <div class="arabic-text text-center text-purple-600 mb-4 bg-purple-50 p-3 rounded-xl">
+        مُرَبَّعٌ - مُسْتَدِيْرٌ - مُثَلَّثٌ
+       </div><button onclick="openChapter(2)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 2 🔺 </button>
+      </div><!-- Chapter 3: Warna -->
+      <div class="adventure-card p-6">
+       <div class="flex items-center mb-4">
+        <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-pink-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+         🎨
+        </div>
+        <div>
+         <h3 class="latin-heading text-xl text-gray-800">Bab 3: Warna</h3>
+         <p class="latin-body text-gray-600">Colors in Arabic</p>
+        </div>
+       </div>
+       <p class="latin-body text-gray-700 mb-4">Pelajari nama-nama warna dalam bahasa Arab dan penggunaannya</p>
+       <div class="arabic-text text-center text-red-600 mb-4 bg-red-50 p-3 rounded-xl">
+        أَحْمَرُ - أَبْيَضُ - أَسْوَدُ
+       </div><button onclick="openChapter(3)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 3 🎨 </button>
+      </div><!-- Chapter 4: Kalender Hijriah -->
+      <div class="adventure-card p-6">
+       <div class="flex items-center mb-4">
+        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+         🌙
+        </div>
+        <div>
+         <h3 class="latin-heading text-xl text-gray-800">Bab 4: Kalender Hijriah</h3>
+         <p class="latin-body text-gray-600">Islamic Calendar</p>
+        </div>
+       </div>
+       <p class="latin-body text-gray-700 mb-4">Kenali nama-nama bulan dalam kalender Hijriah dan peristiwa pentingnya</p>
+       <div class="arabic-text text-center text-amber-600 mb-4 bg-amber-50 p-3 rounded-xl">
+        مُحَرَّمٌ - رَمَضَانُ - شَوَّالٌ
+       </div><button onclick="openChapter(4)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 4 🌙 </button>
+      </div>
      </div>
-     <div class="mt-8 text-center"><button onclick="backToDashboard()" class="btn-primary text-white py-3 px-8 rounded-xl latin-body font-semibold"> Mulai Belajar Sekarang! 🚀 </button>
+    </div><!-- Chapter Content -->
+    <div id="chapter-content" class="hidden">
+     <div class="mb-6"><button onclick="backToDashboard()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold"> <span>←</span> <span>Kembali ke Dashboard</span> </button>
+     </div>
+     <div id="chapter-header" class="text-center mb-8">
+      <h2 id="chapter-title" class="latin-heading text-3xl text-gray-800 mb-2"></h2>
+      <p id="chapter-subtitle" class="latin-body text-gray-600"></p>
+     </div><!-- Lesson Navigation -->
+     <div id="lesson-nav" class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 mb-8 shadow-lg">
+      <div class="flex flex-wrap gap-2" id="lesson-buttons"></div>
+     </div><!-- Lesson Content -->
+     <div id="lesson-content" class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl"><!-- Content will be dynamically loaded -->
+     </div>
+    </div><!-- Quiz Interface -->
+    <div id="quiz-interface" class="hidden">
+     <div class="mb-4 md:mb-6"><button onclick="backToLesson()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold text-sm md:text-base"> <span>←</span> <span>Kembali ke Materi</span> </button>
+     </div>
+     <div class="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl">
+      <div class="text-center mb-6 md:mb-8">
+       <h2 class="latin-heading text-xl md:text-2xl text-gray-800 mb-2">Latihan Soal</h2>
+       <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4"><span id="question-counter" class="latin-body text-gray-600 text-sm md:text-base">Soal 1 dari 20</span>
+        <div class="w-full md:flex-1 max-w-xs">
+         <div class="bg-gray-200 rounded-full h-2">
+          <div id="quiz-progress" class="progress-bar h-2 rounded-full" style="width: 5%"></div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div id="quiz-question" class="mb-6 md:mb-8"><!-- Question content -->
+      </div>
+      <div id="quiz-options" class="space-y-2 md:space-y-3 mb-6 md:mb-8"><!-- Options will be loaded here -->
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0"><button id="prev-question" onclick="previousQuestion()" class="w-full md:w-auto btn-primary text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base" disabled> ← Sebelumnya </button> <button id="next-question" onclick="nextQuestion()" class="w-full md:w-auto btn-accent text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base" disabled> Selanjutnya → </button>
+      </div>
+     </div>
+    </div><!-- Quiz Results -->
+    <div id="quiz-results" class="hidden">
+     <div class="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl text-center">
+      <div class="mb-6">
+       <div id="result-icon" class="text-4xl md:text-6xl mb-4">
+        🎉
+       </div>
+       <h2 class="latin-heading text-2xl md:text-3xl text-gray-800 mb-2">Hasil Latihan</h2>
+       <p id="score-display" class="latin-body text-lg md:text-xl text-gray-600 mb-4"></p>
+       <div id="score-message" class="latin-body text-base md:text-lg text-gray-700 mb-6 px-2"></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"><button onclick="retryQuiz()" class="btn-primary text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base"> Coba Lagi 🔄 </button> <button onclick="backToLesson()" class="btn-accent text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base"> Kembali ke Materi 📚 </button>
+      </div>
+     </div>
+    </div><!-- Guide/Help Page -->
+    <div id="guide-page" class="hidden">
+     <div class="mb-6"><button onclick="backToDashboard()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold"> <span>←</span> <span>Kembali ke Dashboard</span> </button>
+     </div>
+     <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
+      <div class="text-center mb-8">
+       <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
+        💡
+       </div>
+       <h2 class="latin-heading text-3xl text-gray-800 mb-2">Petunjuk Penggunaan Portal</h2>
+       <p class="latin-body text-gray-600">Panduan lengkap untuk memaksimalkan pembelajaran bahasa Arab</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8"><!-- Cara Menggunakan -->
+       <div class="space-y-6">
+        <h3 class="latin-heading text-xl text-gray-800 mb-4 flex items-center"><span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-sm font-bold mr-3">1</span> Cara Menggunakan Portal</h3>
+        <div class="space-y-4">
+         <div class="bg-blue-50 p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2">📚 Memilih Materi</h4>
+          <p class="latin-body text-sm text-gray-700">Klik menu "Materi" di bagian atas atau pilih kartu bab di dashboard. Setiap bab memiliki beberapa pelajaran yang harus dipelajari secara berurutan.</p>
+         </div>
+         <div class="bg-green-50 p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2">🎵 Mendengarkan Lagu</h4>
+          <p class="latin-body text-sm text-gray-700">Setiap bab memiliki lagu mufradat yang membantu menghapal kosakata. Dengarkan lagu sambil membaca teks Arab untuk hasil maksimal.</p>
+         </div>
+         <div class="bg-purple-50 p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2">📹 Menonton Video</h4>
+          <p class="latin-body text-sm text-gray-700">Video pembelajaran dapat diputar langsung di portal. Tonton video sebelum mengerjakan latihan untuk pemahaman yang lebih baik.</p>
+         </div>
+         <div class="bg-amber-50 p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2">✏️ Mengerjakan Latihan</h4>
+          <p class="latin-body text-sm text-gray-700">Setiap bab diakhiri dengan latihan soal. Kerjakan dengan teliti dan jangan ragu untuk mengulang jika skor belum memuaskan.</p>
+         </div>
+        </div>
+       </div><!-- Tips Pembelajaran -->
+       <div class="space-y-6">
+        <h3 class="latin-heading text-xl text-gray-800 mb-4 flex items-center"><span class="w-8 h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-sm font-bold mr-3">2</span> Tips Pembelajaran Efektif</h3>
+        <div class="space-y-4">
+         <div class="bg-gradient-to-r from-red-50 to-pink-50 p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2">🎯 Konsistensi</h4>
+          <p class="latin-body text-sm text-gray-700">Belajar sedikit tapi rutin lebih baik daripada belajar banyak sekali waktu. Luangkan 15-30 menit setiap hari untuk hasil optimal.</p>
+         </div>
+         <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2">🔄 Pengulangan</h4>
+          <p class="latin-body text-sm text-gray-700">Ulangi materi yang sudah dipelajari secara berkala. Ini membantu memindahkan informasi dari memori jangka pendek ke jangka panjang.</p>
+         </div>
+         <div class="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2">🗣️ Praktik</h4>
+          <p class="latin-body text-sm text-gray-700">Ucapkan kosakata dengan suara keras. Dengarkan lagu dan ikuti pelafalannya. Praktik berbicara membantu mengingat lebih baik.</p>
+         </div>
+         <div class="bg-gradient-to-r from-teal-50 to-cyan-50 p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2">📝 Catatan</h4>
+          <p class="latin-body text-sm text-gray-700">Buat catatan kecil untuk kosakata yang sulit. Tulis contoh kalimat sendiri menggunakan kosakata yang baru dipelajari.</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Fitur Portal -->
+      <div class="mt-8 bg-gradient-to-r from-gray-50 to-slate-50 p-6 rounded-2xl">
+       <h3 class="latin-heading text-xl text-gray-800 mb-4 flex items-center"><span class="w-8 h-8 bg-gray-100 text-gray-600 rounded-lg flex items-center justify-center text-sm font-bold mr-3">3</span> Fitur-fitur Portal</h3>
+       <div class="grid md:grid-cols-3 gap-4">
+        <div class="text-center p-4">
+         <div class="text-3xl mb-2">
+          📊
+         </div>
+         <h4 class="latin-body font-semibold text-gray-800 mb-1">Progress Tracking</h4>
+         <p class="latin-body text-xs text-gray-600">Pantau kemajuan belajar secara real-time</p>
+        </div>
+        <div class="text-center p-4">
+         <div class="text-3xl mb-2">
+          🎵
+         </div>
+         <h4 class="latin-body font-semibold text-gray-800 mb-1">Lagu Mufradat</h4>
+         <p class="latin-body text-xs text-gray-600">Belajar kosakata dengan cara yang menyenangkan</p>
+        </div>
+        <div class="text-center p-4">
+         <div class="text-3xl mb-2">
+          📱
+         </div>
+         <h4 class="latin-body font-semibold text-gray-800 mb-1">Responsive Design</h4>
+         <p class="latin-body text-xs text-gray-600">Dapat diakses di semua perangkat</p>
+        </div>
+       </div>
+      </div>
+      <div class="mt-8 text-center"><button onclick="backToDashboard()" class="btn-primary text-white py-3 px-8 rounded-xl latin-body font-semibold"> Mulai Belajar Sekarang! 🚀 </button>
+      </div>
      </div>
     </div>
    </div>
-  </main>
+  </main><!-- Footer -->
+  <footer class="bg-white/80 backdrop-blur-sm border-t border-gray-100 mt-16">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="text-center space-y-4"><!-- Contact Teacher -->
+     <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
+      <div class="flex flex-col md:flex-row items-center justify-center space-y-3 md:space-y-0 md:space-x-4">
+       <div class="flex items-center space-x-3">
+        <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center text-2xl">
+         👩‍🏫
+        </div>
+        <div class="text-left">
+         <h3 class="latin-heading text-lg text-gray-800 font-semibold">Ada Pertanyaan?</h3>
+         <p class="latin-body text-gray-600 text-sm">Tanya langsung ke guru</p>
+        </div>
+       </div><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-xl latin-body font-semibold transition-all transform hover:scale-105 shadow-lg flex items-center space-x-2"> <span class="text-xl">📱</span> <span>Hubungi Guru via WhatsApp</span> </a>
+      </div>
+     </div><!-- Copyright -->
+     <div class="pt-6 border-t border-gray-200">
+      <p class="latin-body text-gray-600 text-sm md:text-base">© 2025 💝 Belajar bahasa Arab lebih menyenangkan <span class="text-sky-600 font-semibold">@naikanah</span></p>
+      <p class="latin-body text-gray-500 text-xs mt-2">Portal pembelajaran interaktif untuk menguasai bahasa Arab dengan mudah dan menyenangkan</p>
+     </div>
+    </div>
+   </div>
+  </footer>
   <script>
         // Configuration
         const defaultConfig = {
@@ -2422,18 +2603,127 @@
             
             scoreDisplay.textContent = `Skor: ${score}/100`;
             
+            // Generate detailed achievement description and learning tips
+            const achievementData = generateAchievementDescription(score, currentChapter);
+            
             if (score >= 80) {
                 resultIcon.textContent = '🎉';
-                scoreMessage.textContent = 'Luar biasa! Kamu sangat memahami materi ini!';
-                scoreMessage.className = 'latin-body text-lg text-green-600 mb-6';
+                scoreMessage.innerHTML = `
+                    <div class="text-center space-y-4">
+                        <div class="bg-green-50 p-4 rounded-xl border-l-4 border-green-400">
+                            <h3 class="latin-heading text-lg font-bold text-green-700 mb-2">🏆 Pencapaian Luar Biasa!</h3>
+                            <p class="latin-body text-green-600">${achievementData.message}</p>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-xl border-l-4 border-blue-400">
+                            <h4 class="latin-heading text-md font-semibold text-blue-700 mb-2">📈 Analisis Kemampuan:</h4>
+                            <p class="latin-body text-blue-600 text-sm">${achievementData.analysis}</p>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 rounded-xl border-l-4 border-purple-400">
+                            <h4 class="latin-heading text-md font-semibold text-purple-700 mb-2">💡 Tips Lanjutan:</h4>
+                            <ul class="latin-body text-purple-600 text-sm text-left space-y-1">
+                                ${achievementData.tips.map(tip => `<li>• ${tip}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                scoreMessage.className = 'mb-6';
             } else if (score >= 60) {
                 resultIcon.textContent = '👍';
-                scoreMessage.textContent = 'Bagus! Terus belajar untuk hasil yang lebih baik!';
-                scoreMessage.className = 'latin-body text-lg text-blue-600 mb-6';
+                scoreMessage.innerHTML = `
+                    <div class="text-center space-y-4">
+                        <div class="bg-blue-50 p-4 rounded-xl border-l-4 border-blue-400">
+                            <h3 class="latin-heading text-lg font-bold text-blue-700 mb-2">👏 Pencapaian Bagus!</h3>
+                            <p class="latin-body text-blue-600">${achievementData.message}</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-xl border-l-4 border-yellow-400">
+                            <h4 class="latin-heading text-md font-semibold text-yellow-700 mb-2">📊 Area Pengembangan:</h4>
+                            <p class="latin-body text-yellow-600 text-sm">${achievementData.analysis}</p>
+                        </div>
+                        
+                        <div class="bg-green-50 p-4 rounded-xl border-l-4 border-green-400">
+                            <h4 class="latin-heading text-md font-semibold text-green-700 mb-2">🎯 Tips Peningkatan:</h4>
+                            <ul class="latin-body text-green-600 text-sm text-left space-y-1">
+                                ${achievementData.tips.map(tip => `<li>• ${tip}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                scoreMessage.className = 'mb-6';
             } else {
                 resultIcon.textContent = '💪';
-                scoreMessage.textContent = 'Jangan menyerah! Pelajari lagi materinya dan coba lagi!';
-                scoreMessage.className = 'latin-body text-lg text-orange-600 mb-6';
+                scoreMessage.innerHTML = `
+                    <div class="text-center space-y-4">
+                        <div class="bg-orange-50 p-4 rounded-xl border-l-4 border-orange-400">
+                            <h3 class="latin-heading text-lg font-bold text-orange-700 mb-2">🌱 Terus Semangat Belajar!</h3>
+                            <p class="latin-body text-orange-600">${achievementData.message}</p>
+                        </div>
+                        
+                        <div class="bg-red-50 p-4 rounded-xl border-l-4 border-red-400">
+                            <h4 class="latin-heading text-md font-semibold text-red-700 mb-2">🔍 Fokus Pembelajaran:</h4>
+                            <p class="latin-body text-red-600 text-sm">${achievementData.analysis}</p>
+                        </div>
+                        
+                        <div class="bg-indigo-50 p-4 rounded-xl border-l-4 border-indigo-400">
+                            <h4 class="latin-heading text-md font-semibold text-indigo-700 mb-2">📚 Strategi Belajar:</h4>
+                            <ul class="latin-body text-indigo-600 text-sm text-left space-y-1">
+                                ${achievementData.tips.map(tip => `<li>• ${tip}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                scoreMessage.className = 'mb-6';
+            }
+        }
+
+        function generateAchievementDescription(score, chapter) {
+            const chapterNames = {
+                1: 'Isim Tafdil',
+                2: 'Bentuk',
+                3: 'Warna', 
+                4: 'Kalender Hijriah'
+            };
+            
+            const chapterName = chapterNames[chapter] || 'Materi';
+            
+            if (score >= 80) {
+                return {
+                    message: `Masya Allah! Kamu telah menguasai materi ${chapterName} dengan sangat baik. Pemahaman kamu terhadap konsep-konsep dasar sudah solid dan siap untuk materi yang lebih advanced!`,
+                    analysis: `Dengan skor ${score}%, kamu menunjukkan pemahaman yang mendalam tentang ${chapterName}. Kemampuan menganalisis dan menerapkan konsep sudah sangat baik.`,
+                    tips: [
+                        `Lanjutkan ke bab berikutnya untuk memperluas vocabulary bahasa Arab`,
+                        `Coba buat kalimat sendiri menggunakan materi ${chapterName} dalam kehidupan sehari-hari`,
+                        `Ajarkan teman atau keluarga tentang materi ini untuk memperkuat pemahaman`,
+                        `Mulai membaca teks Arab sederhana yang mengandung materi ${chapterName}`
+                    ]
+                };
+            } else if (score >= 60) {
+                return {
+                    message: `Alhamdulillah! Kamu sudah memahami dasar-dasar ${chapterName} dengan baik. Masih ada beberapa area yang bisa ditingkatkan untuk pemahaman yang lebih sempurna.`,
+                    analysis: `Skor ${score}% menunjukkan pemahaman yang cukup baik, namun masih perlu penguatan di beberapa konsep kunci dalam ${chapterName}.`,
+                    tips: [
+                        `Ulangi video pembelajaran ${chapterName} dan catat poin-poin penting`,
+                        `Dengarkan lagu mufradat berulang kali sambil membaca teksnya`,
+                        `Latihan soal tambahan dengan fokus pada area yang masih lemah`,
+                        `Diskusikan materi dengan teman atau guru untuk klarifikasi konsep`,
+                        `Buat flashcard untuk vocabulary yang sulit diingat`
+                    ]
+                };
+            } else {
+                return {
+                    message: `Tidak apa-apa! Belajar bahasa Arab memang butuh waktu dan kesabaran. Yang penting kamu sudah berusaha. Mari kita perkuat pemahaman tentang ${chapterName} step by step.`,
+                    analysis: `Skor ${score}% menunjukkan bahwa masih perlu pemahaman yang lebih mendalam tentang konsep dasar ${chapterName}. Jangan berkecil hati, ini adalah proses normal dalam belajar.`,
+                    tips: [
+                        `Mulai dari dasar: pelajari ulang pengertian dan ciri-ciri ${chapterName}`,
+                        `Tonton video pembelajaran berkali-kali sampai paham betul`,
+                        `Hafalkan vocabulary dasar terlebih dahulu sebelum ke konsep yang kompleks`,
+                        `Minta bantuan guru atau teman yang sudah paham untuk menjelaskan`,
+                        `Jangan terburu-buru, luangkan waktu lebih banyak untuk materi ini`,
+                        `Gunakan metode belajar yang berbeda: visual, audio, dan praktek langsung`
+                    ]
+                };
             }
         }
 
@@ -2525,5 +2815,5 @@
         // Initialize app when DOM is loaded
         document.addEventListener('DOMContentLoaded', initApp);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dde6ad3325fdf0',t:'MTc2MzAzMzA0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99de025f327bfd8b',t:'MTc2MzAzNDE4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
