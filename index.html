@@ -660,14 +660,50 @@
      </div>
      <div class="bg-white/65 backdrop-blur-sm rounded-3xl p-4 md:p-8 shadow-xl">
       <div class="text-center mb-6">
-       <h2 class="latin-heading text-2xl text-gray-800 mb-2">🧩 Labirin Soal</h2>
-       <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6"><span id="maze-score" class="latin-body text-gray-600">Skor: 0</span> <span id="maze-level" class="latin-body text-gray-600">Level: 1</span> <span id="maze-lives" class="latin-body text-gray-600">❤️ 3</span>
+       <h2 class="latin-heading text-xl md:text-2xl text-gray-800 mb-4">🧩 Labirin Soal</h2><!-- Mobile Stats Bar -->
+       <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-4 mb-4 md:hidden">
+        <div class="grid grid-cols-3 gap-4 text-center">
+         <div class="bg-white rounded-xl p-3 shadow-sm">
+          <div class="text-2xl mb-1">
+           🏆
+          </div>
+          <div id="maze-score-mobile" class="latin-body text-sm font-semibold text-gray-700">
+           Skor: 0
+          </div>
+         </div>
+         <div class="bg-white rounded-xl p-3 shadow-sm">
+          <div class="text-2xl mb-1">
+           🎯
+          </div>
+          <div id="maze-level-mobile" class="latin-body text-sm font-semibold text-gray-700">
+           Level: 1
+          </div>
+         </div>
+         <div class="bg-white rounded-xl p-3 shadow-sm">
+          <div class="text-2xl mb-1">
+           💖
+          </div>
+          <div id="maze-lives-mobile" class="latin-body text-sm font-semibold text-gray-700">
+           Nyawa: 3
+          </div>
+         </div>
+        </div>
+       </div><!-- Desktop Stats Bar -->
+       <div class="hidden md:flex justify-center items-center space-x-6"><span id="maze-score" class="latin-body text-gray-600">Skor: 0</span> <span id="maze-level" class="latin-body text-gray-600">Level: 1</span> <span id="maze-lives" class="latin-body text-gray-600">❤️ 3</span>
        </div>
       </div><!-- Maze Canvas -->
-      <div class="bg-white rounded-2xl p-4 mb-6 shadow-inner">
-       <canvas id="maze-canvas" width="600" height="400" class="w-full max-w-full border-2 border-gray-200 rounded-xl"></canvas>
+      <div class="bg-white rounded-2xl p-2 md:p-4 mb-6 shadow-inner">
+       <div class="flex justify-center">
+        <canvas id="maze-canvas" width="600" height="400" class="border-2 border-gray-200 rounded-xl max-w-full h-auto"></canvas>
+       </div>
       </div><!-- Game Controls -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6"><button onclick="movePlayer('up')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ↑ Atas </button> <button onclick="movePlayer('down')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ↓ Bawah </button> <button onclick="movePlayer('left')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ← Kiri </button> <button onclick="movePlayer('right')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> → Kanan </button>
+      <div class="mb-6"><!-- Mobile D-Pad Style Controls -->
+       <div class="flex flex-col items-center space-y-3 md:hidden"><button onclick="movePlayer('up')" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white py-4 px-8 rounded-xl latin-body font-semibold text-lg shadow-lg transform active:scale-95 transition-all touch-manipulation"> ↑ Atas </button>
+        <div class="flex space-x-6"><button onclick="movePlayer('left')" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white py-4 px-6 rounded-xl latin-body font-semibold text-lg shadow-lg transform active:scale-95 transition-all touch-manipulation"> ← Kiri </button> <button onclick="movePlayer('right')" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white py-4 px-6 rounded-xl latin-body font-semibold text-lg shadow-lg transform active:scale-95 transition-all touch-manipulation"> Kanan → </button>
+        </div><button onclick="movePlayer('down')" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white py-4 px-8 rounded-xl latin-body font-semibold text-lg shadow-lg transform active:scale-95 transition-all touch-manipulation"> ↓ Bawah </button>
+       </div><!-- Desktop Grid Controls -->
+       <div class="hidden md:grid grid-cols-4 gap-3"><button onclick="movePlayer('up')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ↑ Atas </button> <button onclick="movePlayer('down')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ↓ Bawah </button> <button onclick="movePlayer('left')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ← Kiri </button> <button onclick="movePlayer('right')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> → Kanan </button>
+       </div>
       </div><!-- Question Modal -->
       <div id="maze-question-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
        <div class="bg-white rounded-2xl p-6 max-w-md w-full">
@@ -692,7 +728,14 @@
         </div>
        </div>
       </div>
-      <div class="text-center">
+      <div class="text-center space-y-3">
+       <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-xl">
+        <p class="latin-body text-gray-700 text-sm font-semibold mb-2">🎮 Cara Bermain:</p>
+        <div class="space-y-1 text-xs">
+         <p class="latin-body text-gray-600">📱 <strong>Mobile:</strong> Gunakan tombol arah atau geser layar game</p>
+         <p class="latin-body text-gray-600">💻 <strong>Desktop:</strong> Gunakan tombol panah atau WASD</p>
+        </div>
+       </div>
        <p class="latin-body text-gray-600 text-sm">💡 Tip: Kumpulkan koin emas dan jawab soal dengan benar untuk mendapat poin bonus!</p>
       </div>
      </div>
@@ -2896,20 +2939,48 @@
             mazeGame.ctx = mazeGame.canvas.getContext('2d');
             
             // Set responsive canvas size
-            const container = mazeGame.canvas.parentElement;
-            const containerWidth = container.clientWidth - 32; // Account for padding
-            const maxWidth = Math.min(containerWidth, 600);
-            const aspectRatio = 400 / 600;
-            
-            mazeGame.canvas.width = maxWidth;
-            mazeGame.canvas.height = maxWidth * aspectRatio;
-            mazeGame.canvas.style.width = maxWidth + 'px';
-            mazeGame.canvas.style.height = (maxWidth * aspectRatio) + 'px';
-            
-            // Adjust cell size based on canvas size
-            mazeGame.cellSize = Math.floor(maxWidth / 20);
+            setupResponsiveCanvas();
             
             initMazeGame();
+            
+            // Add resize listener for responsive canvas
+            window.addEventListener('resize', setupResponsiveCanvas);
+        }
+
+        function setupResponsiveCanvas() {
+            if (!mazeGame.canvas) return;
+            
+            const container = mazeGame.canvas.parentElement.parentElement; // Account for flex container
+            const containerWidth = container.clientWidth - 32; // Account for padding
+            const isMobile = window.innerWidth < 768;
+            
+            // Different sizing for mobile vs desktop
+            let maxWidth, maxHeight;
+            if (isMobile) {
+                maxWidth = Math.min(containerWidth, window.innerWidth - 40);
+                maxHeight = Math.min(maxWidth * 0.75, window.innerHeight * 0.4); // Limit height on mobile
+            } else {
+                maxWidth = Math.min(containerWidth, 600);
+                maxHeight = maxWidth * (400 / 600);
+            }
+            
+            // Ensure minimum size
+            maxWidth = Math.max(maxWidth, 280);
+            maxHeight = Math.max(maxHeight, 200);
+            
+            mazeGame.canvas.width = maxWidth;
+            mazeGame.canvas.height = maxHeight;
+            mazeGame.canvas.style.width = maxWidth + 'px';
+            mazeGame.canvas.style.height = maxHeight + 'px';
+            
+            // Adjust cell size based on canvas size
+            mazeGame.cellSize = Math.floor(Math.min(maxWidth / 20, maxHeight / 15));
+            mazeGame.cellSize = Math.max(mazeGame.cellSize, 12); // Minimum cell size
+            
+            // Redraw if game is running
+            if (mazeGame.gameRunning && mazeGame.maze.length > 0) {
+                drawMaze();
+            }
         }
 
         function initMazeGame() {
@@ -2926,6 +2997,57 @@
             
             // Add keyboard controls
             document.addEventListener('keydown', handleMazeKeyboard);
+            
+            // Add touch controls for mobile
+            addTouchControls();
+        }
+
+        function addTouchControls() {
+            if (!mazeGame.canvas) return;
+            
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchEndX = 0;
+            let touchEndY = 0;
+            
+            mazeGame.canvas.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                touchStartX = touch.clientX;
+                touchStartY = touch.clientY;
+            }, { passive: false });
+            
+            mazeGame.canvas.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                const touch = e.changedTouches[0];
+                touchEndX = touch.clientX;
+                touchEndY = touch.clientY;
+                
+                const deltaX = touchEndX - touchStartX;
+                const deltaY = touchEndY - touchStartY;
+                const minSwipeDistance = 30;
+                
+                // Determine swipe direction
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    // Horizontal swipe
+                    if (Math.abs(deltaX) > minSwipeDistance) {
+                        if (deltaX > 0) {
+                            movePlayer('right');
+                        } else {
+                            movePlayer('left');
+                        }
+                    }
+                } else {
+                    // Vertical swipe
+                    if (Math.abs(deltaY) > minSwipeDistance) {
+                        if (deltaY > 0) {
+                            movePlayer('down');
+                        } else {
+                            movePlayer('up');
+                        }
+                    }
+                }
+            }, { passive: false });
         }
 
         function generateMaze() {
@@ -3233,9 +3355,23 @@
         }
 
         function updateMazeUI() {
-            document.getElementById('maze-score').textContent = `Skor: ${mazeGame.score}`;
-            document.getElementById('maze-level').textContent = `Level: ${mazeGame.level}`;
-            document.getElementById('maze-lives').textContent = `❤️ ${mazeGame.lives}`;
+            // Update desktop UI
+            const scoreEl = document.getElementById('maze-score');
+            const levelEl = document.getElementById('maze-level');
+            const livesEl = document.getElementById('maze-lives');
+            
+            if (scoreEl) scoreEl.textContent = `Skor: ${mazeGame.score}`;
+            if (levelEl) levelEl.textContent = `Level: ${mazeGame.level}`;
+            if (livesEl) livesEl.textContent = `❤️ ${mazeGame.lives}`;
+            
+            // Update mobile UI
+            const scoreMobileEl = document.getElementById('maze-score-mobile');
+            const levelMobileEl = document.getElementById('maze-level-mobile');
+            const livesMobileEl = document.getElementById('maze-lives-mobile');
+            
+            if (scoreMobileEl) scoreMobileEl.textContent = `Skor: ${mazeGame.score}`;
+            if (levelMobileEl) levelMobileEl.textContent = `Level: ${mazeGame.level}`;
+            if (livesMobileEl) livesMobileEl.textContent = `Nyawa: ${mazeGame.lives}`;
         }
 
         function restartMazeGame() {
@@ -3252,10 +3388,17 @@
             // Clean up
             mazeGame.gameRunning = false;
             document.removeEventListener('keydown', handleMazeKeyboard);
+            window.removeEventListener('resize', setupResponsiveCanvas);
+            
+            // Clean up touch events
+            if (mazeGame.canvas) {
+                mazeGame.canvas.removeEventListener('touchstart', addTouchControls);
+                mazeGame.canvas.removeEventListener('touchend', addTouchControls);
+            }
         }
 
         // Initialize app when DOM is loaded
         document.addEventListener('DOMContentLoaded', initApp);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99de393eb252a8d5',t:'MTc2MzAzNjQzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99de471432e2fe13',t:'MTc2MzAzNjk5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
