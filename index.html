@@ -127,28 +127,6 @@
             font-weight: 600;
         }
         
-        @media (max-width: 768px) {
-            .arabic-text {
-                font-size: 1.4em;
-                line-height: 1.7;
-            }
-            
-            .arabic-quiz {
-                font-size: 2em;
-                line-height: 1.5;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .arabic-text {
-                font-size: 1.3em;
-            }
-            
-            .arabic-quiz {
-                font-size: 1.9em;
-            }
-        }
-        
         .latin-heading {
             font-family: 'Nunito', Arial, sans-serif;
             font-weight: 800;
@@ -258,61 +236,410 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Mobile Responsive Improvements */
-        @media (max-width: 768px) {
-            .latin-heading {
-                font-size: 1.1em;
-            }
-            
-            .latin-body {
-                font-size: 1em;
-                line-height: 1.5;
-            }
-            
-            .adventure-card {
-                padding: 1rem;
-            }
-            
-            .floating-element .w-32.h-32 {
-                width: 6rem;
-                height: 6rem;
-            }
-            
-            .quiz-option {
-                padding: 1rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .quiz-option .latin-body {
-                font-size: 0.95em;
+        /* Enhanced Mobile Responsive Design */
+        
+        /* Navigation Bar Mobile Improvements */
+        @media (max-width: 1024px) {
+            .nav-desktop-menu {
+                display: none !important;
             }
         }
         
-        @media (max-width: 480px) {
+        /* Tablet Responsive (768px - 1023px) */
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .content-overlay {
+                margin: 1rem;
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+            
             .latin-heading {
-                font-size: 1em;
+                font-size: 1.3em;
             }
             
             .latin-body {
-                font-size: 0.9em;
+                font-size: 1.05em;
+                line-height: 1.55;
+            }
+            
+            .arabic-text {
+                font-size: 1.3em;
+                line-height: 1.75;
+            }
+            
+            .arabic-quiz {
+                font-size: 1.9em;
+                line-height: 1.55;
+            }
+        }
+        
+        /* Mobile Responsive (max-width: 767px) */
+        @media (max-width: 767px) {
+            /* Global mobile adjustments */
+            .content-overlay {
+                margin: 0.5rem;
+                padding: 1rem;
+                border-radius: 12px;
+            }
+            
+            /* Typography mobile scaling */
+            .latin-heading {
+                font-size: 1.1em;
+                line-height: 1.3;
+            }
+            
+            .latin-body {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+            
+            .arabic-text {
+                font-size: 1.2em;
+                line-height: 1.65;
+            }
+            
+            .arabic-quiz {
+                font-size: 1.7em;
+                line-height: 1.45;
+            }
+            
+            /* Navigation mobile improvements */
+            .mobile-menu-container {
+                max-height: 85vh;
+                overflow-y: auto;
+            }
+            
+            /* Welcome screen mobile */
+            .welcome-mobile-spacing {
+                padding: 1rem 0.5rem;
+            }
+            
+            .welcome-title-mobile {
+                font-size: 1.8rem;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            
+            .welcome-subtitle-mobile {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Dashboard mobile cards */
+            .dashboard-mobile-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
             
             .adventure-card {
-                padding: 0.75rem;
+                padding: 1rem;
+                border-radius: 16px;
             }
             
-            .floating-element .w-32.h-32 {
-                width: 5rem;
-                height: 5rem;
-                font-size: 2.5rem;
+            .adventure-card-mobile-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.75rem;
+            }
+            
+            .adventure-card-icon-mobile {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.5rem;
+                margin: 0 auto;
+            }
+            
+            /* Chapter content mobile */
+            .chapter-mobile-nav {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .chapter-mobile-nav button {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.75rem;
+                min-width: auto;
+                flex: 1;
+                min-width: calc(50% - 0.25rem);
+            }
+            
+            /* Quiz mobile improvements */
+            .quiz-mobile-container {
+                padding: 1rem;
+            }
+            
+            .quiz-question-mobile {
+                font-size: 1.1rem;
+                line-height: 1.4;
+                margin-bottom: 1.5rem;
+                padding: 0 0.5rem;
             }
             
             .quiz-option {
                 padding: 0.875rem;
+                margin-bottom: 0.75rem;
+                border-radius: 12px;
+                font-size: 0.9rem;
             }
             
-            .quiz-option .latin-body {
-                font-size: 0.9em;
+            .quiz-option .arabic-quiz {
+                font-size: 1.5rem;
+                line-height: 1.3;
+            }
+            
+            .quiz-navigation-mobile {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .quiz-navigation-mobile button {
+                width: 100%;
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+            /* Games page mobile */
+            .games-mobile-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .game-card-mobile {
+                padding: 1rem;
+                text-align: center;
+            }
+            
+            .game-card-mobile .flex {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            /* Maze game mobile */
+            .maze-mobile-container {
+                padding: 0.75rem;
+            }
+            
+            .maze-controls-mobile {
+                margin-top: 1rem;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 12px;
+            }
+            
+            .maze-dpad-mobile {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .maze-dpad-row {
+                display: flex;
+                gap: 1rem;
+            }
+            
+            .maze-control-btn {
+                background: #3b82f6;
+                color: white;
+                border: none;
+                border-radius: 12px;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                font-weight: 600;
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+                transition: all 0.2s ease;
+                touch-action: manipulation;
+                user-select: none;
+            }
+            
+            .maze-control-btn:active {
+                transform: scale(0.95);
+                box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+            }
+            
+            /* Guide page mobile */
+            .guide-mobile-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .guide-section-mobile {
+                padding: 1rem;
+                border-radius: 12px;
+            }
+            
+            .guide-section-mobile h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .guide-section-mobile .space-y-4 > div {
+                padding: 0.75rem;
+                border-radius: 8px;
+                margin-bottom: 0.75rem;
+            }
+            
+            /* Footer mobile */
+            .footer-mobile-container {
+                padding: 1rem;
+                text-align: center;
+            }
+            
+            .footer-mobile-contact {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .footer-mobile-contact .flex {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            
+            .footer-mobile-whatsapp {
+                width: 100%;
+                justify-content: center;
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Small Mobile Responsive (max-width: 479px) */
+        @media (max-width: 479px) {
+            /* Extra small mobile adjustments */
+            .content-overlay {
+                margin: 0.25rem;
+                padding: 0.75rem;
+                border-radius: 10px;
+            }
+            
+            /* Typography extra small mobile */
+            .latin-heading {
+                font-size: 1rem;
+                line-height: 1.25;
+            }
+            
+            .latin-body {
+                font-size: 0.85em;
+                line-height: 1.45;
+            }
+            
+            .arabic-text {
+                font-size: 1.1em;
+                line-height: 1.6;
+            }
+            
+            .arabic-quiz {
+                font-size: 1.5em;
+                line-height: 1.4;
+            }
+            
+            /* Welcome screen extra small */
+            .welcome-title-mobile {
+                font-size: 1.5rem;
+                line-height: 1.15;
+            }
+            
+            .welcome-subtitle-mobile {
+                font-size: 0.9rem;
+            }
+            
+            .floating-element .w-24.h-24 {
+                width: 4rem;
+                height: 4rem;
+                font-size: 2rem;
+            }
+            
+            /* Adventure cards extra small */
+            .adventure-card {
+                padding: 0.75rem;
+                border-radius: 12px;
+            }
+            
+            .adventure-card-icon-mobile {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.25rem;
+            }
+            
+            /* Quiz extra small */
+            .quiz-question-mobile {
+                font-size: 1rem;
+                line-height: 1.35;
+            }
+            
+            .quiz-option {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+            }
+            
+            .quiz-option .arabic-quiz {
+                font-size: 1.3rem;
+                line-height: 1.25;
+            }
+            
+            /* Maze controls extra small */
+            .maze-control-btn {
+                padding: 0.875rem 1.25rem;
+                font-size: 0.9rem;
+            }
+            
+            /* Navigation title truncation */
+            .nav-title-mobile {
+                max-width: 120px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+        
+        /* Landscape mobile optimizations */
+        @media (max-width: 767px) and (orientation: landscape) {
+            .welcome-mobile-spacing {
+                padding: 0.5rem;
+            }
+            
+            .maze-mobile-container {
+                padding: 0.5rem;
+            }
+            
+            .maze-controls-mobile {
+                margin-top: 0.5rem;
+                padding: 0.75rem;
+            }
+            
+            .content-overlay {
+                margin: 0.25rem;
+                padding: 0.75rem;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .btn-primary, .btn-accent, .adventure-card, .quiz-option {
+                transform: none;
+            }
+            
+            .btn-primary:active, .btn-accent:active {
+                transform: scale(0.98);
+            }
+            
+            .adventure-card:active {
+                transform: scale(0.99);
+            }
+            
+            .quiz-option:active {
+                transform: scale(0.99);
+            }
+        }
+        
+        /* High DPI display optimizations */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .arabic-text, .arabic-quiz {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
             }
         }
     </style>
@@ -345,7 +672,7 @@
       </div>
       <h1 id="site-title" class="latin-heading text-sm sm:text-lg lg:text-xl text-gray-800 font-bold truncate max-w-[140px] sm:max-w-none">Portal Pelajar Bahasa Arab</h1>
      </div><!-- Desktop Navigation Menu -->
-     <div id="nav-menu" class="hidden lg:flex items-center space-x-6"><button onclick="showDashboard()" class="latin-body text-gray-600 hover:text-sky-600 transition-colors text-sm"> 🏠 Dashboard </button>
+     <div id="nav-menu" class="nav-desktop-menu hidden lg:flex items-center space-x-6"><button onclick="showDashboard()" class="latin-body text-gray-600 hover:text-sky-600 transition-colors text-sm"> 🏠 Dashboard </button>
       <div class="relative group"><button class="latin-body text-gray-600 hover:text-sky-600 transition-colors flex items-center space-x-1 text-sm"> <span>📚 Materi</span> <span class="text-xs">▼</span> </button>
        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
         <div class="p-2"><button onclick="openChapter(1)" class="w-full text-left p-3 rounded-lg hover:bg-sky-50 transition-colors">
@@ -396,29 +723,29 @@
      <div class="flex items-center space-x-2 sm:space-x-4"><!-- Student Info (Desktop) -->
       <div id="student-info" class="hidden lg:flex items-center space-x-3"><span id="student-name-display" class="latin-body text-gray-600 text-sm truncate max-w-[120px]"></span> <button onclick="logout()" class="text-xs text-gray-500 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded-md transition-colors">Keluar</button>
       </div><!-- Mobile Menu Button -->
-      <div class="lg:hidden"><button onclick="toggleMobileMenu()" id="mobile-menu-btn" class="text-gray-600 hover:text-sky-600 p-1"> <span class="text-lg sm:text-xl">☰</span> </button>
+      <div class="lg:hidden"><button onclick="toggleMobileMenu()" id="mobile-menu-btn" class="text-gray-600 hover:text-sky-600 p-2 rounded-lg hover:bg-gray-100 transition-colors"> <span class="text-lg sm:text-xl">☰</span> </button>
       </div>
      </div>
     </div><!-- Mobile Menu -->
     <div id="mobile-menu" class="lg:hidden hidden bg-white/95 backdrop-blur-lg border-t border-white/30 shadow-lg">
-     <div class="px-3 py-3 space-y-3 max-h-[80vh] overflow-y-auto"><!-- Student Info (Mobile) -->
+     <div class="mobile-menu-container px-3 py-3 space-y-3 max-h-[85vh] overflow-y-auto"><!-- Student Info (Mobile) -->
       <div id="mobile-student-info" class="hidden bg-gradient-to-r from-blue-50 to-sky-50 p-3 rounded-xl border border-blue-100">
        <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
          <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center"><span class="text-white text-sm">👤</span>
-         </div><span id="mobile-student-name" class="latin-body text-sm font-semibold text-gray-700 truncate max-w-[120px]"></span>
+         </div><span id="mobile-student-name" class="latin-body text-sm font-semibold text-gray-700 truncate max-w-[120px] sm:max-w-[150px]"></span>
         </div><button onclick="logout()" class="text-xs text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 px-2 py-1 rounded-md transition-colors"> Keluar </button>
        </div>
       </div><!-- Dashboard --> <button onclick="showDashboard(); toggleMobileMenu()" class="w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-sky-50 transition-colors latin-body text-gray-700 font-medium"> <span class="text-lg">🏠</span> <span class="text-sm">Dashboard</span> </button> <!-- Materi Section -->
       <div class="bg-gray-50 rounded-xl p-3">
        <div class="latin-body text-xs font-bold text-gray-600 mb-2 flex items-center"><span class="text-sm mr-2">📚</span> <span>Materi Pembelajaran</span>
        </div>
-       <div class="grid grid-cols-2 gap-2"><button onclick="openChapter(1); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-sky-50 transition-colors shadow-sm"> <span class="text-lg mb-1">📊</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center leading-tight">Isim<br>
-          Tafdil</span> </button> <button onclick="openChapter(2); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-purple-50 transition-colors shadow-sm"> <span class="text-lg mb-1">🔷</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center">Bentuk</span> </button> <button onclick="openChapter(3); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-red-50 transition-colors shadow-sm"> <span class="text-lg mb-1">🎨</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center">Warna</span> </button> <button onclick="openChapter(4); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-amber-50 transition-colors shadow-sm"> <span class="text-lg mb-1">🌙</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center leading-tight">Kalender<br>
+       <div class="grid grid-cols-2 gap-2"><button onclick="openChapter(1); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-sky-50 transition-colors shadow-sm touch-manipulation"> <span class="text-lg mb-1">📊</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center leading-tight">Isim<br>
+          Tafdil</span> </button> <button onclick="openChapter(2); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-purple-50 transition-colors shadow-sm touch-manipulation"> <span class="text-lg mb-1">🔷</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center">Bentuk</span> </button> <button onclick="openChapter(3); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-red-50 transition-colors shadow-sm touch-manipulation"> <span class="text-lg mb-1">🎨</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center">Warna</span> </button> <button onclick="openChapter(4); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-amber-50 transition-colors shadow-sm touch-manipulation"> <span class="text-lg mb-1">🌙</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center leading-tight">Kalender<br>
           Hijriah</span> </button>
        </div>
       </div><!-- Game & Guide -->
-      <div class="grid grid-cols-2 gap-2"><button onclick="showGames(); toggleMobileMenu()" class="flex items-center justify-center space-x-2 p-3 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 transition-colors"> <span class="text-lg">🎮</span> <span class="latin-body text-xs font-semibold text-gray-700">Game</span> </button> <button onclick="showGuide(); toggleMobileMenu()" class="flex items-center justify-center space-x-2 p-3 rounded-xl bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 transition-colors"> <span class="text-lg">💡</span> <span class="latin-body text-xs font-semibold text-gray-700">Petunjuk</span> </button>
+      <div class="grid grid-cols-2 gap-2"><button onclick="showGames(); toggleMobileMenu()" class="flex items-center justify-center space-x-2 p-3 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 transition-colors touch-manipulation"> <span class="text-lg">🎮</span> <span class="latin-body text-xs font-semibold text-gray-700">Game</span> </button> <button onclick="showGuide(); toggleMobileMenu()" class="flex items-center justify-center space-x-2 p-3 rounded-xl bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 transition-colors touch-manipulation"> <span class="text-lg">💡</span> <span class="latin-body text-xs font-semibold text-gray-700">Petunjuk</span> </button>
       </div>
      </div>
     </div>
@@ -426,7 +753,7 @@
   </nav><!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
    <div class="content-overlay welcome-content p-6 md:p-8 min-h-screen"><!-- Welcome Screen -->
-    <div id="welcome-screen" class="text-center px-4">
+    <div id="welcome-screen" class="welcome-mobile-spacing text-center px-4">
      <div class="mb-6 md:mb-8">
       <div class="floating-element inline-block">
        <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-6xl mb-4 md:mb-6 mx-auto shadow-2xl">
@@ -434,16 +761,16 @@
        </div>
       </div>
       <div class="mb-4">
-       <div class="arabic-text text-3xl md:text-5xl lg:text-6xl text-blue-600 mb-2 font-bold">
+       <div class="arabic-text text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-blue-600 mb-2 font-bold">
         أَهْلاً وَسَهْلاً
        </div>
-       <h1 id="welcome-message" class="latin-heading text-2xl md:text-4xl lg:text-5xl text-gray-800 px-2"><span id="time-greeting">Assalamu'alaikum</span>, petualang 👋</h1>
-       <p id="time-message" class="latin-body text-lg md:text-xl text-gray-600 mt-2 px-2"></p>
+       <h1 id="welcome-message" class="welcome-title-mobile latin-heading text-xl sm:text-2xl md:text-4xl lg:text-5xl text-gray-800 px-2"><span id="time-greeting">Assalamu'alaikum</span>, petualang 👋</h1>
+       <p id="time-message" class="welcome-subtitle-mobile latin-body text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mt-2 px-2"></p>
       </div>
      </div>
-     <div class="max-w-md mx-auto bg-white/95 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-2xl border-2 border-white/60">
-      <div class="mb-6"><label for="student-name" class="block latin-body text-base md:text-lg font-semibold text-gray-800 mb-3"> Siapa nama petualang <span id="time-period">hari ini</span>? </label> <input type="text" id="student-name" placeholder="Masukkan nama kamu..." class="w-full px-3 md:px-4 py-2 md:py-3 border-2 border-gray-300 rounded-xl focus:border-sky-500 focus:outline-none latin-body text-base md:text-lg bg-white shadow-inner" oninput="updateGreetingWithName()">
-      </div><button onclick="startAdventure()" id="start-btn" class="w-full btn-primary text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body text-base md:text-lg font-semibold shadow-lg transform hover:scale-105 transition-all"> Mulai Petualangan! 🚀 </button>
+     <div class="max-w-md mx-auto bg-white/95 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl border-2 border-white/60">
+      <div class="mb-6"><label for="student-name" class="block latin-body text-sm sm:text-base md:text-lg font-semibold text-gray-800 mb-3"> Siapa nama petualang <span id="time-period">hari ini</span>? </label> <input type="text" id="student-name" placeholder="Masukkan nama kamu..." class="w-full px-3 md:px-4 py-2 md:py-3 border-2 border-gray-300 rounded-xl focus:border-sky-500 focus:outline-none latin-body text-sm sm:text-base md:text-lg bg-white shadow-inner" oninput="updateGreetingWithName()">
+      </div><button onclick="startAdventure()" id="start-btn" class="w-full btn-primary text-white py-2 md:py-3 px-4 md:px-6 rounded-xl latin-body text-sm sm:text-base md:text-lg font-semibold shadow-lg transform hover:scale-105 transition-all touch-manipulation"> Mulai Petualangan! 🚀 </button>
      </div>
     </div><!-- Dashboard -->
     <div id="dashboard" class="hidden">
@@ -519,66 +846,66 @@
        </div>
       </div>
      </div><!-- Chapter Cards -->
-     <div class="grid md:grid-cols-2 gap-8"><!-- Chapter 1: Isim Tafdil -->
-      <div class="adventure-card p-6">
-       <div class="flex items-center mb-4">
-        <div class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-green-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+     <div class="dashboard-mobile-grid grid md:grid-cols-2 gap-4 md:gap-8"><!-- Chapter 1: Isim Tafdil -->
+      <div class="adventure-card p-4 md:p-6">
+       <div class="adventure-card-mobile-content flex items-center mb-4">
+        <div class="adventure-card-icon-mobile w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-emerald-400 to-green-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mr-0 md:mr-4">
          📊
         </div>
-        <div>
-         <h3 class="latin-heading text-xl text-gray-800">Bab 1: Isim Tafdil</h3>
-         <p class="latin-body text-gray-600">Kata Perbandingan</p>
+        <div class="flex-1 md:flex-initial">
+         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 1: Isim Tafdil</h3>
+         <p class="latin-body text-sm md:text-base text-gray-600">Kata Perbandingan</p>
         </div>
        </div>
-       <p class="latin-body text-gray-700 mb-4">Pelajari cara membandingkan benda dalam bahasa Arab dengan pola أَفْعَلُ</p>
-       <div class="arabic-text text-center text-sky-600 mb-4 bg-sky-50 p-3 rounded-xl">
+       <p class="latin-body text-sm md:text-base text-gray-700 mb-4">Pelajari cara membandingkan benda dalam bahasa Arab dengan pola أَفْعَلُ</p>
+       <div class="arabic-text text-center text-sky-600 mb-4 bg-sky-50 p-3 rounded-xl text-base md:text-lg">
         أَكْبَرُ - أَصْغَرُ - أَطْوَلُ
-       </div><button onclick="openChapter(1)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 1 🎯 </button>
+       </div><button onclick="openChapter(1)" class="w-full btn-primary text-white py-2 md:py-3 px-4 rounded-xl latin-body font-semibold text-sm md:text-base touch-manipulation"> Mulai Bab 1 🎯 </button>
       </div><!-- Chapter 2: Bentuk -->
-      <div class="adventure-card p-6">
-       <div class="flex items-center mb-4">
-        <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+      <div class="adventure-card p-4 md:p-6">
+       <div class="adventure-card-mobile-content flex items-center mb-4">
+        <div class="adventure-card-icon-mobile w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mr-0 md:mr-4">
          🔷
         </div>
-        <div>
-         <h3 class="latin-heading text-xl text-gray-800">Bab 2: Bentuk</h3>
-         <p class="latin-body text-gray-600">Shapes &amp; Forms</p>
+        <div class="flex-1 md:flex-initial">
+         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 2: Bentuk</h3>
+         <p class="latin-body text-sm md:text-base text-gray-600">Shapes &amp; Forms</p>
         </div>
        </div>
-       <p class="latin-body text-gray-700 mb-4">Kenali berbagai bentuk geometri dalam bahasa Arab</p>
-       <div class="arabic-text text-center text-purple-600 mb-4 bg-purple-50 p-3 rounded-xl">
+       <p class="latin-body text-sm md:text-base text-gray-700 mb-4">Kenali berbagai bentuk geometri dalam bahasa Arab</p>
+       <div class="arabic-text text-center text-purple-600 mb-4 bg-purple-50 p-3 rounded-xl text-base md:text-lg">
         مُرَبَّعٌ - مُسْتَدِيْرٌ - مُثَلَّثٌ
-       </div><button onclick="openChapter(2)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 2 🔺 </button>
+       </div><button onclick="openChapter(2)" class="w-full btn-primary text-white py-2 md:py-3 px-4 rounded-xl latin-body font-semibold text-sm md:text-base touch-manipulation"> Mulai Bab 2 🔺 </button>
       </div><!-- Chapter 3: Warna -->
-      <div class="adventure-card p-6">
-       <div class="flex items-center mb-4">
-        <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-pink-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+      <div class="adventure-card p-4 md:p-6">
+       <div class="adventure-card-mobile-content flex items-center mb-4">
+        <div class="adventure-card-icon-mobile w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-red-400 to-pink-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mr-0 md:mr-4">
          🎨
         </div>
-        <div>
-         <h3 class="latin-heading text-xl text-gray-800">Bab 3: Warna</h3>
-         <p class="latin-body text-gray-600">Colors in Arabic</p>
+        <div class="flex-1 md:flex-initial">
+         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 3: Warna</h3>
+         <p class="latin-body text-sm md:text-base text-gray-600">Colors in Arabic</p>
         </div>
        </div>
-       <p class="latin-body text-gray-700 mb-4">Pelajari nama-nama warna dalam bahasa Arab dan penggunaannya</p>
-       <div class="arabic-text text-center text-red-600 mb-4 bg-red-50 p-3 rounded-xl">
+       <p class="latin-body text-sm md:text-base text-gray-700 mb-4">Pelajari nama-nama warna dalam bahasa Arab dan penggunaannya</p>
+       <div class="arabic-text text-center text-red-600 mb-4 bg-red-50 p-3 rounded-xl text-base md:text-lg">
         أَحْمَرُ - أَبْيَضُ - أَسْوَدُ
-       </div><button onclick="openChapter(3)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 3 🎨 </button>
+       </div><button onclick="openChapter(3)" class="w-full btn-primary text-white py-2 md:py-3 px-4 rounded-xl latin-body font-semibold text-sm md:text-base touch-manipulation"> Mulai Bab 3 🎨 </button>
       </div><!-- Chapter 4: Kalender Hijriah -->
-      <div class="adventure-card p-6">
-       <div class="flex items-center mb-4">
-        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+      <div class="adventure-card p-4 md:p-6">
+       <div class="adventure-card-mobile-content flex items-center mb-4">
+        <div class="adventure-card-icon-mobile w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mr-0 md:mr-4">
          🌙
         </div>
-        <div>
-         <h3 class="latin-heading text-xl text-gray-800">Bab 4: Kalender Hijriah</h3>
-         <p class="latin-body text-gray-600">Islamic Calendar</p>
+        <div class="flex-1 md:flex-initial">
+         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 4: Kalender Hijriah</h3>
+         <p class="latin-body text-sm md:text-base text-gray-600">Islamic Calendar</p>
         </div>
        </div>
-       <p class="latin-body text-gray-700 mb-4">Kenali nama-nama bulan dalam kalender Hijriah dan peristiwa pentingnya</p>
-       <div class="arabic-text text-center text-amber-600 mb-4 bg-amber-50 p-3 rounded-xl">
+       <p class="latin-body text-sm md:text-base text-gray-700 mb-4">Kenali nama-nama bulan dalam kalender Hijriah dan peristiwa pentingnya</p>
+       <div class="arabic-text text-center text-amber-600 mb-4 bg-amber-50 p-3 rounded-xl text-base md:text-lg">
         مُحَرَّمٌ - رَمَضَانُ - شَوَّالٌ
-       </div><button onclick="openChapter(4)" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Bab 4 🌙 </button>
+       </div><button onclick="openChapter(4)" class="w-full btn-primary text-white py-2 md:py-3 px-4 rounded-xl latin-body font-semibold text-sm md:text-base touch-manipulation"> Mulai Bab 4 🌙 </button>
       </div>
      </div>
     </div><!-- Chapter Content -->
@@ -589,8 +916,8 @@
       <h2 id="chapter-title" class="latin-heading text-3xl text-gray-800 mb-2"></h2>
       <p id="chapter-subtitle" class="latin-body text-gray-600"></p>
      </div><!-- Lesson Navigation -->
-     <div id="lesson-nav" class="bg-white/55 backdrop-blur-md rounded-2xl p-4 mb-8 shadow-lg border border-white/25">
-      <div class="flex flex-wrap gap-2" id="lesson-buttons"></div>
+     <div id="lesson-nav" class="bg-white/55 backdrop-blur-md rounded-2xl p-3 md:p-4 mb-6 md:mb-8 shadow-lg border border-white/25">
+      <div class="chapter-mobile-nav flex flex-wrap gap-2" id="lesson-buttons"></div>
      </div><!-- Lesson Content -->
      <div id="lesson-content" class="bg-white/55 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-white/25"><!-- Content will be dynamically loaded -->
      </div>
@@ -598,9 +925,9 @@
     <div id="quiz-interface" class="hidden">
      <div class="mb-4 md:mb-6"><button onclick="backToLesson()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold text-sm md:text-base"> <span>←</span> <span>Kembali ke Materi</span> </button>
      </div>
-     <div class="bg-white/55 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl border border-white/25">
+     <div class="quiz-mobile-container bg-white/55 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl border border-white/25">
       <div class="text-center mb-6 md:mb-8">
-       <h2 class="latin-heading text-xl md:text-2xl text-gray-800 mb-2">Latihan Soal</h2>
+       <h2 class="latin-heading text-lg md:text-xl lg:text-2xl text-gray-800 mb-2">Latihan Soal</h2>
        <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-4"><span id="question-counter" class="latin-body text-gray-600 text-sm md:text-base">Soal 1 dari 20</span>
         <div class="w-full md:flex-1 max-w-xs">
          <div class="bg-gray-200 rounded-full h-2">
@@ -609,11 +936,11 @@
         </div>
        </div>
       </div>
-      <div id="quiz-question" class="mb-6 md:mb-8"><!-- Question content -->
+      <div id="quiz-question" class="quiz-question-mobile mb-6 md:mb-8"><!-- Question content -->
       </div>
       <div id="quiz-options" class="space-y-2 md:space-y-3 mb-6 md:mb-8"><!-- Options will be loaded here -->
       </div>
-      <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0"><button id="prev-question" onclick="previousQuestion()" class="w-full md:w-auto btn-primary text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base" disabled> ← Sebelumnya </button> <button id="next-question" onclick="nextQuestion()" class="w-full md:w-auto btn-accent text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base" disabled> Selanjutnya → </button>
+      <div class="quiz-navigation-mobile flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0"><button id="prev-question" onclick="previousQuestion()" class="w-full md:w-auto btn-primary text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base touch-manipulation" disabled> ← Sebelumnya </button> <button id="next-question" onclick="nextQuestion()" class="w-full md:w-auto btn-accent text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base touch-manipulation" disabled> Selanjutnya → </button>
       </div>
      </div>
     </div><!-- Quiz Results -->
@@ -642,38 +969,38 @@
        <h2 class="latin-heading text-3xl text-gray-800 mb-2">Game Interaktif</h2>
        <p class="latin-body text-gray-600">Belajar sambil bermain dengan game seru!</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-8"><!-- Maze Game -->
-       <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-2xl border-2 border-purple-100 hover:border-purple-300 transition-all">
+      <div class="games-mobile-grid grid md:grid-cols-2 gap-4 md:gap-8"><!-- Maze Game -->
+       <div class="game-card-mobile bg-gradient-to-br from-purple-50 to-indigo-50 p-4 md:p-6 rounded-2xl border-2 border-purple-100 hover:border-purple-300 transition-all">
         <div class="flex items-center mb-4">
-         <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+         <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mr-3 md:mr-4">
           🧩
          </div>
          <div>
-          <h3 class="latin-heading text-xl text-gray-800">Labirin Soal</h3>
-          <p class="latin-body text-gray-600">Petualangan Menjawab</p>
+          <h3 class="latin-heading text-lg md:text-xl text-gray-800">Labirin Soal</h3>
+          <p class="latin-body text-sm md:text-base text-gray-600">Petualangan Menjawab</p>
          </div>
         </div>
-        <p class="latin-body text-gray-700 mb-4">Jelajahi labirin sambil menjawab soal bahasa Arab. Kumpulkan poin dan capai finish!</p>
+        <p class="latin-body text-sm md:text-base text-gray-700 mb-4">Jelajahi labirin sambil menjawab soal bahasa Arab. Kumpulkan poin dan capai finish!</p>
         <div class="bg-white p-3 rounded-xl mb-4">
-         <div class="flex justify-between text-sm"><span class="latin-body text-gray-600">Tingkat Kesulitan:</span> <span class="latin-body text-purple-600 font-semibold">Mudah - Sulit</span>
+         <div class="flex justify-between text-xs md:text-sm"><span class="latin-body text-gray-600">Tingkat Kesulitan:</span> <span class="latin-body text-purple-600 font-semibold">Mudah - Sulit</span>
          </div>
-        </div><button onclick="startMazeGame()" class="w-full btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Mulai Petualangan 🚀 </button>
+        </div><button onclick="startMazeGame()" class="w-full btn-primary text-white py-2 md:py-3 px-4 rounded-xl latin-body font-semibold text-sm md:text-base touch-manipulation"> Mulai Petualangan 🚀 </button>
        </div><!-- Memory Game -->
-       <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border-2 border-green-100 hover:border-green-300 transition-all">
+       <div class="game-card-mobile bg-gradient-to-br from-green-50 to-emerald-50 p-4 md:p-6 rounded-2xl border-2 border-green-100 hover:border-green-300 transition-all">
         <div class="flex items-center mb-4">
-         <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-3xl mr-4">
+         <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mr-3 md:mr-4">
           🧠
          </div>
          <div>
-          <h3 class="latin-heading text-xl text-gray-800">Memory Match</h3>
-          <p class="latin-body text-gray-600">Cocokkan Kata</p>
+          <h3 class="latin-heading text-lg md:text-xl text-gray-800">Memory Match</h3>
+          <p class="latin-body text-sm md:text-base text-gray-600">Cocokkan Kata</p>
          </div>
         </div>
-        <p class="latin-body text-gray-700 mb-4">Cocokkan kata Arab dengan artinya. Latih daya ingat sambil belajar vocabulary!</p>
+        <p class="latin-body text-sm md:text-base text-gray-700 mb-4">Cocokkan kata Arab dengan artinya. Latih daya ingat sambil belajar vocabulary!</p>
         <div class="bg-white p-3 rounded-xl mb-4">
-         <div class="flex justify-between text-sm"><span class="latin-body text-gray-600">Mode:</span> <span class="latin-body text-green-600 font-semibold">Segera Hadir</span>
+         <div class="flex justify-between text-xs md:text-sm"><span class="latin-body text-gray-600">Mode:</span> <span class="latin-body text-green-600 font-semibold">Segera Hadir</span>
          </div>
-        </div><button class="w-full bg-gray-300 text-gray-500 py-3 px-4 rounded-xl latin-body font-semibold cursor-not-allowed"> Segera Hadir 🔜 </button>
+        </div><button class="w-full bg-gray-300 text-gray-500 py-2 md:py-3 px-4 rounded-xl latin-body font-semibold cursor-not-allowed text-sm md:text-base"> Segera Hadir 🔜 </button>
        </div>
       </div>
      </div>
@@ -681,32 +1008,32 @@
     <div id="maze-game" class="hidden">
      <div class="mb-4"><button onclick="backToGames()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold"> <span>←</span> <span>Kembali ke Game</span> </button>
      </div>
-     <div class="bg-white/55 backdrop-blur-md rounded-3xl p-4 md:p-8 shadow-xl border border-white/25">
-      <div class="text-center mb-6">
-       <h2 class="latin-heading text-xl md:text-2xl text-gray-800 mb-4">🧩 Labirin Soal</h2><!-- Mobile Stats Bar -->
-       <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-4 mb-4 md:hidden">
-        <div class="grid grid-cols-3 gap-4 text-center">
-         <div class="bg-white rounded-xl p-3 shadow-sm">
-          <div class="text-2xl mb-1">
+     <div class="maze-mobile-container bg-white/55 backdrop-blur-md rounded-3xl p-3 md:p-8 shadow-xl border border-white/25">
+      <div class="text-center mb-4 md:mb-6">
+       <h2 class="latin-heading text-lg md:text-xl lg:text-2xl text-gray-800 mb-4">🧩 Labirin Soal</h2><!-- Mobile Stats Bar -->
+       <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-3 md:p-4 mb-4 md:hidden">
+        <div class="grid grid-cols-3 gap-2 md:gap-4 text-center">
+         <div class="bg-white rounded-xl p-2 md:p-3 shadow-sm">
+          <div class="text-xl md:text-2xl mb-1">
            🏆
           </div>
-          <div id="maze-score-mobile" class="latin-body text-sm font-semibold text-gray-700">
+          <div id="maze-score-mobile" class="latin-body text-xs md:text-sm font-semibold text-gray-700">
            Skor: 0
           </div>
          </div>
-         <div class="bg-white rounded-xl p-3 shadow-sm">
-          <div class="text-2xl mb-1">
+         <div class="bg-white rounded-xl p-2 md:p-3 shadow-sm">
+          <div class="text-xl md:text-2xl mb-1">
            🎯
           </div>
-          <div id="maze-level-mobile" class="latin-body text-sm font-semibold text-gray-700">
+          <div id="maze-level-mobile" class="latin-body text-xs md:text-sm font-semibold text-gray-700">
            Level: 1
           </div>
          </div>
-         <div class="bg-white rounded-xl p-3 shadow-sm">
-          <div class="text-2xl mb-1">
+         <div class="bg-white rounded-xl p-2 md:p-3 shadow-sm">
+          <div class="text-xl md:text-2xl mb-1">
            💖
           </div>
-          <div id="maze-lives-mobile" class="latin-body text-sm font-semibold text-gray-700">
+          <div id="maze-lives-mobile" class="latin-body text-xs md:text-sm font-semibold text-gray-700">
            Nyawa: 3
           </div>
          </div>
@@ -715,15 +1042,15 @@
        <div class="hidden md:flex justify-center items-center space-x-6"><span id="maze-score" class="latin-body text-gray-600">Skor: 0</span> <span id="maze-level" class="latin-body text-gray-600">Level: 1</span> <span id="maze-lives" class="latin-body text-gray-600">❤️ 3</span>
        </div>
       </div><!-- Maze Canvas -->
-      <div class="bg-white rounded-2xl p-2 md:p-4 mb-6 shadow-inner">
+      <div class="bg-white rounded-2xl p-2 md:p-4 mb-4 md:mb-6 shadow-inner">
        <div class="flex justify-center">
         <canvas id="maze-canvas" width="600" height="400" class="border-2 border-gray-200 rounded-xl max-w-full h-auto"></canvas>
        </div>
       </div><!-- Game Controls -->
-      <div class="mb-6"><!-- Mobile D-Pad Style Controls -->
-       <div class="flex flex-col items-center space-y-3 md:hidden"><button onclick="movePlayer('up')" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white py-4 px-8 rounded-xl latin-body font-semibold text-lg shadow-lg transform active:scale-95 transition-all touch-manipulation"> ↑ Atas </button>
-        <div class="flex space-x-6"><button onclick="movePlayer('left')" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white py-4 px-6 rounded-xl latin-body font-semibold text-lg shadow-lg transform active:scale-95 transition-all touch-manipulation"> ← Kiri </button> <button onclick="movePlayer('right')" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white py-4 px-6 rounded-xl latin-body font-semibold text-lg shadow-lg transform active:scale-95 transition-all touch-manipulation"> Kanan → </button>
-        </div><button onclick="movePlayer('down')" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white py-4 px-8 rounded-xl latin-body font-semibold text-lg shadow-lg transform active:scale-95 transition-all touch-manipulation"> ↓ Bawah </button>
+      <div class="maze-controls-mobile mb-4 md:mb-6"><!-- Mobile D-Pad Style Controls -->
+       <div class="maze-dpad-mobile flex flex-col items-center space-y-3 md:hidden"><button onclick="movePlayer('up')" class="maze-control-btn"> ↑ Atas </button>
+        <div class="maze-dpad-row flex space-x-4"><button onclick="movePlayer('left')" class="maze-control-btn"> ← Kiri </button> <button onclick="movePlayer('right')" class="maze-control-btn"> Kanan → </button>
+        </div><button onclick="movePlayer('down')" class="maze-control-btn"> ↓ Bawah </button>
        </div><!-- Desktop Grid Controls -->
        <div class="hidden md:grid grid-cols-4 gap-3"><button onclick="movePlayer('up')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ↑ Atas </button> <button onclick="movePlayer('down')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ↓ Bawah </button> <button onclick="movePlayer('left')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> ← Kiri </button> <button onclick="movePlayer('right')" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-xl latin-body font-semibold"> → Kanan </button>
        </div>
@@ -774,46 +1101,46 @@
        <h2 class="latin-heading text-3xl text-gray-800 mb-2">Petunjuk Penggunaan Portal</h2>
        <p class="latin-body text-gray-600">Panduan lengkap untuk memaksimalkan pembelajaran bahasa Arab</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-8"><!-- Cara Menggunakan -->
-       <div class="space-y-6">
-        <h3 class="latin-heading text-xl text-gray-800 mb-4 flex items-center"><span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-sm font-bold mr-3">1</span> Cara Menggunakan Portal</h3>
-        <div class="space-y-4">
-         <div class="bg-blue-50 p-4 rounded-xl">
-          <h4 class="latin-body font-semibold text-gray-800 mb-2">📚 Memilih Materi</h4>
-          <p class="latin-body text-sm text-gray-700">Klik menu "Materi" di bagian atas atau pilih kartu bab di dashboard. Setiap bab memiliki beberapa pelajaran yang harus dipelajari secara berurutan.</p>
+      <div class="guide-mobile-grid grid md:grid-cols-2 gap-6 md:gap-8"><!-- Cara Menggunakan -->
+       <div class="guide-section-mobile space-y-4 md:space-y-6">
+        <h3 class="latin-heading text-lg md:text-xl text-gray-800 mb-3 md:mb-4 flex items-center"><span class="w-6 h-6 md:w-8 md:h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xs md:text-sm font-bold mr-2 md:mr-3">1</span> Cara Menggunakan Portal</h3>
+        <div class="space-y-3 md:space-y-4">
+         <div class="bg-blue-50 p-3 md:p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">📚 Memilih Materi</h4>
+          <p class="latin-body text-xs md:text-sm text-gray-700">Klik menu "Materi" di bagian atas atau pilih kartu bab di dashboard. Setiap bab memiliki beberapa pelajaran yang harus dipelajari secara berurutan.</p>
          </div>
-         <div class="bg-green-50 p-4 rounded-xl">
-          <h4 class="latin-body font-semibold text-gray-800 mb-2">🎵 Mendengarkan Lagu</h4>
-          <p class="latin-body text-sm text-gray-700">Setiap bab memiliki lagu mufradat yang membantu menghapal kosakata. Dengarkan lagu sambil membaca teks Arab untuk hasil maksimal.</p>
+         <div class="bg-green-50 p-3 md:p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">🎵 Mendengarkan Lagu</h4>
+          <p class="latin-body text-xs md:text-sm text-gray-700">Setiap bab memiliki lagu mufradat yang membantu menghapal kosakata. Dengarkan lagu sambil membaca teks Arab untuk hasil maksimal.</p>
          </div>
-         <div class="bg-purple-50 p-4 rounded-xl">
-          <h4 class="latin-body font-semibold text-gray-800 mb-2">📹 Menonton Video</h4>
-          <p class="latin-body text-sm text-gray-700">Video pembelajaran dapat diputar langsung di portal. Tonton video sebelum mengerjakan latihan untuk pemahaman yang lebih baik.</p>
+         <div class="bg-purple-50 p-3 md:p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">📹 Menonton Video</h4>
+          <p class="latin-body text-xs md:text-sm text-gray-700">Video pembelajaran dapat diputar langsung di portal. Tonton video sebelum mengerjakan latihan untuk pemahaman yang lebih baik.</p>
          </div>
-         <div class="bg-amber-50 p-4 rounded-xl">
-          <h4 class="latin-body font-semibold text-gray-800 mb-2">✏️ Mengerjakan Latihan</h4>
-          <p class="latin-body text-sm text-gray-700">Setiap bab diakhiri dengan latihan soal. Kerjakan dengan teliti dan jangan ragu untuk mengulang jika skor belum memuaskan.</p>
+         <div class="bg-amber-50 p-3 md:p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">✏️ Mengerjakan Latihan</h4>
+          <p class="latin-body text-xs md:text-sm text-gray-700">Setiap bab diakhiri dengan latihan soal. Kerjakan dengan teliti dan jangan ragu untuk mengulang jika skor belum memuaskan.</p>
          </div>
         </div>
        </div><!-- Tips Pembelajaran -->
-       <div class="space-y-6">
-        <h3 class="latin-heading text-xl text-gray-800 mb-4 flex items-center"><span class="w-8 h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-sm font-bold mr-3">2</span> Tips Pembelajaran Efektif</h3>
-        <div class="space-y-4">
-         <div class="bg-gradient-to-r from-red-50 to-pink-50 p-4 rounded-xl">
-          <h4 class="latin-body font-semibold text-gray-800 mb-2">🎯 Konsistensi</h4>
-          <p class="latin-body text-sm text-gray-700">Belajar sedikit tapi rutin lebih baik daripada belajar banyak sekali waktu. Luangkan 15-30 menit setiap hari untuk hasil optimal.</p>
+       <div class="guide-section-mobile space-y-4 md:space-y-6">
+        <h3 class="latin-heading text-lg md:text-xl text-gray-800 mb-3 md:mb-4 flex items-center"><span class="w-6 h-6 md:w-8 md:h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xs md:text-sm font-bold mr-2 md:mr-3">2</span> Tips Pembelajaran Efektif</h3>
+        <div class="space-y-3 md:space-y-4">
+         <div class="bg-gradient-to-r from-red-50 to-pink-50 p-3 md:p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">🎯 Konsistensi</h4>
+          <p class="latin-body text-xs md:text-sm text-gray-700">Belajar sedikit tapi rutin lebih baik daripada belajar banyak sekali waktu. Luangkan 15-30 menit setiap hari untuk hasil optimal.</p>
          </div>
-         <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-xl">
-          <h4 class="latin-body font-semibold text-gray-800 mb-2">🔄 Pengulangan</h4>
-          <p class="latin-body text-sm text-gray-700">Ulangi materi yang sudah dipelajari secara berkala. Ini membantu memindahkan informasi dari memori jangka pendek ke jangka panjang.</p>
+         <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-3 md:p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">🔄 Pengulangan</h4>
+          <p class="latin-body text-xs md:text-sm text-gray-700">Ulangi materi yang sudah dipelajari secara berkala. Ini membantu memindahkan informasi dari memori jangka pendek ke jangka panjang.</p>
          </div>
-         <div class="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-xl">
-          <h4 class="latin-body font-semibold text-gray-800 mb-2">🗣️ Praktik</h4>
-          <p class="latin-body text-sm text-gray-700">Ucapkan kosakata dengan suara keras. Dengarkan lagu dan ikuti pelafalannya. Praktik berbicara membantu mengingat lebih baik.</p>
+         <div class="bg-gradient-to-r from-indigo-50 to-blue-50 p-3 md:p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">🗣️ Praktik</h4>
+          <p class="latin-body text-xs md:text-sm text-gray-700">Ucapkan kosakata dengan suara keras. Dengarkan lagu dan ikuti pelafalannya. Praktik berbicara membantu mengingat lebih baik.</p>
          </div>
-         <div class="bg-gradient-to-r from-teal-50 to-cyan-50 p-4 rounded-xl">
-          <h4 class="latin-body font-semibold text-gray-800 mb-2">📝 Catatan</h4>
-          <p class="latin-body text-sm text-gray-700">Buat catatan kecil untuk kosakata yang sulit. Tulis contoh kalimat sendiri menggunakan kosakata yang baru dipelajari.</p>
+         <div class="bg-gradient-to-r from-teal-50 to-cyan-50 p-3 md:p-4 rounded-xl">
+          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">📝 Catatan</h4>
+          <p class="latin-body text-xs md:text-sm text-gray-700">Buat catatan kecil untuk kosakata yang sulit. Tulis contoh kalimat sendiri menggunakan kosakata yang baru dipelajari.</p>
          </div>
         </div>
        </div>
@@ -850,24 +1177,24 @@
     </div>
    </div>
   </main><!-- Footer -->
-  <footer class="bg-white/60 backdrop-blur-md border-t border-white/40 mt-16">
-   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <footer class="bg-white/60 backdrop-blur-md border-t border-white/40 mt-8 md:mt-16">
+   <div class="footer-mobile-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
     <div class="text-center space-y-4"><!-- Contact Teacher -->
-     <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
-      <div class="flex flex-col md:flex-row items-center justify-center space-y-3 md:space-y-0 md:space-x-4">
+     <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-4 md:p-6 rounded-2xl border border-green-100">
+      <div class="footer-mobile-contact flex flex-col md:flex-row items-center justify-center space-y-3 md:space-y-0 md:space-x-4">
        <div class="flex items-center space-x-3">
-        <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center text-2xl">
+        <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center text-xl md:text-2xl">
          👩‍🏫
         </div>
         <div class="text-left">
-         <h3 class="latin-heading text-lg text-gray-800 font-semibold">Ada Pertanyaan?</h3>
-         <p class="latin-body text-gray-600 text-sm">Tanya langsung ke guru</p>
+         <h3 class="latin-heading text-base md:text-lg text-gray-800 font-semibold">Ada Pertanyaan?</h3>
+         <p class="latin-body text-gray-600 text-xs md:text-sm">Tanya langsung ke guru</p>
         </div>
-       </div><a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-xl latin-body font-semibold transition-all transform hover:scale-105 shadow-lg flex items-center space-x-2"> <span class="text-xl">📱</span> <span>Hubungi Guru via WhatsApp</span> </a>
+       </div><a href="wa.me/" target="_blank" rel="noopener noreferrer" class="footer-mobile-whatsapp bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl latin-body font-semibold transition-all transform hover:scale-105 shadow-lg flex items-center space-x-2 text-sm md:text-base touch-manipulation"> <span class="text-lg md:text-xl">📱</span> <span>Hubungi Guru via WhatsApp</span> </a>
       </div>
      </div><!-- Copyright -->
-     <div class="pt-6 border-t border-gray-200">
-      <p class="latin-body text-gray-600 text-sm md:text-base">© 2025 💝 Belajar bahasa Arab lebih menyenangkan <span class="text-sky-600 font-semibold">@naikanah</span></p>
+     <div class="pt-4 md:pt-6 border-t border-gray-200">
+      <p class="latin-body text-gray-600 text-xs sm:text-sm md:text-base">© 2025 💝 Belajar bahasa Arab lebih menyenangkan <span class="text-sky-600 font-semibold">@naikanah</span></p>
       <p class="latin-body text-gray-500 text-xs mt-2">Portal pembelajaran interaktif untuk menguasai bahasa Arab dengan mudah dan menyenangkan</p>
      </div>
     </div>
@@ -2454,6 +2781,12 @@
             document.getElementById('quiz-interface').classList.add('hidden');
             document.getElementById('quiz-results').classList.add('hidden');
             document.getElementById('guide-page').classList.add('hidden');
+            document.getElementById('games-page').classList.add('hidden');
+            document.getElementById('maze-game').classList.add('hidden');
+            
+            // Hide mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+            document.getElementById('mobile-menu-btn').innerHTML = '<span class="text-lg sm:text-xl">☰</span>';
             
             // Remove welcome-specific styling and add blur back
             const mainContainer = document.querySelector('.content-overlay');
@@ -2931,10 +3264,10 @@
             
             if (mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.remove('hidden');
-                menuBtn.innerHTML = '<span class="text-xl">✕</span>';
+                menuBtn.innerHTML = '<span class="text-lg sm:text-xl">✕</span>';
             } else {
                 mobileMenu.classList.add('hidden');
-                menuBtn.innerHTML = '<span class="text-xl">☰</span>';
+                menuBtn.innerHTML = '<span class="text-lg sm:text-xl">☰</span>';
             }
         }
 
@@ -3573,5 +3906,5 @@
         // Initialize app when DOM is loaded
         document.addEventListener('DOMContentLoaded', initApp);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99ded30476cbaeb9',t:'MTc2MzA0MjczMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99e280a52435ff78',t:'MTc2MzA4MTI5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
