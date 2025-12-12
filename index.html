@@ -2,11 +2,13 @@
 <html lang="id" dir="ltr">
  <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Portal Arabi</title>
   <script src="/_sdk/element_sdk.js"></script>
   <script src="/_sdk/data_sdk.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&amp;family=Noto+Sans+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;family=Noto+Color+Emoji&amp;display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
         html, body {
@@ -18,6 +20,23 @@
         
         body {
             min-height: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Emoji support untuk semua perangkat */
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Nunito', 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+        }
+        
+        .emoji, .cloud, span[class*="text-"] {
+            font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            display: inline-block;
+        }
+        
+        /* Pastikan semua emoji standalone ditampilkan dengan benar */
+        body *:not(.latin-body):not(.latin-heading):not(.arabic-text):not(.arabic-quiz) {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Nunito', 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
         }
         
         /* Modern animated background */
@@ -113,27 +132,28 @@
         }
         
         .arabic-text {
-            font-family: 'Noto Sans Arabic', Arial, sans-serif;
-            font-size: 1.25em;
-            line-height: 1.8;
+            font-family: 'Noto Sans Arabic', 'Noto Color Emoji', 'Apple Color Emoji', Arial, sans-serif !important;
+            font-size: 1.4em;
+            line-height: 2;
             direction: rtl;
+            font-weight: 500;
         }
         
         .arabic-quiz {
-            font-family: 'Noto Sans Arabic', Arial, sans-serif;
-            font-size: 1.8em;
-            line-height: 1.6;
+            font-family: 'Noto Sans Arabic', 'Noto Color Emoji', 'Apple Color Emoji', Arial, sans-serif !important;
+            font-size: 2em;
+            line-height: 1.8;
             direction: rtl;
             font-weight: 600;
         }
         
         .latin-heading {
-            font-family: 'Nunito', Arial, sans-serif;
+            font-family: 'Nunito', 'Noto Color Emoji', 'Apple Color Emoji', Arial, sans-serif !important;
             font-weight: 800;
         }
         
         .latin-body {
-            font-family: 'Nunito', Arial, sans-serif;
+            font-family: 'Nunito', 'Noto Color Emoji', 'Apple Color Emoji', Arial, sans-serif !important;
             font-weight: 400;
             font-size: 1.1em;
             line-height: 1.6;
@@ -156,6 +176,10 @@
         .btn-primary {
             background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             transition: all 0.3s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
         }
         
         .btn-primary:hover {
@@ -163,14 +187,28 @@
             transform: translateY(-2px);
         }
         
+        .btn-primary:active {
+            transform: scale(0.97);
+            opacity: 0.9;
+        }
+        
         .btn-accent {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             transition: all 0.3s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
         }
         
         .btn-accent:hover {
             background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
             transform: translateY(-2px);
+        }
+        
+        .btn-accent:active {
+            transform: scale(0.97);
+            opacity: 0.9;
         }
         
         .progress-bar {
@@ -326,27 +364,9 @@
             }
             
             /* Dashboard mobile cards */
-            .dashboard-mobile-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
             .adventure-card {
-                padding: 1rem;
+                padding: 1.25rem;
                 border-radius: 16px;
-            }
-            
-            .adventure-card-mobile-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.75rem;
-            }
-            
-            .adventure-card-icon-mobile {
-                width: 3rem;
-                height: 3rem;
-                font-size: 1.5rem;
-                margin: 0 auto;
             }
             
             /* Chapter content mobile */
@@ -620,10 +640,13 @@
         @media (hover: none) and (pointer: coarse) {
             .btn-primary, .btn-accent, .adventure-card, .quiz-option {
                 transform: none;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+                cursor: pointer;
             }
             
             .btn-primary:active, .btn-accent:active {
-                transform: scale(0.98);
+                transform: scale(0.97);
+                opacity: 0.9;
             }
             
             .adventure-card:active {
@@ -632,6 +655,14 @@
             
             .quiz-option:active {
                 transform: scale(0.99);
+            }
+            
+            /* Ensure buttons are clickable on mobile */
+            button {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+                touch-action: manipulation;
+                user-select: none;
+                -webkit-user-select: none;
             }
         }
         
@@ -706,7 +737,7 @@
    ☁️
   </div>
   <div class="cloud cloud-2">
-   ☁️
+   ☁
   </div>
   <div class="cloud cloud-3">
    ☁️
@@ -718,21 +749,21 @@
    ☁️
   </div>
   <div class="cloud cloud-6">
-   ☁️
+   ☁
   </div><!-- Navigation -->
   <nav class="bg-white/75 backdrop-blur-lg shadow-xl sticky top-0 z-50 border-b border-white/30">
    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-14 sm:h-16"><!-- Logo & Title -->
      <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-      <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-amber-400 to-orange-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg"><span class="text-white text-lg sm:text-xl">🦅</span>
+      <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-amber-400 to-orange-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg"><span class="emoji text-white text-lg sm:text-xl">🦅</span>
       </div>
-      <h1 id="site-title" class="latin-heading text-sm sm:text-lg lg:text-xl text-gray-800 font-bold truncate max-w-[140px] sm:max-w-none">Portal Arabi</h1>
+      <h1 id="site-title" class="latin-heading text-sm sm:text-lg lg:text-xl text-gray-800 font-bold truncate max-w-[140px] sm:max-w-none">Portal Pelajar Bahasa Arab</h1>
      </div><!-- Desktop Navigation Menu -->
-     <div id="nav-menu" class="nav-desktop-menu hidden lg:flex items-center space-x-6"><button onclick="showDashboard()" class="latin-body text-gray-600 hover:text-sky-600 transition-colors text-sm"> 🏠 Dashboard </button>
-      <div class="relative group"><button class="latin-body text-gray-600 hover:text-sky-600 transition-colors flex items-center space-x-1 text-sm"> <span>📚 Materi</span> <span class="text-xs">▼</span> </button>
+     <div id="nav-menu" class="nav-desktop-menu hidden lg:flex items-center space-x-6"><button onclick="showDashboard()" class="latin-body text-gray-600 hover:text-sky-600 transition-colors text-sm"> <span class="emoji">🏠</span> Dashboard </button>
+      <div class="relative group"><button class="latin-body text-gray-600 hover:text-sky-600 transition-colors flex items-center space-x-1 text-sm"> <span><span class="emoji">📚</span> Materi</span> <span class="text-xs">▼</span> </button>
        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
         <div class="p-2"><button onclick="openChapter(1)" class="w-full text-left p-3 rounded-lg hover:bg-sky-50 transition-colors">
-          <div class="flex items-center space-x-3"><span class="text-xl">📊</span>
+          <div class="flex items-center space-x-3"><span class="emoji text-xl">📊</span>
            <div>
             <div class="latin-body font-semibold text-gray-800">
              Bab 1: Isim Tafdil
@@ -742,17 +773,17 @@
             </div>
            </div>
           </div></button> <button onclick="openChapter(2)" class="w-full text-left p-3 rounded-lg hover:bg-purple-50 transition-colors">
-          <div class="flex items-center space-x-3"><span class="text-xl">🔷</span>
+          <div class="flex items-center space-x-3"><span class="emoji text-xl">🔷</span>
            <div>
             <div class="latin-body font-semibold text-gray-800">
              Bab 2: Bentuk
             </div>
             <div class="latin-body text-sm text-gray-600">
-             Shapes &amp; Forms
+             Shapes &Forms
             </div>
            </div>
           </div></button> <button onclick="openChapter(3)" class="w-full text-left p-3 rounded-lg hover:bg-red-50 transition-colors">
-          <div class="flex items-center space-x-3"><span class="text-xl">🎨</span>
+          <div class="flex items-center space-x-3"><span class="emoji text-xl">🎨</span>
            <div>
             <div class="latin-body font-semibold text-gray-800">
              Bab 3: Warna
@@ -762,7 +793,7 @@
             </div>
            </div>
           </div></button> <button onclick="openChapter(4)" class="w-full text-left p-3 rounded-lg hover:bg-amber-50 transition-colors">
-          <div class="flex items-center space-x-3"><span class="text-xl">🌙</span>
+          <div class="flex items-center space-x-3"><span class="emoji text-xl">🌙</span>
            <div>
             <div class="latin-body font-semibold text-gray-800">
              Bab 4: Kalender Hijriah
@@ -776,34 +807,69 @@
        </div>
       </div><button onclick="showGames()" class="latin-body text-gray-600 hover:text-sky-600 transition-colors text-sm"> 🎮 Game </button> <button onclick="showGuide()" class="latin-body text-gray-600 hover:text-sky-600 transition-colors text-sm"> 💡 Petunjuk </button>
      </div><!-- Right Side: Student Info & Mobile Menu -->
-     <div class="flex items-center space-x-2 sm:space-x-4"><!-- Student Info (Desktop) -->
-      <div id="student-info" class="hidden lg:flex items-center space-x-3"><span id="student-name-display" class="latin-body text-gray-600 text-sm truncate max-w-[120px]"></span> <button onclick="logout()" class="text-xs text-gray-500 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded-md transition-colors">Keluar</button>
-      </div><!-- Mobile Menu Button -->
-      <div class="lg:hidden"><button onclick="toggleMobileMenu()" id="mobile-menu-btn" class="text-gray-600 hover:text-sky-600 p-2 rounded-lg hover:bg-gray-100 transition-colors"> <span class="text-lg sm:text-xl">☰</span> </button>
-      </div>
+     <div class="flex items-center space-x-2 sm:space-x-4"><!-- Student Info -->
+      <div id="student-info" class="hidden flex items-center space-x-3"><span id="student-name-display" class="latin-body text-gray-600 text-xs sm:text-sm truncate max-w-[80px] sm:max-w-[120px]"></span> <button onclick="logout()" class="text-xs text-gray-500 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded-md transition-colors">Keluar</button>
+      </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+       <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+       </svg></button>
      </div>
-    </div><!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden hidden bg-white/95 backdrop-blur-lg border-t border-white/30 shadow-lg">
-     <div class="mobile-menu-container px-3 py-3 space-y-3 max-h-[85vh] overflow-y-auto"><!-- Student Info (Mobile) -->
-      <div id="mobile-student-info" class="hidden bg-gradient-to-r from-blue-50 to-sky-50 p-3 rounded-xl border border-blue-100">
-       <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-         <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center"><span class="text-white text-sm">👤</span>
-         </div><span id="mobile-student-name" class="latin-body text-sm font-semibold text-gray-700 truncate max-w-[120px] sm:max-w-[150px]"></span>
-        </div><button onclick="logout()" class="text-xs text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 px-2 py-1 rounded-md transition-colors"> Keluar </button>
-       </div>
-      </div><!-- Dashboard --> <button onclick="showDashboard(); toggleMobileMenu()" class="w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-sky-50 transition-colors latin-body text-gray-700 font-medium"> <span class="text-lg">🏠</span> <span class="text-sm">Dashboard</span> </button> <!-- Materi Section -->
-      <div class="bg-gray-50 rounded-xl p-3">
-       <div class="latin-body text-xs font-bold text-gray-600 mb-2 flex items-center"><span class="text-sm mr-2">📚</span> <span>Materi Pembelajaran</span>
-       </div>
-       <div class="grid grid-cols-2 gap-2"><button onclick="openChapter(1); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-sky-50 transition-colors shadow-sm touch-manipulation"> <span class="text-lg mb-1">📊</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center leading-tight">Isim<br>
-          Tafdil</span> </button> <button onclick="openChapter(2); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-purple-50 transition-colors shadow-sm touch-manipulation"> <span class="text-lg mb-1">🔷</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center">Bentuk</span> </button> <button onclick="openChapter(3); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-red-50 transition-colors shadow-sm touch-manipulation"> <span class="text-lg mb-1">🎨</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center">Warna</span> </button> <button onclick="openChapter(4); toggleMobileMenu()" class="flex flex-col items-center p-2 rounded-lg bg-white hover:bg-amber-50 transition-colors shadow-sm touch-manipulation"> <span class="text-lg mb-1">🌙</span> <span class="latin-body text-xs font-semibold text-gray-700 text-center leading-tight">Kalender<br>
-          Hijriah</span> </button>
-       </div>
-      </div><!-- Game & Guide -->
-      <div class="grid grid-cols-2 gap-2"><button onclick="showGames(); toggleMobileMenu()" class="flex items-center justify-center space-x-2 p-3 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 transition-colors touch-manipulation"> <span class="text-lg">🎮</span> <span class="latin-body text-xs font-semibold text-gray-700">Game</span> </button> <button onclick="showGuide(); toggleMobileMenu()" class="flex items-center justify-center space-x-2 p-3 rounded-xl bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 transition-colors touch-manipulation"> <span class="text-lg">💡</span> <span class="latin-body text-xs font-semibold text-gray-700">Petunjuk</span> </button>
+    </div>
+   </div><!-- Mobile Menu Panel -->
+   <div id="mobile-menu-panel" class="hidden lg:hidden bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 py-4 space-y-3"><!-- Mobile Student Info (Duplicate for mobile visibility) -->
+     <div id="mobile-student-info" class="hidden bg-gradient-to-r from-sky-50 to-blue-50 p-3 rounded-xl">
+      <div class="flex items-center justify-between">
+       <div>
+        <p class="latin-body text-xs text-gray-500">Logged in as</p>
+        <p id="mobile-student-name" class="latin-body text-sm font-semibold text-gray-800"></p>
+       </div><button onclick="logout()" class="text-xs bg-white text-gray-600 hover:text-gray-800 px-3 py-2 rounded-lg transition-colors shadow-sm"> Keluar </button>
       </div>
-     </div>
+     </div><!-- Mobile Navigation Buttons --> <button onclick="showDashboard(); toggleMobileMenu();" class="w-full text-left p-3 rounded-lg hover:bg-sky-50 transition-colors flex items-center space-x-3"> <span class="emoji text-xl">🏠</span> <span class="latin-body text-gray-700 font-medium">Dashboard</span> </button> <!-- Mobile Materi Dropdown -->
+     <div class="space-y-2">
+      <div class="latin-body text-xs font-semibold text-gray-500 uppercase tracking-wide px-3">
+       Materi Pembelajaran
+      </div><button onclick="openChapter(1); toggleMobileMenu();" class="w-full text-left p-3 rounded-lg hover:bg-sky-50 transition-colors">
+       <div class="flex items-center space-x-3"><span class="emoji text-xl">📊</span>
+        <div>
+         <div class="latin-body font-semibold text-gray-800 text-sm">
+          Bab 1: Isim Tafdil
+         </div>
+         <div class="latin-body text-xs text-gray-600">
+          Kata Perbandingan
+         </div>
+        </div>
+       </div></button> <button onclick="openChapter(2); toggleMobileMenu();" class="w-full text-left p-3 rounded-lg hover:bg-purple-50 transition-colors">
+       <div class="flex items-center space-x-3"><span class="emoji text-xl">🔷</span>
+        <div>
+         <div class="latin-body font-semibold text-gray-800 text-sm">
+          Bab 2: Bentuk
+         </div>
+         <div class="latin-body text-xs text-gray-600">
+          Shapes & Forms
+         </div>
+        </div>
+       </div></button> <button onclick="openChapter(3); toggleMobileMenu();" class="w-full text-left p-3 rounded-lg hover:bg-red-50 transition-colors">
+       <div class="flex items-center space-x-3"><span class="emoji text-xl">🎨</span>
+        <div>
+         <div class="latin-body font-semibold text-gray-800 text-sm">
+          Bab 3: Warna
+         </div>
+         <div class="latin-body text-xs text-gray-600">
+          Colors in Arabic
+         </div>
+        </div>
+       </div></button> <button onclick="openChapter(4); toggleMobileMenu();" class="w-full text-left p-3 rounded-lg hover:bg-amber-50 transition-colors">
+       <div class="flex items-center space-x-3"><span class="emoji text-xl">🌙</span>
+        <div>
+         <div class="latin-body font-semibold text-gray-800 text-sm">
+          Bab 4: Kalender Hijriah
+         </div>
+         <div class="latin-body text-xs text-gray-600">
+          Islamic Calendar
+         </div>
+        </div>
+       </div></button>
+     </div><button onclick="showGames(); toggleMobileMenu();" class="w-full text-left p-3 rounded-lg hover:bg-sky-50 transition-colors flex items-center space-x-3"> <span class="emoji text-xl">🎮</span> <span class="latin-body text-gray-700 font-medium">Game</span> </button> <button onclick="showGuide(); toggleMobileMenu();" class="w-full text-left p-3 rounded-lg hover:bg-sky-50 transition-colors flex items-center space-x-3"> <span class="emoji text-xl">💡</span> <span class="latin-body text-gray-700 font-medium">Petunjuk</span> </button>
     </div>
    </div>
   </nav><!-- Main Content -->
@@ -812,8 +878,7 @@
     <div id="welcome-screen" class="welcome-mobile-spacing text-center px-4">
      <div class="mb-6 md:mb-8">
       <div class="floating-element inline-block">
-       <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-6xl mb-4 md:mb-6 mx-auto shadow-2xl">
-        🏛️
+       <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-4xl md:text-6xl mb-4 md:mb-6 mx-auto shadow-2xl"><span class="emoji">🏛️</span>
        </div>
       </div>
       <div class="mb-4">
@@ -821,7 +886,7 @@
         أَهْلاً وَسَهْلاً
        </div>
        <div class="mb-4">
-        <h1 class="latin-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-600 font-bold mb-2">Petualang Bahasa Arab</h1>
+        <h1 class="latin-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-600 font-bold mb-2">Portal Pelajar Bahasa Arab</h1>
         <h2 id="welcome-message" class="welcome-title-mobile latin-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-800 px-2"><span id="time-greeting">Assalamu'alaikum</span>, petualang 👋</h2>
        </div>
        <p id="time-message" class="welcome-subtitle-mobile latin-body text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mt-2 px-2"></p>
@@ -834,7 +899,7 @@
     </div><!-- Dashboard -->
     <div id="dashboard" class="hidden">
      <div class="text-center mb-8">
-      <h2 class="latin-heading text-3xl text-gray-800 mb-2">Selamat Datang Kembali!</h2>
+      <h2 class="latin-heading text-3xl text-gray-800 mb-2">Selamat Datang!</h2>
       <p class="latin-body text-gray-600">Lanjutkan petualangan bahasa Arabmu</p>
      </div><!-- Progress Overview -->
      <div class="bg-white/55 backdrop-blur-md rounded-3xl p-6 mb-8 shadow-xl border border-white/25">
@@ -912,7 +977,7 @@
          📊
         </div>
         <div class="flex-1 md:flex-initial">
-         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 1: Isim Tafdil (الاِسْمُ التَّفْضِيْل)</h3>
+         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 1: Isim Tafdil</h3>
          <p class="latin-body text-sm md:text-base text-gray-600">Kata Perbandingan</p>
         </div>
        </div>
@@ -927,8 +992,8 @@
          🔷
         </div>
         <div class="flex-1 md:flex-initial">
-         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 2: Bentuk (الشَّكْلُ)</h3>
-         <p class="latin-body text-sm md:text-base text-gray-600">Shapes &amp; Forms</p>
+         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 2: Bentuk</h3>
+         <p class="latin-body text-sm md:text-base text-gray-600">Shapes & Forms</p>
         </div>
        </div>
        <p class="latin-body text-sm md:text-base text-gray-700 mb-4">Kenali berbagai bentuk geometri dalam bahasa Arab</p>
@@ -942,7 +1007,7 @@
          🎨
         </div>
         <div class="flex-1 md:flex-initial">
-         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 3: Warna (اَلاَلْوَانُ)</h3>
+         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 3: Warna</h3>
          <p class="latin-body text-sm md:text-base text-gray-600">Colors in Arabic</p>
         </div>
        </div>
@@ -957,7 +1022,7 @@
          🌙
         </div>
         <div class="flex-1 md:flex-initial">
-         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 4: Kalender Hijriah (التَّقْدِيْمُ الحِجْرِى)</h3>
+         <h3 class="latin-heading text-lg md:text-xl text-gray-800">Bab 4: Kalender Hijriah</h3>
          <p class="latin-body text-sm md:text-base text-gray-600">Islamic Calendar</p>
         </div>
        </div>
@@ -999,7 +1064,7 @@
       </div>
       <div id="quiz-options" class="space-y-2 md:space-y-3 mb-6 md:mb-8"><!-- Options will be loaded here -->
       </div>
-      <div class="quiz-navigation-mobile flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0"><button id="prev-question" onclick="previousQuestion()" class="w-full md:w-auto btn-primary text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base touch-manipulation" disabled> ← Sebelumnya </button> <button id="next-question" onclick="nextQuestion()" class="w-full md:w-auto btn-accent text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base touch-manipulation" disabled> Selanjutnya → </button>
+      <div class="quiz-navigation-mobile flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0"><button id="prev-question" onclick="previousQuestion()" class="w-full md:w-auto btn-primary text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base touch-manipulation" disabled> ⬅ Sebelumnya </button> <button id="next-question" onclick="nextQuestion()" class="w-full md:w-auto btn-accent text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold opacity-50 cursor-not-allowed text-sm md:text-base touch-manipulation" disabled> Selanjutnya → </button>
       </div>
      </div>
     </div><!-- Quiz Results -->
@@ -1007,7 +1072,7 @@
      <div class="bg-white/55 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl border border-white/25 text-center">
       <div class="mb-6">
        <div id="result-icon" class="text-4xl md:text-6xl mb-4">
-        🎉
+        🧩
        </div>
        <h2 class="latin-heading text-2xl md:text-3xl text-gray-800 mb-2">Hasil Latihan</h2>
        <p id="score-display" class="latin-body text-lg md:text-xl text-gray-600 mb-4"></p>
@@ -1057,9 +1122,69 @@
         </div>
         <p class="latin-body text-sm md:text-base text-gray-700 mb-4">Cocokkan kata Arab dengan artinya. Latih daya ingat sambil belajar vocabulary!</p>
         <div class="bg-white p-3 rounded-xl mb-4">
-         <div class="flex justify-between text-xs md:text-sm"><span class="latin-body text-gray-600">Mode:</span> <span class="latin-body text-green-600 font-semibold">Segera Hadir</span>
+         <div class="flex justify-between text-xs md:text-sm"><span class="latin-body text-gray-600">Kesulitan:</span> <span class="latin-body text-green-600 font-semibold">Mudah - Sulit</span>
          </div>
-        </div><button class="w-full bg-gray-300 text-gray-500 py-2 md:py-3 px-4 rounded-xl latin-body font-semibold cursor-not-allowed text-sm md:text-base"> Segera Hadir 🔜 </button>
+        </div><button onclick="startMemoryGame()" class="w-full btn-primary text-white py-2 md:py-3 px-4 rounded-xl latin-body font-semibold text-sm md:text-base touch-manipulation"> Mulai Bermain 🎮 </button>
+       </div>
+      </div>
+     </div>
+    </div><!-- Memory Match Game Interface -->
+    <div id="memory-game" class="hidden">
+     <div class="mb-4"><button onclick="backToGames()" class="flex items-center space-x-2 text-sky-600 hover:text-sky-700 latin-body font-semibold"> <span>←</span> <span>Kembali ke Game</span> </button>
+     </div>
+     <div class="bg-white/55 backdrop-blur-md rounded-3xl p-3 md:p-8 shadow-xl border border-white/25">
+      <div class="text-center mb-4 md:mb-6">
+       <h2 class="latin-heading text-lg md:text-xl lg:text-2xl text-gray-800 mb-4">🧠 Memory Match</h2><!-- Stats Bar -->
+       <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-3 md:p-4 mb-4">
+        <div class="grid grid-cols-3 gap-2 md:gap-4 text-center">
+         <div class="bg-white rounded-xl p-2 md:p-3 shadow-sm">
+          <div class="text-xl md:text-2xl mb-1">
+           ⏱️
+          </div>
+          <div id="memory-time" class="latin-body text-xs md:text-sm font-semibold text-gray-700">
+           Waktu: 0s
+          </div>
+         </div>
+         <div class="bg-white rounded-xl p-2 md:p-3 shadow-sm">
+          <div class="text-xl md:text-2xl mb-1">
+           🎯
+          </div>
+          <div id="memory-moves" class="latin-body text-xs md:text-sm font-semibold text-gray-700">
+           Gerakan: 0
+          </div>
+         </div>
+         <div class="bg-white rounded-xl p-2 md:p-3 shadow-sm">
+          <div class="text-xl md:text-2xl mb-1">
+           ✅
+          </div>
+          <div id="memory-pairs" class="latin-body text-xs md:text-sm font-semibold text-gray-700">
+           Pasangan: 0/8
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Game Board -->
+      <div id="memory-board" class="grid grid-cols-4 gap-2 md:gap-3 mb-4 md:mb-6 max-w-2xl mx-auto"><!-- Cards will be generated here -->
+      </div><!-- Difficulty Selection (shown before game starts) -->
+      <div id="memory-difficulty-select" class="max-w-md mx-auto">
+       <h3 class="latin-heading text-lg text-gray-800 mb-4 text-center">Pilih Tingkat Kesulitan</h3>
+       <div class="space-y-3"><button onclick="startMemoryLevel('easy')" class="w-full bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 text-white py-3 px-6 rounded-xl latin-body font-semibold shadow-lg"> 😊 Mudah - 8 Pasangan </button> <button onclick="startMemoryLevel('medium')" class="w-full bg-gradient-to-r from-blue-400 to-cyan-500 hover:from-blue-500 hover:to-cyan-600 text-white py-3 px-6 rounded-xl latin-body font-semibold shadow-lg"> 🤔 Sedang - 12 Pasangan </button> <button onclick="startMemoryLevel('hard')" class="w-full bg-gradient-to-r from-red-400 to-pink-500 hover:from-red-500 hover:to-pink-600 text-white py-3 px-6 rounded-xl latin-body font-semibold shadow-lg"> 😤 Sulit - 18 Pasangan </button>
+       </div>
+      </div><!-- Game Controls (hidden initially) -->
+      <div id="memory-controls" class="hidden text-center space-y-3"><button onclick="restartMemoryGame()" class="btn-primary text-white py-2 px-6 rounded-xl latin-body font-semibold"> 🔁 Main Ulang </button>
+       <p class="latin-body text-gray-600 text-sm">💡 Tip: Ingat posisi kartu untuk mencocokkan lebih cepat!</p>
+      </div>
+     </div><!-- Success Modal -->
+     <div id="memory-success-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div class="bg-white rounded-2xl p-6 max-w-md w-full text-center">
+       <div class="text-6xl mb-4">
+        🎉
+       </div>
+       <h3 class="latin-heading text-2xl text-gray-800 mb-2">Selamat!</h3>
+       <p class="latin-body text-gray-600 mb-4">Kamu berhasil mencocokkan semua pasangan!</p>
+       <div id="memory-final-stats" class="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl mb-6"><!-- Stats will be inserted here -->
+       </div>
+       <div class="flex gap-3"><button onclick="restartMemoryGame()" class="flex-1 btn-primary text-white py-3 px-4 rounded-xl latin-body font-semibold"> Main Lagi 🔄 </button> <button onclick="backToGames()" class="flex-1 btn-accent text-white py-3 px-4 rounded-xl latin-body font-semibold"> Kembali 🏠 </button>
        </div>
       </div>
      </div>
@@ -1098,7 +1223,7 @@
          </div>
         </div>
        </div><!-- Desktop Stats Bar -->
-       <div class="hidden md:flex justify-center items-center space-x-6"><span id="maze-score" class="latin-body text-gray-600">Skor: 0</span> <span id="maze-level" class="latin-body text-gray-600">Level: 1</span> <span id="maze-lives" class="latin-body text-gray-600">❤️ 3</span>
+       <div class="hidden md:flex justify-center items-center space-x-6"><span id="maze-score" class="latin-body text-gray-600">Skor: 0</span> <span id="maze-level" class="latin-body text-gray-600">Level: 1</span> <span id="maze-lives" class="latin-body text-gray-600">❤ 3</span>
        </div>
       </div><!-- Maze Canvas -->
       <div class="bg-white rounded-2xl p-2 md:p-4 mb-4 md:mb-6 shadow-inner">
@@ -1169,7 +1294,7 @@
           <p class="latin-body text-xs md:text-sm text-gray-700">Klik menu "Materi" di bagian atas atau pilih kartu bab di dashboard. Setiap bab memiliki beberapa pelajaran yang harus dipelajari secara berurutan.</p>
          </div>
          <div class="bg-green-50 p-3 md:p-4 rounded-xl">
-          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">🎵 Mendengarkan Lagu</h4>
+          <h4 class="latin-body font-semibold text-gray-800 mb-2 text-sm md:text-base">🎧 Mendengarkan Lagu</h4>
           <p class="latin-body text-xs md:text-sm text-gray-700">Setiap bab memiliki lagu mufradat yang membantu menghapal kosakata. Dengarkan lagu sambil membaca teks Arab untuk hasil maksimal.</p>
          </div>
          <div class="bg-purple-50 p-3 md:p-4 rounded-xl">
@@ -1249,7 +1374,7 @@
          <h3 class="latin-heading text-base md:text-lg text-gray-800 font-semibold">Ada Pertanyaan?</h3>
          <p class="latin-body text-gray-600 text-xs md:text-sm">Tanya langsung ke guru</p>
         </div>
-       </div><a href="https://wa.me/6285184926029" target="_blank" rel="noopener noreferrer" class="footer-mobile-whatsapp bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl latin-body font-semibold transition-all transform hover:scale-105 shadow-lg flex items-center space-x-2 text-sm md:text-base touch-manipulation"> <span class="text-lg md:text-xl">📱</span> <span>Hubungi Guru via WhatsApp</span> </a>
+       </div><a href="https://wa.me/6285184926029" target="_blank" rel="noopener noreferrer" class="footer-mobile-whatsapp bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl latin-body font-semibold transition-all transform hover:scale-105 shadow-lg flex items-center space-x-2 text-sm md:text-base touch-manipulation"> <span class="emoji text-lg md:text-xl">📱</span> <span>Hubungi Guru via WhatsApp</span> </a>
       </div>
      </div><!-- Copyright -->
      <div class="pt-4 md:pt-6 border-t border-gray-200">
@@ -1290,7 +1415,7 @@
                                     <strong>Isim Tafdil</strong> adalah kata yang memiliki makna "lebih" atau "paling" mengikuti pola:
                                 </p>
                                 <div class="arabic-text text-center text-3xl text-sky-600 bg-white p-4 rounded-xl">
-                                    أَفْعَلُ
+                                    أفْعَلُ
                                 </div>
                             </div>
                             
@@ -1299,14 +1424,14 @@
                                 <div class="flex items-start space-x-4 bg-red-50 p-4 rounded-xl">
                                     <span class="text-2xl">🚫</span>
                                     <p class="latin-body text-gray-700">
-                                        <strong>Tidak menggunakan tanwin</strong> dalam keadaan apapun
+                                        <strong>Tidak pernah menggunakan tanwin</strong> dalam keadaan apapun
                                     </p>
                                 </div>
                                 <div class="flex items-start space-x-4 bg-blue-50 p-4 rounded-xl">
                                     <span class="text-2xl">🔄</span>
                                     <p class="latin-body text-gray-700">
                                         <strong>Tidak terikat dengan jenis isim</strong> yang disifati
-                                        <br><span class="arabic-text text-blue-600">المكتب أكبر</span> dan <span class="arabic-text text-blue-600">اَلْمَدْرَسَةُ أَكْبَرُ</span>
+                                        <br><span class="arabic-text text-blue-600">اَلْكِتَابُ أَكْبَرُ</span> dan <span class="arabic-text text-blue-600">اَلْمَدْرَسَةُ أَكْبَرُ</span>
                                     </p>
                                 </div>
                                 <div class="flex items-start space-x-4 bg-green-50 p-4 rounded-xl">
@@ -1326,7 +1451,7 @@
                                 ${[
                                     ['طَوِيْلٌ', 'panjang', 'أَطْوَلُ', 'lebih panjang'],
                                     ['قَصِيْرٌ', 'pendek', 'أَقْصَرُ', 'lebih pendek'],
-                                    ['كَبِيْرٌ', 'besar', 'أَكْبَرُ', 'lebih besar'],
+                                    ['كَبِيْرٌ', 'besar', 'اَكْبَرُ', 'lebih besar'],
                                     ['صَغِيْرٌ', 'kecil', 'أَصْغَرُ', 'lebih kecil'],
                                     ['كَثِيْرٌ', 'banyak', 'أَكْثَرُ', 'lebih banyak'],
                                     ['عَمِيْقٌ', 'dalam', 'أَعْمَقُ', 'lebih dalam'],
@@ -1337,11 +1462,11 @@
                                 ].map(([arabic1, indo1, arabic2, indo2]) => `
                                     <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-4 rounded-xl border-l-4 border-sky-400">
                                         <div class="flex justify-between items-center mb-2">
-                                            <span class="arabic-text text-xl text-gray-800">${arabic1}</span>
+                                            <span class="arabic-text text-xl text-gray-1000">${arabic1}</span>
                                             <span class="latin-body text-gray-600">${indo1}</span>
                                         </div>
                                         <div class="flex justify-between items-center">
-                                            <span class="arabic-text text-xl text-sky-600 font-bold">${arabic2}</span>
+                                            <span class="arabic-text text-xl text-sky-800 font-bold">${arabic2}</span>
                                             <span class="latin-body text-sky-700 font-semibold">${indo2}</span>
                                         </div>
                                     </div>
@@ -1371,7 +1496,7 @@
                             </div>
                             
                             <div class="mt-6 bg-amber-50 p-6 rounded-2xl">
-                                <h4 class="latin-heading text-lg text-gray-800 mb-3">💡 Tips Menghapal:</h4>
+                                <h4 class="latin-heading text-lg text-gray-800 mb-3"><span class="emoji">💡</span> Tips Menghapal:</h4>
                                 <p class="latin-body text-gray-700">
                                     Perhatikan pola <span class="arabic-text text-amber-600">أَفْعَلُ</span> selalu dimulai dengan huruf alif dan fathah, 
                                     diikuti huruf asli kata dengan sukun, lalu huruf ketiga dengan fathah, dan diakhiri dhammah.
@@ -1390,10 +1515,9 @@
                                     Tonton video pembelajaran untuk memahami Isim Tafdil dengan lebih baik!
                                 </p>
                                 <div class="bg-white p-2 md:p-4 rounded-xl">
-                                    <div class="aspect-video w-full video-container">
+                                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                                         <iframe 
-                                            width="100%" 
-                                            height="100%" 
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
                                             src="https://www.youtube.com/embed/eT0zRmw5Wzw?enablejsapi=1&origin=https://www.canva.com&rel=0&modestbranding=1&playsinline=1" 
                                             title="Video Pembelajaran Isim Tafdil"
                                             frameborder="0" 
@@ -1428,8 +1552,8 @@
                                             <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">K</div>
                                             <div class="flex-1">
                                                 <div class="bg-green-50 p-4 rounded-xl">
-                                                    <div class="arabic-text text-lg text-gray-800 mb-2">نَعَمْ، أَحْسَنْتَ. لَكِنْ جِسْمُ أَبِي أَكْبَرُ مِنْ جِسْمِي</div>
-                                                    <div class="latin-body text-gray-600 text-sm italic">Na'am, ahsanta. Lākin jismu abī akbaru min jismī</div>
+                                                    <div class="arabic-text text-lg text-gray-800 mb-2">نَعَمْ، أحْسَنْتَ. لَكِنْ جِسْمُ أَبِي أَكْبَرُ مِنْ جِسْمِي</div>
+                                                    <div class="latin-body text-gray-600 text-sm italic">Na'am, ahsanta. Lākin jismu abi akbaru min jismī</div>
                                                     <div class="latin-body text-gray-700 font-semibold">Ya, benar. Tapi tubuh ayahku lebih besar dari tubuhku</div>
                                                 </div>
                                             </div>
@@ -1439,7 +1563,7 @@
                                             <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">H</div>
                                             <div class="flex-1">
                                                 <div class="bg-blue-50 p-4 rounded-xl">
-                                                    <div class="arabic-text text-lg text-gray-800 mb-2">أَيُّهُمَا أَقْوَى؟ جِسْمُكَ أَوْ جِسْمُ أَبِيكَ؟</div>
+                                                    <div class="arabic-text text-lg text-gray-800 mb-2">أَيُّهُمَا أَقْوَى؟ جِسْمُكَ أَوْ جِسْمُ أَبِيْكَ؟</div>
                                                     <div class="latin-body text-gray-600 text-sm italic">Ayyuhumā aqwā? Jismuka aw jismu abīka?</div>
                                                     <div class="latin-body text-gray-700 font-semibold">Mana yang lebih kuat? Tubuhmu atau tubuh ayahmu?</div>
                                                 </div>
@@ -1450,7 +1574,7 @@
                                             <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">K</div>
                                             <div class="flex-1">
                                                 <div class="bg-green-50 p-4 rounded-xl">
-                                                    <div class="arabic-text text-lg text-gray-800 mb-2">جِسْمِي قَوِيٌّ، لَكِنْ جِسْمُ أَبِي أَقْوَى</div>
+                                                    <div class="arabic-text text-lg text-gray-800 mb-2">جِسْمِيْ قَوِيٌّ، لَكِنْ جِسْمُ أَبِي أَقْوَى</div>
                                                     <div class="latin-body text-gray-600 text-sm italic">Jismī qawiyyun, lākin jismu abī aqwā</div>
                                                     <div class="latin-body text-gray-700 font-semibold">Tubuhku kuat, tapi tubuh ayahku lebih kuat</div>
                                                 </div>
@@ -1461,7 +1585,7 @@
                                             <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">H</div>
                                             <div class="flex-1">
                                                 <div class="bg-blue-50 p-4 rounded-xl">
-                                                    <div class="arabic-text text-lg text-gray-800 mb-2">هَلْ شَعْرُ أَبِيكَ طَوِيلٌ؟</div>
+                                                    <div class="arabic-text text-lg text-gray-800 mb-2">هَلْ شَعْرُ أَبِيكَ طَوِيْلٌ؟</div>
                                                     <div class="latin-body text-gray-600 text-sm italic">Hal sya'ru abīka ṭawīlun?</div>
                                                     <div class="latin-body text-gray-700 font-semibold">Apakah rambut ayahmu panjang?</div>
                                                 </div>
@@ -1492,8 +1616,8 @@
                             <div class="space-y-6">
                                 ${[
                                     {
-                                        arabic: 'هَذَا الْبَيْتُ أَكْبَرُ مِنْ ذَلِكَ الْبَيْتِ',
-                                        latin: 'Hāżā al-baytu akbaru min żālika al-bayti',
+                                        arabic: 'هَذَا الْبَيْتِ أَكْبَرُ مِنْ ذَلِكَ الْبَيْتِ',
+                                        latin: 'Hāżā al-bayti akbaru min żālika al-bayti',
                                         indo: 'Rumah ini lebih besar dari rumah itu'
                                     },
                                     {
@@ -1507,13 +1631,13 @@
                                         indo: 'Sekolah lebih dekat dari masjid'
                                     },
                                     {
-                                        arabic: 'هَذَا الدَّرْسُ أَسْهَلُ مِنْ ذَلِكَ الدَّرْسِ',
-                                        latin: 'Hāżā ad-darsu ashalu min żālika ad-darsi',
+                                        arabic: 'هَذَا الدَّرْسِ أَسْهَلُ مِنْ ذَلِكَ الدَّرْسِ',
+                                        latin: 'Hāżā ad-darsu ashalu min dzālika ad-darsi',
                                         indo: 'Pelajaran ini lebih mudah dari pelajaran itu'
                                     },
                                     {
-                                        arabic: 'الْكِتَابُ أَكْثَرُ فَائِدَةً مِنَ التِّلْفَازِ',
-                                        latin: 'Al-kitābu akṡaru fā\'idatan min at-tilfāzi',
+                                        arabic: 'الْكِتَابُ أَكْثَرُ فائِدَة مِنَ التِّلْفَازِ',
+                                        latin: 'Al-kitabu akṡaru fā\'idatan min at-tilfāzi',
                                         indo: 'Buku lebih bermanfaat dari televisi'
                                     }
                                 ].map(sentence => `
@@ -1525,9 +1649,9 @@
                                 `).join('')}
                             </div>
                             <div class="mt-8 bg-green-50 p-6 rounded-2xl">
-                                <h4 class="latin-heading text-lg text-gray-800 mb-3">📝 Struktur Kalimat:</h4>
+                                <h4 class="latin-heading text-lg text-gray-800 mb-3">📑 Struktur Kalimat:</h4>
                                 <p class="latin-body text-gray-700 mb-2">
-                                    <span class="arabic-text text-green-600">اسم + أفعل + مِنْ + اسم</span>
+                                    <span class="arabic-text text-green-600">اِسْمٌ + أَفْعَلُ + مِنْ + اِسْمٌ</span>
                                 </p>
                                 <p class="latin-body text-gray-600">
                                     (Subjek + Isim Tafdil + min + Objek Pembanding)
@@ -1551,14 +1675,14 @@
                             <h3 class="latin-heading text-2xl text-gray-800 mb-6">Nama-nama Bentuk di Sekitar Kita</h3>
                             <div class="grid md:grid-cols-3 gap-4 mb-8">
                                 ${[
-                                    ['مُكَعَّبٌ', 'kubus', '🧊'],
+                                    ['مُكَعَّبٌ', 'kubus', '🎲'],
                                     ['مُسْتَدِيْرٌ', 'lingkaran', '⭕'],
                                     ['كُرَوِيٌّ', 'bulat', '⚽'],
                                     ['نَجْمَةٌ', 'bintang', '⭐'],
                                     ['مُثَلَّثٌ', 'segitiga', '🔺'],
                                     ['مُسْتَطِيْلٌ', 'persegi panjang', '📱'],
                                     ['مُرَبَّعٌ', 'persegi', '⬜'],
-                                    ['مَخْرُوْطٌ', 'kerucut', '🍦'],
+                                    ['مَخْرُوْطٌ', 'kerucut', '🗻'],
                                     ['أُسْطُوَانِيٌّ', 'tabung', '🥫']
                                 ].map(([arabic, indo, emoji]) => `
                                     <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-2xl text-center border-2 border-purple-100 hover:border-purple-300 transition-all">
@@ -1630,12 +1754,12 @@
                                     <div class="bg-white p-4 rounded-xl">
                                         <h5 class="latin-heading text-lg text-pink-600 mb-2">Muannats (مُؤَنَّثٌ)</h5>
                                         <p class="latin-body text-gray-700">Kata benda perempuan, berakhiran ta marbuthah (ة)</p>
-                                        <div class="arabic-text text-pink-600 mt-2">الكُرَّاسَةُ - السَّاعَةُ - العَجَلَةُ</div>
+                                        <div class="arabic-text text-pink-600 mt-2">الكُرَّاسَةُ - السَّاعَةُ - المَجَلَةُ</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <h4 class="latin-heading text-xl text-gray-800 mb-4">Pola Kalimat dengan شَكْل</h4>
+                            <h4 class="latin-heading text-xl text-gray-800 mb-4">Pola Kalimat dengan الشَّكْل</h4>
                             
                             <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-2xl mb-8">
                                 <h4 class="latin-heading text-xl text-gray-800 mb-4 flex items-center">
@@ -1660,7 +1784,7 @@
                                             <div class="flex-1">
                                                 <div class="bg-green-50 p-4 rounded-xl">
                                                     <div class="arabic-text text-lg text-gray-800 mb-2">نَعَمْ، الخِزَانَةُ شَكْلُهَا مُكَعَّبٌ</div>
-                                                    <div class="latin-body text-gray-600 text-sm italic">Na'am, al-khizānatu shakluhā muka''abun</div>
+                                                    <div class="latin-body text-gray-600 text-sm italic">Na'am, al-khizānatu shakluha muka''abun</div>
                                                     <div class="latin-body text-gray-700 font-semibold">Ya, lemari bentuknya kubus</div>
                                                 </div>
                                             </div>
@@ -1712,7 +1836,7 @@
                                         ${[
                                             ['الكِتَابُ شَكْلُهُ مُسْتَطِيْلٌ', 'Buku bentuknya persegi panjang'],
                                             ['الرُّمَّانُ شَكْلُهُ كُرَوِيٌّ', 'Delima bentuknya bulat'],
-                                            ['البَرْمِيلُ شَكْلُهُ أُسْطُوَانِيٌّ', 'Tong bentuknya tabung']
+                                            ['البِرْمِيلُ شَكْلُهُ أُسْطُوَانِيٌّ', 'Tong bentuknya tabung']
                                         ].map(([arabic, indo]) => `
                                             <div class="bg-white p-3 rounded-lg">
                                                 <div class="arabic-text text-gray-800 mb-1">${arabic}</div>
@@ -1762,8 +1886,9 @@
                                 ${[
                                     ['أَسْوَدُ', 'hitam', '⚫', 'from-gray-800 to-black'],
                                     ['أَبْيَضُ', 'putih', '⚪', 'from-gray-100 to-white border-2 border-gray-200'],
-                                    ['بُنِّيٌّ/أَسْمَرُ', 'coklat', '🤎', 'from-amber-700 to-yellow-800'],
-                                    ['رَمَادِيٌّ', 'abu-abu', '🔘', 'from-gray-400 to-gray-600'],
+                                    ['أَزْرَقُ', 'biru', '🔵', 'from-blue-500 to-blue-700'],
+                                    ['بُنِّيٌّ', 'coklat', '🤎', 'from-amber-700 to-yellow-800'],
+                                    ['رَمَادِيٌّ', 'abu-abu', '⚙️', 'from-gray-400 to-gray-600'],
                                     ['أَحْمَرُ', 'merah', '🔴', 'from-red-500 to-red-700'],
                                     ['أَصْفَرُ', 'kuning', '🟡', 'from-yellow-400 to-yellow-600'],
                                     ['أَخْضَرُ', 'hijau', '🟢', 'from-green-500 to-green-700']
@@ -1832,7 +1957,7 @@
                                 <h4 class="latin-heading text-xl text-gray-800 mb-4">Konsep Dasar Warna dalam Kalimat</h4>
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div class="bg-white p-4 rounded-xl">
-                                        <h5 class="latin-heading text-lg text-blue-600 mb-2">لَوْنُهُ (Warnanya - Muzakkar)</h5>
+                                        <h5 class="latin-heading text-lg text-blue-600 mb-2">لَونُهُ (Warnanya - Muzakkar)</h5>
                                         <p class="latin-body text-gray-700 mb-2">Digunakan untuk kata benda muzakkar (laki-laki)</p>
                                         <div class="arabic-text text-blue-600">الكِتَابُ - القَلَمُ - البَيْتُ</div>
                                     </div>
@@ -1844,7 +1969,7 @@
                                 </div>
                             </div>
 
-                            <h4 class="latin-heading text-xl text-gray-800 mb-6">Pola Kalimat dengan لَوْن</h4>
+                            <h4 class="latin-heading text-xl text-gray-800 mb-6">Pola Kalimat dengan لَوْنُ</h4>
                             
                             <div class="space-y-6 mb-8">
                                 <div class="bg-blue-50 p-6 rounded-2xl">
@@ -1854,12 +1979,12 @@
                                             ['الكِتَابُ لَوْنُهُ أَحْمَرُ', 'Buku warnanya merah', '📕'],
                                             ['القَلَمُ لَوْنُهُ أَزْرَقُ', 'Pulpen warnanya biru', '🖊️'],
                                             ['البَيْتُ لَوْنُهُ أَبْيَضُ', 'Rumah warnanya putih', '🏠'],
-                                            ['الحَاسُوْبُ لَوْنُهُ أَسْوَدُ', 'Komputer warnanya hitam', '💻']
+                                            ['الحَاسِبُ لَوْنُهُ أَسْوَدُ', 'Komputer warnanya hitam', '💻']
                                         ].map(([arabic, indo, emoji]) => `
                                             <div class="bg-white p-4 rounded-lg flex items-center space-x-4">
                                                 <span class="text-2xl">${emoji}</span>
                                                 <div class="flex-1">
-                                                    <div class="arabic-text text-gray-800 mb-1">${arabic}</div>
+                                                    <div class="arabic-text text-gray-1200 mb-1">${arabic}</div>
                                                     <div class="latin-body text-gray-600 text-sm">${indo}</div>
                                                 </div>
                                             </div>
@@ -1889,11 +2014,11 @@
                             </div>
 
                             <div class="bg-green-50 p-6 rounded-2xl mb-6">
-                                <h4 class="latin-heading text-lg text-green-600 mb-3">Pola Kalimat Langsung (Tanpa لَوْن)</h4>
+                                <h4 class="latin-heading text-lg text-green-600 mb-3">Pola Kalimat Langsung (Tanpa لَوْنُ)</h4>
                                 <div class="space-y-3">
                                     ${[
-                                        ['السَّمَاءُ زَرْقَاءُ', 'Langit biru', '☁️'],
-                                        ['الثَّلْجُ أَبْيَضُ', 'Salju putih', '❄️'],
+                                        ['السّمَاءُ زَرْقَاءُ', 'Langit biru', '☁️'],
+                                        ['الثَّلْجُ أَبْيَضُ', 'Salju putih', '⛄'],
                                         ['الشَّمْسُ صَفْرَاءُ', 'Matahari kuning', '☀️']
                                     ].map(([arabic, indo, emoji]) => `
                                         <div class="bg-white p-3 rounded-lg flex items-center space-x-3">
@@ -1904,6 +2029,61 @@
                                             </div>
                                         </div>
                                     `).join('')}
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-pink-50 to-purple-50 p-6 rounded-2xl mb-6">
+                                <h4 class="latin-heading text-lg text-pink-600 mb-3">📋 Kosakata Warna Muannats (مؤنث)</h4>
+                                <p class="latin-body text-gray-700 mb-4 text-sm">
+                                    Untuk kata benda muannats, kata sifat warna juga harus berubah menjadi muannats dengan menambahkan <strong>اء</strong> di akhir:
+                                </p>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    ${[
+                                        ['أَحْمَرُ', 'حَمْرَاءُ', 'merah (muannats)', '🔴'],
+                                        ['أَصْفَرُ', 'صَفْرَاءُ', 'kuning (muannats)', '🟡'],
+                                        ['أَخْضَرُ', 'خَضْرَاءُ', 'hijau (muannats)', '🟢'],
+                                        ['أَزْرَقُ', 'زَرْقَاءُ', 'biru (muannats)', '🔵'],
+                                        ['أَبْيَضُ', 'بَيْضَاءُ', 'putih (muannats)', '⚪'],
+                                        ['أَسْوَدُ', 'سَوْدَاءُ', 'hitam (muannats)', '⚫']
+                                    ].map(([muzakkar, muannats, indo, emoji]) => `
+                                        <div class="bg-white p-4 rounded-xl border-l-4 border-pink-400">
+                                            <div class="flex items-center space-x-3 mb-2">
+                                                <span class="text-2xl">${emoji}</span>
+                                                <div class="flex-1">
+                                                    <div class="flex justify-between items-center mb-1">
+                                                        <span class="arabic-text text-gray-1200 text-sm line-through">${muzakkar}</span>
+                                                        <span class="text-xs text-gray-800">مُذَكَّرٌ</span>
+                                                    </div>
+                                                    <div class="flex justify-between items-center">
+                                                        <span class="arabic-text text-pink-1200 text-lg font-bold">${muannats}</span>
+                                                        <span class="text-xs text-pink-800">مؤنث</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="latin-body text-gray-600 text-sm font-semibold">${indo}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <div class="mt-4 bg-white p-4 rounded-xl">
+                                    <h5 class="latin-heading text-sm font-semibold text-purple-700 mb-2">📌 Contoh Penggunaan:</h5>
+                                    <div class="space-y-2">
+                                        ${[
+                                            ['الوَرْدَةُ حَمْرَاءُ', 'Bunga mawar merah', '🌹'],
+                                            ['السَّيَّارَةُ زَرْقَاءُ', 'Mobil biru', '🚗'],
+                                            ['الشَّجَرَةُ خَضْرَاءُ', 'Pohon hijau', '🌳'],
+                                            ['الكُرَّاسَةُ صَفْرَاءُ', 'Buku tulis kuning', '📒'],
+                                            ['الحَقِيبَةُ سَوْدَاءُ', 'Tas hitam', '👜'],
+                                            ['الوَرَقَةُ بَيْضَاءُ', 'Kertas putih', '📄']
+                                        ].map(([arabic, indo, emoji]) => `
+                                            <div class="flex items-center space-x-2 bg-purple-50 p-2 rounded-lg">
+                                                <span class="text-lg">${emoji}</span>
+                                                <div class="flex-1">
+                                                    <span class="arabic-text text-gray-800 text-sm">${arabic}</span>
+                                                    <span class="latin-body text-gray-600 text-xs ml-2">→ ${indo}</span>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
                                 </div>
                             </div>
 
@@ -1950,13 +2130,13 @@
                                     ['صَفَرٌ', 'Safar', '🌒', '2'],
                                     ['رَبِيْعُ الْأَوَّلِ', 'Rabiul Awwal', '🌓', '3'],
                                     ['رَبِيْعُ الْآخِرِ', 'Rabiul Akhir', '🌔', '4'],
-                                    ['جُمَادَى الْأُوْلَى', 'Jumadal Ula', '🌕', '5'],
-                                    ['جُمَادَى الْآخِرَةِ', 'Jumadal Akhirah', '🌖', '6'],
+                                    ['جُمَادُ الْأوَّلِ', 'Jumadul Awwal', '🌕', '5'],
+                                    ['جُمَادُ الثَّانِي', 'Jumadu Ats-tsani', '🌖', '6'],
                                     ['رَجَبٌ', 'Rajab', '🌗', '7'],
                                     ['شَعْبَانُ', 'Syaban', '🌘', '8'],
                                     ['رَمَضَانُ', 'Ramadan', '🌙', '9'],
                                     ['شَوَّالٌ', 'Syawal', '🌛', '10'],
-                                    ['ذُو الْقَعْدَةِ', 'Dzulqaidah', '🌜', '11'],
+                                    ['ذُو الْقَعْدَةِ', 'Dzulqaidah', '🌚', '11'],
                                     ['ذُو الْحِجَّةِ', 'Dzulhijjah', '🕋', '12']
                                 ].map(([arabic, indo, emoji, num]) => `
                                     <div class="bg-gradient-to-br from-amber-50 to-yellow-50 p-4 rounded-2xl text-center border-2 border-amber-100 hover:border-amber-300 transition-all">
@@ -1993,7 +2173,7 @@
                             </div>
 
                             <div class="bg-green-50 p-6 rounded-2xl">
-                                <h4 class="latin-heading text-lg text-green-600 mb-3">📚 Fakta Menarik Kalender Hijriah</h4>
+                                <h4 class="latin-heading text-lg text-green-600 mb-3">📑 Fakta Menarik Kalender Hijriah</h4>
                                 <div class="space-y-3">
                                     <div class="flex items-start space-x-3">
                                         <span class="text-xl">🌙</span>
@@ -2028,11 +2208,11 @@
                                     <div class="space-y-4">
                                         ${[
                                             ['رَمَضَانُ شَهْرُ الصِّيَامِ', 'Ramadan adalah bulan puasa', '🌙', 'bg-blue-50'],
-                                            ['رَبِيْعُ الْأَوَّلِ مَوْلِدُ الرَّسُوْلِ', 'Rabiul Awwal adalah kelahiran Rasul', '🕌', 'bg-green-50'],
-                                            ['شَوَّالٌ فِيْهِ عِيْدُ الْفِطْرِ', 'Syawal di dalamnya ada Idul Fitri', '🎉', 'bg-yellow-50'],
-                                            ['ذُو الْحِجَّةِ شَهْرُ الْحَجِّ', 'Dzulhijjah adalah bulan Haji', '🕋', 'bg-amber-50'],
+                                            ['رَبِيْعُ الْأَوَّلِ مَوْلِدُ الرَّسُوْلِ', 'Rabiul Awwal adalah kelahiran Rasul', '🎊', 'bg-green-50'],
+                                            [' َشَوَّالٌ فِيْهِ عِيْدُ لْفِطْر', 'Syawal di dalamnya ada Idul Fitri', '🎉', 'bg-yellow-50'],
+                                            ['ذُو الْحِجَّةِ شَهْرالْحَجَّةّ', 'Dzulhijjah adalah bulan Haji', '🕋', 'bg-amber-50'],
                                             ['مُحَرَّمٌ شَهْرٌ حَرَامٌ', 'Muharram adalah bulan haram (suci)', '🌙', 'bg-purple-50'],
-                                            ['عَاشُوْرَاءُ فِي مُحَرَّمٍ', 'Asyura di bulan Muharram', '📿', 'bg-indigo-50']
+                                            ['الشُوْرَاءُ فِيْهَا مُحَرَّم', 'Asyura di bulan Muharram', '📿', 'bg-indigo-50']
                                         ].map(([arabic, indo, emoji, bgColor]) => `
                                             <div class="${bgColor} p-4 rounded-xl border-l-4 border-green-400">
                                                 <div class="flex items-center space-x-4">
@@ -2051,11 +2231,11 @@
                                     <h4 class="latin-heading text-xl text-blue-600 mb-4">Kalimat Sehari-hari tentang Bulan</h4>
                                     <div class="space-y-4">
                                         ${[
-                                            ['نَحْنُ فِي شَهْرِ رَمَضَانَ', 'Kita sedang di bulan Ramadan'],
-                                            ['الْيَوْمَ أَوَّلُ مُحَرَّمٍ', 'Hari ini tanggal satu Muharram'],
+                                            ['نَخْنُ فِي شَهْرِ رَمَضَانَ', 'Kita sedang di bulan Ramadan'],
+                                            ['اليَوْمُ أَوَّل مُحَرَّمٍ', 'Hari ini tanggal satu Muharram'],
                                             ['شَعْبَانُ قَبْلَ رَمَضَانَ', 'Syaban sebelum Ramadan'],
-                                            ['بَعْدَ رَمَضَانَ شَوَّالٌ', 'Setelah Ramadan adalah Syawal'],
-                                            ['رَجَبٌ شَهْرٌ كَرِيْمٌ', 'Rajab adalah bulan yang mulia']
+                                            ['بَعْدَ رَمَضَانَ ��َوَّالٌ', 'Setelah Ramadan adalah Syawal'],
+                                            ['رَجَبٌ شَهْرُ كَرِيْم', 'Rajab adalah bulan yang mulia']
                                         ].map(([arabic, indo]) => `
                                             <div class="bg-white p-4 rounded-lg">
                                                 <div class="arabic-text text-lg text-gray-800 mb-2">${arabic}</div>
@@ -2155,13 +2335,13 @@
                     explanation: "أَطْوَلُ berarti 'lebih panjang'"
                 },
                 {
-                    question: "Dalam kalimat 'اَلْبَيْتُ أَكْبَرُ مِنَ الْمَدْرَسَةِ', kata مِنْ berfungsi untuk:",
+                    question: "Dalam kalimat 'اَلْبَيْتُ أَكْبَرُ مِنَ المَدْرَسَةِ', kata مِنْ berfungsi untuk:",
                     options: ["Menunjukkan tempat", "Menunjukkan waktu", "Menunjukkan perbandingan", "Menunjukkan kepemilikan"],
                     correct: 2,
                     explanation: "مِنْ dalam Isim Tafdil berfungsi untuk menunjukkan objek yang dibandingkan"
                 },
                 {
-                    question: "أَصْغَرُ artinya:",
+                    question: " أَصْغَرُ artinya:",
                     options: ["Lebih besar", "Lebih kecil", "Sama besar", "Paling besar"],
                     correct: 1,
                     explanation: "أَصْغَرُ berarti 'lebih kecil'"
@@ -2180,7 +2360,7 @@
                 },
                 {
                     question: "Struktur kalimat Isim Tafdil adalah:",
-                    options: ["اِسْمٌ + أَفْعَلُ + مِنْ + اِسْمٌ", "أَفْعَلُ + اِسْمٌ + مِنْ + اِسْمٌ", "اِسْمٌ + مِنْ + أَفْعَلُ + اِسْمُ", "مِنْ + اِسْمٌ + أَفْعَلُ + اِسْمٌ"],
+                    options: ["اِسْمٌ + أَفْعَلُ + مِنْ + اِسْمٌ", "أَفْعَلُ + اِسْمٌ + مِنْ + اِسْمٌ", "اِسْمٌ + مِن + أَفْعَلُ + اِسْمٌ", "مِنْ + اِسْمٌ + أَفْعَلُ + اِسْمٌ"],
                     correct: 0,
                     explanation: "Struktur kalimat Isim Tafdil: اِسْمٌ + أَفْعَلُ + مِنْ + اِسْمٌ"
                 },
@@ -2191,7 +2371,7 @@
                     explanation: "أَسْهَلُ berarti 'lebih mudah'"
                 },
                 {
-                    question: "Apa arti kalimat: هَذَا الْبَيْتُ أَكْبَرُ مِنْ ذَلِكَ الْبَيْتِ",
+                    question: "Apa arti kalimat: هَذَا الْيَيْتِ أَكْبَرُ مِنْ ذَلِكَ الْبَيْتِ",
                     options: ["Rumah ini lebih kecil dari rumah itu", "Rumah ini sama besar dengan rumah itu", "Rumah ini lebih besar dari rumah itu", "Rumah ini paling besar"],
                     correct: 2,
                     explanation: "أَكْبَرُ مِنْ berarti 'lebih besar dari', jadi kalimat ini berarti 'Rumah ini lebih besar dari rumah itu'"
@@ -2212,10 +2392,10 @@
                     question: "أَكْثَرُ artinya:",
                     options: ["Lebih sedikit", "Lebih banyak", "Sama banyak", "Paling sedikit"],
                     correct: 1,
-                    explanation: "أَكْثَرُ berarti 'lebih banyak'"
+                    explanation: "أَكْبَثَر berarti 'lebih banyak'"
                 },
                 {
-                    question: "Dalam dialog, 'جِسْمُ أَبِيْ أَكْبَرُ مِنْ جِسْمِي' artinya:",
+                    question: "Dalam dialog, 'جِسْمُ أَبِيْ أَكْبَرُ مِنْ جِسْمِيْ' artinya:",
                     options: ["Tubuh ayahku lebih kecil dari tubuhku", "Tubuh ayahku lebih besar dari tubuhku", "Tubuh ayahku sama dengan tubuhku", "Tubuh ayahku paling besar"],
                     correct: 1,
                     explanation: "جِسْمُ أَبِيْ أَكْبَرُ مِنْ جِسْمِيْ berarti 'Tubuh ayahku lebih besar dari tubuhku'"
@@ -2239,7 +2419,7 @@
                     explanation: "أَضْعَفُ berarti 'lebih lemah'"
                 },
                 {
-                    question: "Apa arti kalimat: الْكِتَابُ أَكْثَرُ فَائِدَةً مِنَ التِّلْفَازِ",
+                    question: "Apa arti kalimat: الْكِتَابُ أَكْثَرُ فَائِدَة مِنَ التِّلْفَازِ",
                     options: ["Buku lebih mahal dari televisi", "Buku lebih bermanfaat dari televisi", "Buku lebih besar dari televisi", "Buku lebih berat dari televisi"],
                     correct: 1,
                     explanation: "أَكْثَرُ فَائِدَةً berarti 'lebih bermanfaat', jadi kalimat ini berarti 'Buku lebih bermanfaat dari televisi'"
@@ -2254,7 +2434,7 @@
                 },
                 {
                     question: "Bentuk yang memiliki tiga sisi adalah:",
-                    options: ["مُثَلَّثٌ", "مُرَبَّعٌ", "مُسْتَدِيْرٌ", "مُسْتَطِيْلٌ"],
+                    options: ["مُثَلَّثٌ", "مُرَبَعٌ", "مُسْتَدِيْرٌ", "مُسْتَطِيْلٌ"],
                     correct: 0,
                     explanation: "مُثَلَّثٌ (segitiga) adalah bentuk yang memiliki tiga sisi"
                 },
@@ -2265,10 +2445,10 @@
                     explanation: "أُسْطُوَانِيٌّ berarti tabung atau silinder"
                 },
                 {
-                    question: "Dalam kalimat 'اَلْكُرَةُ شَكْلُهَا كُرَوِيٌّ', kata 'شَكْلُهَا' digunakan karena اَلْكُرَةُ adalah:",
+                    question: "Dalam kalimat 'اَلْكُرَةُ شَكْلُهَا مُسْتَدِيْرٌ', kata 'شَكْلُهَا' digunakan karena الكُرَةُ adalah:",
                     options: ["Muannats", "Muzakkar", "Jamak", "Mufrad"],
                     correct: 0,
-                    explanation: "اَلْكُرَةُ adalah muannats (berakhiran ta marbuthah), sehingga menggunakan شَكْلُهَا"
+                    explanation: "الكرة adalah muannats (berakhiran ta marbuthah), sehingga menggunakan شكلها"
                 },
                 {
                     question: "مُكَعَّبٌ artinya:",
@@ -2277,10 +2457,10 @@
                     explanation: "مُكَعَّبٌ berarti kubus atau bentuk dadu"
                 },
                 {
-                    question: "Dhamir untuk jenis muzakkar, kita menggunakan:",
-                    options: ["شَكْلُهَا", "شَكْلُهُمَا", "شَكْلُهُ", "شَكْلُهُمْ"],
+                    question: "Untuk menyebutkan kalimat 'bentuknya'  dalam muzakkar, kita menggunakan:",
+                    options: ["شَكْلُهَا", "شَكْلُكِ", "شَكْلُهُ", "شَكْلُهُنَّ"],
                     correct: 2,
-                    explanation: "Untuk kata muzakkar, kita menggunakan شَكْلُهُ (bentuknya untuk laki-laki)"
+                    explanation: "Untuk kata muzakkar, kita menggunakan شكله (bentuknya untuk laki-laki)"
                 },
                 {
                     question: "نَجْمَةٌ artinya:",
@@ -2295,10 +2475,10 @@
                     explanation: "كُرَوِيٌّ berarti bulat atau berbentuk bola"
                 },
                 {
-                    question: "Dalam kalimat 'اَلْكِتَابُ شَكْلُهُ مُسْتَطِيْلٌ', اَلْكِتَابُ adalah:",
-                    options: ["Muannats", "Jamak", "Muzakkar", "Dual"],
+                    question: "Dalam kalimat 'الكِتَابُ شَكْلُهُ مُسْتَطِيْلٌ', kata اَلْكِتَابُ merupakan isim jenis:",
+                    options: ["Muannats", "Jamak", "Muzakkar", "Mutsanna"],
                     correct: 2,
-                    explanation: "اَلْكِتَابُ adalah muzakkar (tidak berakhiran ta marbuthah)"
+                    explanation: "الكتاب adalah muzakkar (tidak berakhiran ta marbuthah)"
                 },
                 {
                     question: "مَخْرُوْطٌ artinya:",
@@ -2322,13 +2502,13 @@
                     question: "مُسْتَدِيْرٌ artinya:",
                     options: ["Persegi", "Segitiga", "Persegi panjang", "Lingkaran/bulat"],
                     correct: 3,
-                    explanation: "مُسْتَدِيْرٌ berarti lingkaran atau bulat"
+                    explanation: " مُسْتَدِيْرٌ berarti lingkaran atau bulat"
                 },
                 {
-                    question: "Dalam pola kalimat langsung, 'الكعبة مكعبة', kata مكعبة berubah menjadi muannats karena:",
-                    options: ["الكعبة muzakkar", "الكعبة jamak", "الكعبة muannats", "الكعبة dual"],
+                    question: "Dalam pola kalimat langsung, 'اَلْكَعْبَةُ مُكَعَّبَةٌ', kata مُكَعَّبَةٌ berubah menjadi muannats karena:",
+                    options: ["اَلْكَعْبَةُ muzakkar", "اَلْكَعْبَةُ jamak", "اَلْكَعْبَةُ muannats", "اَلْكَعْبَةُ mutsanna"],
                     correct: 2,
-                    explanation: "الكعبة adalah muannats, sehingga sifatnya juga harus muannats (مكعبة)"
+                    explanation: "اَلْكَعْبَةُ adalah muannats, sehingga sifatnya juga harus muannats (مُكَعَّبَةٌ)"
                 },
                 {
                     question: "Bentuk yang tidak memiliki sudut adalah:",
@@ -2343,10 +2523,10 @@
                     explanation: "الكُرَّاسَةُ شَكْلُهَا مُرَبَّعٌ berarti 'Buku tulis bentuknya persegi'"
                 },
                 {
-                    question: "Dalam kalimat 'السَّاعَةُ شَكْلُهَا مُسْتَدِيْرٌ', mengapa menggunakan شَكْلُهَا?",
-                    options: ["اَلسَّاعَةُ mudzakkar", "اَلسَّاعَةُ jamak", "اَلسَّاعَةُ muannats", "اَلسَّاعَةُ mufrad"],
+                    question: "Dalam kalimat 'اَلسَّاعَةُ شَكْلُهَا مُسْتَدِيْرٌ', mengapa menggunakan شَكْلُهَا?",
+                    options: ["السَّاعَةُ muzakkar", "السَّاعَةُ jamak", "السَّاعَةُ muannats", "السَّاعَةُ mufrad"],
                     correct: 2,
-                    explanation: "اَلسَّاعَةُ adalah muannats (berakhiran ta marbuthah), sehingga menggunakan شَكْلُهَا"
+                    explanation: "الساعة adalah muannats (berakhiran ta marbuthah), sehingga menggunakan شكلها"
                 },
                 {
                     question: "Bentuk yang memiliki empat sisi sama panjang adalah:",
@@ -2355,10 +2535,10 @@
                     explanation: "مُرَبَّعٌ (persegi) memiliki empat sisi yang sama panjang"
                 },
                 {
-                    question: "Pola kalimat untuk kata jenis mudzakkar adalah:",
-                    options: ["اِسْم مُؤَنَث + شَكْلُهَا + صِفَة", "اِسْمٌ + شَكْلٌ + صِفَةٌ", "اِسْم مُذَكَّر + شَكْلُهُ + صِفَةٌ", "شَكْلٌ + اِسْمٌ + صِفَةٌ"],
+                    question: "Pola kalimat untuk menyebutkan 'bentuknya' dalam muzakkar adalah:",
+                    options: ["اِسْمٌ مُؤَنَّثٌ + شَكْلُهَا + صِفَةٌ", "اِسْمٌ + شَكْلٌ + صِفَةٌ", "اِسْمٌ مُذَكَّرٌ + شَكْلُهُ + صِفَةٌ", "شَكْلٌ + اِسْمٌ + صِفَةٌ"],
                     correct: 2,
-                    explanation: "Untuk mudzakkar: اِسْم مُذَكَّر + شَكْلُهُ + صِفَة مُذَكَّر"
+                    explanation: "Untuk muzakkar: اسم مذكر + شكله + صفة مذكر"
                 },
                 {
                     question: "Yang termasuk bentuk tiga dimensi adalah:",
@@ -2387,8 +2567,8 @@
                     explanation: "أَصْفَرُ berarti kuning"
                 },
                 {
-                    question: "Dalam kalimat 'اَلْكِتَابُ لَوْنُهُ أَحْمَرُ', kata 'لَوْنُهُ' digunakan karena الَكِتَابُ isim jenis:",
-                    options: ["Muannats", "Jamak", "Muzakkar", "Semuanya benar"],
+                    question: "Dalam kalimat 'اَلْكِتَابُ لَوْنُهُ أَحْمَرُ', kata 'لَوْنُهُ' digunakan karena اَلْكِتَابُ adalah:",
+                    options: ["Muannats", "Jamak", "Muzakkar", "Mutsanna"],
                     correct: 2,
                     explanation: "اَلْكِتَابُ adalah muzakkar, sehingga menggunakan لَوْنُهُ"
                 },
@@ -2399,10 +2579,10 @@
                     explanation: "أَخْضَرُ berarti hijau"
                 },
                 {
-                    question: "Untuk dhomir jenis muannats, kita menggunakan:",
-                    options: ["لَوْنُهُ", "لَوْنُكَ", "لَوْنُهَا", "لَوْنُهُمْ"],
+                    question: "Untuk kata menyebutkan 'warnanya' dalam muannats, kita menggunakan:",
+                    options: ["لَوْنُهُ", "لَوْنُهُمَا", "لَوْنُهَا", "لَوْنُهُمْ"],
                     correct: 2,
-                    explanation: "Untuk kata muannats, kita menggunakan لونها"
+                    explanation: "Untuk kata muannats, kita menggunakan لَوْنُهَا"
                 },
                 {
                     question: "أَبْيَضُ artinya:",
@@ -2411,16 +2591,16 @@
                     explanation: "أَبْيَضُ berarti putih"
                 },
                 {
-                    question: "أَسْمَرُ artinya:",
+                    question: " أَسمَرُ artinya:",
                     options: ["Merah", "Coklat", "Kuning", "Hijau"],
                     correct: 1,
                     explanation: "أَسْمَرُ berarti coklat"
                 },
                 {
-                    question: "Dalam kalimat 'اَلسَّيَّارَةُ لَوْنُهَا أَحْمَرُ', اَلسَّيَّارَةُ adalah:",
+                    question: "Dalam kalimat 'اَلسَّيَّارَةُ لَوْنُهَا أَحْمَرُ' kata اَلسَّيَّارَةُ isim jenis:",
                     options: ["Muzakkar", "Jamak", "Muannats", "Mutsanna"],
                     correct: 2,
-                    explanation: "اَلسَّيَّارَةُ adalah muannats (berakhiran ta marbuthah)"
+                    explanation: "السيارة adalah muannats (berakhiran ta marbuthah)"
                 },
                 {
                     question: "رَمَادِيٌّ artinya:",
@@ -2429,16 +2609,16 @@
                     explanation: "رَمَادِيٌّ berarti abu-abu"
                 },
                 {
-                    question: "Pola kalimat untuk kata muzakkar adalah:",
-                    options: ["اِسْمُ مُؤَنَّث + لَوْنُهَا + صِفَة", "اِسْمٌ + لَوْنٌ + صِفَةٌ", "اِسْم مُذَكَّر + لَوْنُهُ + صِفَةٌ", "لَوْنُ + اِسْمُ + صِفَةٌ"],
+                    question: "Pola kalimat untuk menyebutkan '... warnanya ... ' dalam muzakkar adalah:",
+                    options: ["اِسْمٌ مُؤَنَّثٌ + لَوْنُهَا + صِفَةٌ", "اِسْمٌ + لَوْنٌ + صِفةٌ ", "اِسْمٌ مُذَكَّرٌ + لَوْنُهُ + صِفَةٌ", "لَوْنٌ + اِسْمٌ + صِفَةٌ"],
                     correct: 2,
-                    explanation: "Untuk muzakkar: اِسْم مُذَكَّر + لَوْنُهُ + صِفَةٌ"
+                    explanation: "Untuk muzakkar: اسم مذكر + لونه + صفة"
                 },
                 {
                     question: "Dalam kalimat 'اَلشَّمْسُ صَفْرَاءُ', mengapa tidak menggunakan لَوْنٌ?",
-                    options: ["Karena salah", "Karena jamak", "Karena pola langsung", "Karena jenis mudzakkar"],
+                    options: ["Karena salah", "Karena jamak", "Karena pola langsung", "Karena dual"],
                     correct: 2,
-                    explanation: "Ini adalah pola kalimat langsung tanpa menggunakan kata لون"
+                    explanation: "Ini adalah pola kalimat langsung tanpa menggunakan kata لَوْنٌ"
                 },
                 {
                     question: "Warna yang cocok untuk daun adalah:",
@@ -2448,21 +2628,21 @@
                 },
                 {
                     question: "Dalam lagu mufradat warna, urutan yang benar adalah:",
-                    options: ["أَحْمَرُ أَسْوَدُ أَبْيَضُ", "أَخْضَرُ أَصْفَرُ أَحْمَرُ", "أَسْوَدُ أَبْيَضُ أَسْمَرُ", "أَبْيَضُ أَسْوَدُ رَمَادِيٌ"],
+                    options: ["أَحْمَرُ أَسْوَدُ أَبْيَضُ", "أَخْضَرُ أَصْفَرُ أَحْمَرُ", "أَسْوَدُ أَبْيَضً أَسْمَرُ", "أَبْيَضُ أَسْوَدُ رَمَاِديٌّ"],
                     correct: 2,
                     explanation: "Urutan dalam lagu: أَسْوَدُ أَبْيَضُ أَسْمَرُ"
                 },
                 {
                     question: "Warna matahari biasanya:",
-                    options: ["أَحْمَرُ", "أَخْضَرُ", "أَصْفَرُ", "أَزْرَقُ"],
+                    options: ["أَحْمَرُ", "أَخْضَرُ", "أَصْفَر", "أَزْرَقُ"],
                     correct: 2,
                     explanation: "Matahari biasanya berwarna أَصْفَرُ (kuning)"
                 },
                 {
-                    question: "Dalam kalimat 'اَلْحَقِيْبَةُ لَوْنُهَا بُنِيَّةٌ', kata بُنِيَّةٌ berubah menjadi muannats karena:",
+                    question: "Dalam kalimat 'اَلْحَقِيْبَةُ بُنِيَّةُ', kata بُنِيَّةٌ berubah menjadi muannats karena:",
                     options: ["اَلْحَقِيْبَةُ muzakkar", "اَلْحَقِيْبَةُ jamak", "اَلْحَقِيْبَةُ muannats", "اَلْحَقِيْبَةُ mutsanna"],
                     correct: 2,
-                    explanation: "اَلْحَقِيْبَةُ adalah muannats, sehingga sifatnya juga harus muannats"
+                    explanation: "الحقيبة adalah muannats, sehingga sifatnya juga harus muannats"
                 },
                 {
                     question: "Warna yang berlawanan dengan أَبْيَضُ adalah:",
@@ -2492,7 +2672,7 @@
             4: [
                 {
                     question: "Bulan pertama dalam kalender Hijriah adalah:",
-                    options: ["صَفَرٌ", "رَبِيْعُ الْأَوَّلِ", "مُحَرَّمٌ", "رَمَضَانُ"],
+                    options: ["صَفَرٌ", "رَبِيْعُ الْأَوَّلِ", "مجَرَّمٌ", "رَمَضَانُ"],
                     correct: 2,
                     explanation: "مُحَرَّمٌ adalah bulan pertama dalam kalender Hijriah"
                 },
@@ -2504,7 +2684,7 @@
                 },
                 {
                     question: "Bulan Haji dilaksanakan pada:",
-                    options: ["رَمَضَانُ", "شَوَّالٌ", "ذُو الْقَعْدَةِ", "ذُو الْحِجَّةِ"],
+                    options: ["رَمَضَانُ", "شَوَّالٌ", "ذُو الْقَعْدَةِ", "ذُوالْحِجَّة"],
                     correct: 3,
                     explanation: "Haji dilaksanakan pada bulan ذُو الْحِجَّةِ"
                 },
@@ -2516,7 +2696,7 @@
                 },
                 {
                     question: "Bulan kelahiran Nabi Muhammad SAW adalah:",
-                    options: ["مُحَرَّمٌ", "صَفَرٌ", "رَبِيْعُ الْآخِرِ", "رَبِيْعُ الْأَوَّلِ"],
+                    options: ["مُحَرَّمٌ", "صَفَرٌ", "رَبِيْعُ الْآخِرِ", "رَيِيْعُ الْأَوَّلِ"],
                     correct: 3,
                     explanation: "Nabi Muhammad SAW lahir pada bulan رَبِيْعُ الْأَوَّلِ"
                 },
@@ -2528,7 +2708,7 @@
                 },
                 {
                     question: "Bulan sebelum Ramadan adalah:",
-                    options: ["رَجَبٌ", "شَوَّالٌ", "شَعْبَانُ", "ذُو الْقَعْدَةِ"],
+                    options: ["َجَبٌ", "شَوَّالٌ", "شَعْبَانُ", "ذُو الْقَعْدَةِ"],
                     correct: 2,
                     explanation: "شَعْبَانُ adalah bulan sebelum Ramadan"
                 },
@@ -2539,10 +2719,10 @@
                     explanation: "مُحَرَّمٌ disebut bulan haram karena merupakan bulan suci"
                 },
                 {
-                    question: "جُمَادَى الْأُوْلَى adalah bulan ke:",
+                    question: " حُمَادُ الأوَّل adalah bulan ke:",
                     options: ["4", "6", "5", "7"],
                     correct: 2,
-                    explanation: "جُمَادَى الْأُوْلَى adalah bulan ke-5 dalam kalender Hijriah"
+                    explanation: " حُمَادُ الأوَّل adalah bulan ke-5 dalam kalender Hijriah"
                 },
                 {
                     question: "Bulan terakhir dalam kalender Hijriah adalah:",
@@ -2569,14 +2749,14 @@
                     explanation: "Satu tahun Hijriah terdiri dari 354-355 hari"
                 },
                 {
-                    question: "عَاشُوْرَاءُ jatuh pada bulan:",
+                    question: " عَاشُوْرَاءُ jatuh pada bulan:",
                     options: ["صَفَرٌ", "مُحَرَّمٌ", "رَجَبٌ", "شَعْبَانُ"],
                     correct: 1,
                     explanation: "عَاشُوْرَاءُ jatuh pada bulan مُحَرَّمٌ"
                 },
                 {
                     question: "Bulan setelah Ramadan adalah:",
-                    options: ["شَعْبَانُ", "ذُو الْقَعْدَةِ", "شَوَّالٌ", "ذُو الْحِجَّةِ"],
+                    options: ["شَعْبَانُ", "ذُو القَعْدَةِ", "شَوَّالٌ", "ذُو الْحِجَّةِ"],
                     correct: 2,
                     explanation: "شَوَّالٌ adalah bulan setelah Ramadan"
                 },
@@ -2584,11 +2764,11 @@
                     question: "رَبِيْعُ الْآخِرِ adalah bulan ke:",
                     options: ["3", "5", "4", "6"],
                     correct: 2,
-                    explanation: "رَبِيْعُ الْآخِرِ adalah bulan ke-4 dalam kalender Hijriah"
+                    explanation: "رَ��ِيْعُ الْآخِرِ adalah bulan ke-4 dalam kalender Hijriah"
                 },
                 {
                     question: "Dalam lagu mufradat, setelah شَعْبَانُ adalah:",
-                    options: ["رَجَبٌ", "شَوَّالٌ", "رَمَضَانُ", "ذُو الْقَعْدَةِ"],
+                    options: ["َجَبٌ", "شَوَّالٌ", "رَمَضَانُ", "ذُو الْقَعْدَةِ"],
                     correct: 2,
                     explanation: "Dalam urutan bulan, setelah شَعْبَانُ adalah رَمَضَانُ"
                 },
@@ -2600,9 +2780,9 @@
                 },
                 {
                     question: "Bulan yang disebut 'bulan yang mulia' adalah:",
-                    options: ["مُحَرَّمٌ", "شَعْبَانُ", "رَجَبٌ", "رَمَضَانُ"],
+                    options: ["مُحَرّمٌ", "شَعْبَانُ", "رَجَبٌ", "رَمَضَانُ"],
                     correct: 2,
-                    explanation: "رَجَبٌ disebut sebagai bulan yang mulia (شَهْرٌ كَرِيْمٌ)"
+                    explanation: "رَجَبٌ disebut sebagai bulan yang mulia (شَهْرٌ كَريْمٌ)"
                 },
                 {
                     question: "ذُو الْقَعْدَةِ adalah bulan ke:",
@@ -2731,11 +2911,11 @@
                 period = "petualang pagi ini";
             } else if (hour >= 11 && hour < 15) {
                 // Siang (11:00 - 14:59)
-                message = "Selamat siang! Waktu yang tepat untuk menambah ilmu bahasa Arab ☀️";
+                message = "Selamat siang! Waktu yang tepat untuk menambah ilmu bahasa Arab ☀";
                 period = "petualang siang ini";
             } else if (hour >= 15 && hour < 18) {
                 // Sore (15:00 - 17:59)
-                message = "Selamat sore! Mari gunakan waktu sore untuk belajar dengan semangat 🌇";
+                message = "Selamat sore! Mari gunakan waktu sore untuk belajar dengan semangat 🌤";
                 period = "petualang sore ini";
             } else if (hour >= 18 && hour < 21) {
                 // Petang (18:00 - 20:59)
@@ -2766,7 +2946,7 @@
             } else {
                 // Reset to original greeting
                 timeGreeting.textContent = "Assalamu'alaikum";
-                welcomeMessage.innerHTML = `<span id="time-greeting">Assalamu'alaikum</span>, petualang 👋`;
+                welcomeMessage.innerHTML = `<span id="time-greeting">Assalamu'alaikum</span>, petualang`;
             }
         }
 
@@ -2783,7 +2963,7 @@
             const name = nameInput.value.trim();
             
             if (!name) {
-                showToast('Masukkan nama kamu dulu ya! 😊', 'warning');
+                showToast('Masukkan nama kamu dulu ya! 😉', 'warning');
                 return;
             }
 
@@ -2825,6 +3005,23 @@
             }
         }
 
+        function toggleMobileMenu() {
+            const panel = document.getElementById('mobile-menu-panel');
+            const mobileStudentInfo = document.getElementById('mobile-student-info');
+            
+            if (panel.classList.contains('hidden')) {
+                panel.classList.remove('hidden');
+                
+                // Show mobile student info if logged in
+                if (currentStudent) {
+                    mobileStudentInfo.classList.remove('hidden');
+                    document.getElementById('mobile-student-name').textContent = currentStudent.name;
+                }
+            } else {
+                panel.classList.add('hidden');
+            }
+        }
+
         function showDashboard() {
             // Hide all screens
             document.getElementById('welcome-screen').classList.add('hidden');
@@ -2835,9 +3032,8 @@
             document.getElementById('games-page').classList.add('hidden');
             document.getElementById('maze-game').classList.add('hidden');
             
-            // Hide mobile menu if open
-            document.getElementById('mobile-menu').classList.add('hidden');
-            document.getElementById('mobile-menu-btn').innerHTML = '<span class="text-lg sm:text-xl">☰</span>';
+            // Hide mobile menu
+            document.getElementById('mobile-menu-panel').classList.add('hidden');
             
             // Remove welcome-specific styling and add blur back
             const mainContainer = document.querySelector('.content-overlay');
@@ -2847,26 +3043,39 @@
             document.getElementById('dashboard').classList.remove('hidden');
             document.getElementById('student-info').classList.remove('hidden');
             document.getElementById('nav-menu').classList.remove('hidden');
+            document.getElementById('mobile-menu-btn').classList.remove('hidden');
             
             if (currentStudent) {
-                // Update desktop student info
+                // Update student info
                 document.getElementById('student-name-display').textContent = `Halo, ${currentStudent.name}!`;
-                
-                // Update mobile student info
-                document.getElementById('mobile-student-info').classList.remove('hidden');
-                document.getElementById('mobile-student-name').textContent = currentStudent.name;
-                
                 updateProgressDisplay();
             }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function updateProgressDisplay() {
-            const completedLessons = getCompletedLessons();
-            const totalLessons = getTotalLessons();
-            const progress = totalLessons > 0 ? (completedLessons.length / totalLessons) * 100 : 0;
+            const completedQuizzes = getCompletedQuizzes();
+            const totalChapters = Object.keys(chapters).length; // 4 bab
+            const progress = totalChapters > 0 ? (completedQuizzes.length / totalChapters) * 100 : 0;
             
             document.getElementById('overall-progress').style.width = `${progress}%`;
-            document.getElementById('progress-text').textContent = `${Math.round(progress)}% Selesai`;
+            document.getElementById('progress-text').textContent = `${completedQuizzes.length}/${totalChapters} Bab Selesai (${Math.round(progress)}%)`;
+        }
+
+        function getCompletedQuizzes() {
+            const progress = studentProgress.find(p => p.student_name === currentStudent.name);
+            if (progress && progress.quiz_scores) {
+                try {
+                    const quizScores = JSON.parse(progress.quiz_scores);
+                    // Return array of completed chapter numbers
+                    return Object.keys(quizScores).map(key => parseInt(key.replace('chapter_', '')));
+                } catch (e) {
+                    return [];
+                }
+            }
+            return [];
         }
 
         function getCompletedLessons() {
@@ -2892,12 +3101,17 @@
         function openChapter(chapterNum) {
             currentChapter = chapterNum;
             currentLesson = 1;
+            
+            // Close mobile menu
+            document.getElementById('mobile-menu-panel').classList.add('hidden');
+            
             showChapterContent();
         }
 
         function showChapterContent() {
             document.getElementById('dashboard').classList.add('hidden');
             document.getElementById('chapter-content').classList.remove('hidden');
+            document.getElementById('mobile-menu-panel').classList.add('hidden');
             
             const chapter = chapters[currentChapter];
             document.getElementById('chapter-title').textContent = chapter.title;
@@ -2905,6 +3119,9 @@
             
             renderLessonNavigation();
             showLesson(currentLesson);
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderLessonNavigation() {
@@ -2927,26 +3144,46 @@
 
         function showLesson(lessonNum) {
             currentLesson = lessonNum;
-            renderLessonNavigation();
             
             const chapter = chapters[currentChapter];
             const lesson = chapter.lessons[lessonNum - 1];
-            const contentContainer = document.getElementById('lesson-content');
+            
+            if (!lesson) {
+                console.error('Lesson not found:', lessonNum);
+                return;
+            }
             
             if (lesson.isQuiz) {
                 startQuiz();
                 return;
             }
             
+            // Hide all screens
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('welcome-screen').classList.add('hidden');
+            document.getElementById('quiz-interface').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('games-page').classList.add('hidden');
+            document.getElementById('guide-page').classList.add('hidden');
+            document.getElementById('maze-game').classList.add('hidden');
+            
+            // Show chapter content
+            document.getElementById('chapter-content').classList.remove('hidden');
+            
+            // Update navigation
+            renderLessonNavigation();
+            
+            // Update content
+            const contentContainer = document.getElementById('lesson-content');
             contentContainer.innerHTML = `
                 <div class="fade-in">
                     <h3 class="latin-heading text-2xl text-gray-800 mb-6">${lesson.title}</h3>
                     ${lesson.content}
-                    <div class="mt-8 flex justify-between">
-                        <button onclick="previousLesson()" class="btn-primary text-white py-2 px-6 rounded-xl latin-body font-semibold ${lessonNum === 1 ? 'opacity-50 cursor-not-allowed' : ''}" ${lessonNum === 1 ? 'disabled' : ''}>
-                            ← Sebelumnya
+                    <div class="mt-8 flex flex-col sm:flex-row justify-between gap-3">
+                        <button onclick="previousLesson()" class="btn-primary text-white py-2 px-6 rounded-xl latin-body font-semibold transition-all ${lessonNum === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg'}" ${lessonNum === 1 ? 'disabled' : ''}>
+                            ⬅ Sebelumnya
                         </button>
-                        <button onclick="nextLesson()" class="btn-accent text-white py-2 px-6 rounded-xl latin-body font-semibold">
+                        <button onclick="nextLesson()" class="btn-accent text-white py-2 px-6 rounded-xl latin-body font-semibold hover:shadow-lg transition-all">
                             ${lessonNum === chapter.lessons.length ? 'Latihan Soal' : 'Selanjutnya'} →
                         </button>
                     </div>
@@ -2954,6 +3191,7 @@
             `;
             
             markLessonCompleted(currentChapter, lessonNum);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         async function markLessonCompleted(chapterNum, lessonNum) {
@@ -3009,6 +3247,9 @@
             quizAnswers = new Array(quizData.length).fill(null);
             
             showQuizQuestion();
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showQuizQuestion() {
@@ -3055,23 +3296,29 @@
             const prevBtn = document.getElementById('prev-question');
             const nextBtn = document.getElementById('next-question');
             
+            if (!prevBtn || !nextBtn) return;
+            
             prevBtn.disabled = currentQuizQuestion === 0;
-            prevBtn.className = `btn-primary text-white py-2 px-6 rounded-xl latin-body font-semibold ${
-                currentQuizQuestion === 0 ? 'opacity-50 cursor-not-allowed' : ''
+            prevBtn.className = `w-full md:w-auto btn-primary text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base touch-manipulation transition-all ${
+                currentQuizQuestion === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg'
             }`;
             
             const hasAnswer = quizAnswers[currentQuizQuestion] !== null;
             nextBtn.disabled = !hasAnswer;
-            nextBtn.className = `btn-accent text-white py-2 px-6 rounded-xl latin-body font-semibold ${
-                !hasAnswer ? 'opacity-50 cursor-not-allowed' : ''
+            nextBtn.className = `w-full md:w-auto btn-accent text-white py-2 px-4 md:px-6 rounded-xl latin-body font-semibold text-sm md:text-base touch-manipulation transition-all ${
+                !hasAnswer ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg'
             }`;
             
             if (currentQuizQuestion === quizData.length - 1) {
                 nextBtn.textContent = 'Selesai ✓';
-                nextBtn.onclick = finishQuiz;
+                nextBtn.onclick = function() {
+                    finishQuiz();
+                };
             } else {
                 nextBtn.textContent = 'Selanjutnya →';
-                nextBtn.onclick = nextQuestion;
+                nextBtn.onclick = function() {
+                    nextQuestion();
+                };
             }
         }
 
@@ -3137,6 +3384,9 @@
             document.getElementById('quiz-interface').classList.add('hidden');
             document.getElementById('quiz-results').classList.remove('hidden');
             
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
             const resultIcon = document.getElementById('result-icon');
             const scoreDisplay = document.getElementById('score-display');
             const scoreMessage = document.getElementById('score-message');
@@ -3163,7 +3413,7 @@
                         <div class="bg-purple-50 p-4 rounded-xl border-l-4 border-purple-400">
                             <h4 class="latin-heading text-md font-semibold text-purple-700 mb-2">💡 Tips Lanjutan:</h4>
                             <ul class="latin-body text-purple-600 text-sm text-left space-y-1">
-                                ${achievementData.tips.map(tip => `<li>• ${tip}</li>`).join('')}
+                                ${achievementData.tips.map(tip => `<li>🎉 ${tip}</li>`).join('')}
                             </ul>
                         </div>
                     </div>
@@ -3179,7 +3429,7 @@
                         </div>
                         
                         <div class="bg-yellow-50 p-4 rounded-xl border-l-4 border-yellow-400">
-                            <h4 class="latin-heading text-md font-semibold text-yellow-700 mb-2">📊 Area Pengembangan:</h4>
+                            <h4 class="latin-heading text-md font-semibold text-yellow-700 mb-2">📈 Area Pengembangan:</h4>
                             <p class="latin-body text-yellow-600 text-sm">${achievementData.analysis}</p>
                         </div>
                         
@@ -3193,7 +3443,7 @@
                 `;
                 scoreMessage.className = 'mb-6';
             } else {
-                resultIcon.textContent = '💪';
+                resultIcon.textContent = '✉';
                 scoreMessage.innerHTML = `
                     <div class="text-center space-y-4">
                         <div class="bg-orange-50 p-4 rounded-xl border-l-4 border-orange-400">
@@ -3209,7 +3459,7 @@
                         <div class="bg-indigo-50 p-4 rounded-xl border-l-4 border-indigo-400">
                             <h4 class="latin-heading text-md font-semibold text-indigo-700 mb-2">📚 Strategi Belajar:</h4>
                             <ul class="latin-body text-indigo-600 text-sm text-left space-y-1">
-                                ${achievementData.tips.map(tip => `<li>• ${tip}</li>`).join('')}
+                                ${achievementData.tips.map(tip => `<li>✨ ${tip}</li>`).join('')}
                             </ul>
                         </div>
                     </div>
@@ -3268,25 +3518,60 @@
         }
 
         function retryQuiz() {
+            // Hide results screen
             document.getElementById('quiz-results').classList.add('hidden');
+            
+            // Reset quiz state
+            currentQuizQuestion = 0;
+            quizAnswers = [];
+            
+            // Restart quiz
             startQuiz();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function backToLesson() {
+            // Hide quiz screens
             document.getElementById('quiz-interface').classList.add('hidden');
             document.getElementById('quiz-results').classList.add('hidden');
-            document.getElementById('chapter-content').classList.remove('hidden');
-            showLesson(currentLesson - 1);
+            
+            // Show chapter content with last non-quiz lesson
+            const chapter = chapters[currentChapter];
+            let lastLessonNum = currentLesson;
+            
+            // Find the last non-quiz lesson
+            for (let i = chapter.lessons.length - 1; i >= 0; i--) {
+                if (!chapter.lessons[i].isQuiz) {
+                    lastLessonNum = i + 1;
+                    break;
+                }
+            }
+            
+            // Show that lesson
+            currentLesson = lastLessonNum;
+            showLesson(lastLessonNum);
         }
 
         function backToDashboard() {
+            // Hide all screens
+            document.getElementById('welcome-screen').classList.add('hidden');
             document.getElementById('chapter-content').classList.add('hidden');
             document.getElementById('quiz-interface').classList.add('hidden');
             document.getElementById('quiz-results').classList.add('hidden');
             document.getElementById('guide-page').classList.add('hidden');
             document.getElementById('games-page').classList.add('hidden');
             document.getElementById('maze-game').classList.add('hidden');
+            document.getElementById('maze-game-over').classList.add('hidden');
+            document.getElementById('maze-question-modal').classList.add('hidden');
+            document.getElementById('mobile-menu-panel').classList.add('hidden');
+            
+            // Show dashboard
             document.getElementById('dashboard').classList.remove('hidden');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showGames() {
@@ -3297,6 +3582,10 @@
             document.getElementById('guide-page').classList.add('hidden');
             document.getElementById('maze-game').classList.add('hidden');
             document.getElementById('games-page').classList.remove('hidden');
+            document.getElementById('mobile-menu-panel').classList.add('hidden');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showGuide() {
@@ -3307,20 +3596,13 @@
             document.getElementById('games-page').classList.add('hidden');
             document.getElementById('maze-game').classList.add('hidden');
             document.getElementById('guide-page').classList.remove('hidden');
+            document.getElementById('mobile-menu-panel').classList.add('hidden');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuBtn = document.getElementById('mobile-menu-btn');
-            
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                menuBtn.innerHTML = '<span class="text-lg sm:text-xl">✕</span>';
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuBtn.innerHTML = '<span class="text-lg sm:text-xl">☰</span>';
-            }
-        }
+
 
         function logout() {
             localStorage.removeItem('currentStudent');
@@ -3334,8 +3616,8 @@
             document.getElementById('maze-game').classList.add('hidden');
             document.getElementById('student-info').classList.add('hidden');
             document.getElementById('nav-menu').classList.add('hidden');
-            document.getElementById('mobile-menu').classList.add('hidden');
-            document.getElementById('mobile-student-info').classList.add('hidden');
+            document.getElementById('mobile-menu-panel').classList.add('hidden');
+            document.getElementById('mobile-menu-btn').classList.add('hidden');
             document.getElementById('welcome-screen').classList.remove('hidden');
             document.getElementById('student-name').value = '';
             
@@ -3346,9 +3628,6 @@
             // Clean up game
             mazeGame.gameRunning = false;
             document.removeEventListener('keydown', handleMazeKeyboard);
-            
-            // Reset mobile menu button
-            document.getElementById('mobile-menu-btn').innerHTML = '<span class="text-lg sm:text-xl">☰</span>';
         }
 
         function showToast(message, type = 'info') {
@@ -3376,6 +3655,378 @@
         }
 
 
+
+        // Memory Match Game Variables
+        let memoryGame = {
+            cards: [],
+            flippedCards: [],
+            matchedPairs: 0,
+            moves: 0,
+            timer: 0,
+            timerInterval: null,
+            difficulty: 'easy',
+            totalPairs: 8,
+            gameStarted: false
+        };
+
+        // Memory game vocabulary pairs
+        const memoryVocabulary = {
+            chapter1: [
+                { arabic: 'أَكْبَرُ', indonesian: 'lebih besar' },
+                { arabic: 'أَصْغَرُ', indonesian: 'lebih kecil' },
+                { arabic: 'أَطْوَلُ', indonesian: 'lebih panjang' },
+                { arabic: 'أَقْصَرُ', indonesian: 'lebih pendek' },
+                { arabic: 'أَكْثَرُ', indonesian: 'lebih banyak' },
+                { arabic: 'أَقَلُّ', indonesian: 'lebih sedikit' },
+                { arabic: 'أَسْهَلُ', indonesian: 'lebih mudah' },
+                { arabic: 'أَصْعَبُ', indonesian: 'lebih sulit' }
+            ],
+            chapter2: [
+                { arabic: 'مُرَبَّعٌ', indonesian: 'persegi' },
+                { arabic: 'مُسْتَدِيْرٌ', indonesian: 'lingkaran' },
+                { arabic: 'مُثَلَّثٌ', indonesian: 'segitiga' },
+                { arabic: 'مُسْتَطِيْلٌ', indonesian: 'persegi panjang' },
+                { arabic: 'مُكَعَّبٌ', indonesian: 'kubus' },
+                { arabic: 'كُرَوِيٌّ', indonesian: 'bulat' },
+                { arabic: 'نَجْمَةٌ', indonesian: 'bintang' },
+                { arabic: 'مَخْرُوْطٌ', indonesian: 'kerucut' }
+            ],
+            chapter3: [
+                { arabic: 'أَحْمَرُ', indonesian: 'merah' },
+                { arabic: 'أَصْفَرُ', indonesian: 'kuning' },
+                { arabic: 'أَخْضَرُ', indonesian: 'hijau' },
+                { arabic: 'أَزْرَقُ', indonesian: 'biru' },
+                { arabic: 'أَبْيَضُ', indonesian: 'putih' },
+                { arabic: 'أَسْوَدُ', indonesian: 'hitam' },
+                { arabic: 'بُنِّيٌّ', indonesian: 'coklat' },
+                { arabic: 'رَمَادِيٌّ', indonesian: 'abu-abu' }
+            ],
+            chapter4: [
+                { arabic: 'مُحَرَّمٌ', indonesian: 'Bulan pertama' },
+                { arabic: 'صَفَرٌ', indonesian: 'Bulan Kedua' },
+                { arabic: 'رَبِيْعُ الْأَوَّلِ', indonesian: 'Bulan Ketiga' },
+                { arabic: 'رَمَضَانُ', indonesian: 'Bulan Kesembilan' },
+                { arabic: 'شَوَّالٌ', indonesian: 'Bulan Kesepuluh' },
+                { arabic: 'ذُو الْحِجَّةِ', indonesian: 'Bulan terakhir' },
+                { arabic: 'رَجَبٌ', indonesian: 'Bulan Ketujuh' },
+                { arabic: 'شَعْبَانُ', indonesian: 'Bulan Kedelapan' }
+            ]
+        };
+
+        // Memory Match Game Functions
+        function startMemoryGame() {
+            // Hide other screens
+            document.getElementById('games-page').classList.add('hidden');
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('chapter-content').classList.add('hidden');
+            document.getElementById('quiz-interface').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('guide-page').classList.add('hidden');
+            document.getElementById('maze-game').classList.add('hidden');
+            
+            // Show memory game
+            document.getElementById('memory-game').classList.remove('hidden');
+            
+            // Show difficulty selection
+            document.getElementById('memory-difficulty-select').classList.remove('hidden');
+            document.getElementById('memory-board').classList.add('hidden');
+            document.getElementById('memory-controls').classList.add('hidden');
+            
+            // Reset game state
+            memoryGame.gameStarted = false;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startMemoryLevel(difficulty) {
+            memoryGame.difficulty = difficulty;
+            
+            // Set total pairs based on difficulty
+            switch(difficulty) {
+                case 'easy':
+                    memoryGame.totalPairs = 8;
+                    break;
+                case 'medium':
+                    memoryGame.totalPairs = 12;
+                    break;
+                case 'hard':
+                    memoryGame.totalPairs = 18;
+                    break;
+            }
+            
+            // Hide difficulty selection
+            document.getElementById('memory-difficulty-select').classList.add('hidden');
+            document.getElementById('memory-board').classList.remove('hidden');
+            document.getElementById('memory-controls').classList.remove('hidden');
+            
+            // Initialize game
+            initMemoryGame();
+        }
+
+        function initMemoryGame() {
+            // Reset game state
+            memoryGame.cards = [];
+            memoryGame.flippedCards = [];
+            memoryGame.matchedPairs = 0;
+            memoryGame.moves = 0;
+            memoryGame.timer = 0;
+            memoryGame.gameStarted = true;
+            
+            // Clear timer
+            if (memoryGame.timerInterval) {
+                clearInterval(memoryGame.timerInterval);
+            }
+            
+            // Generate cards
+            generateMemoryCards();
+            
+            // Update UI
+            updateMemoryUI();
+            
+            // Start timer
+            memoryGame.timerInterval = setInterval(() => {
+                memoryGame.timer++;
+                updateMemoryUI();
+            }, 1000);
+        }
+
+        function generateMemoryCards() {
+            // Collect vocabulary from all chapters
+            const allVocab = [
+                ...memoryVocabulary.chapter1,
+                ...memoryVocabulary.chapter2,
+                ...memoryVocabulary.chapter3,
+                ...memoryVocabulary.chapter4
+            ];
+            
+            // Shuffle and select vocabulary
+            const shuffled = allVocab.sort(() => Math.random() - 0.5);
+            const selected = shuffled.slice(0, memoryGame.totalPairs);
+            
+            // Create card pairs
+            const cardData = [];
+            selected.forEach((vocab, index) => {
+                // Arabic card
+                cardData.push({
+                    id: `arabic-${index}`,
+                    content: vocab.arabic,
+                    type: 'arabic',
+                    pairId: index,
+                    isFlipped: false,
+                    isMatched: false
+                });
+                
+                // Indonesian card
+                cardData.push({
+                    id: `indonesian-${index}`,
+                    content: vocab.indonesian,
+                    type: 'indonesian',
+                    pairId: index,
+                    isFlipped: false,
+                    isMatched: false
+                });
+            });
+            
+            // Shuffle cards
+            memoryGame.cards = cardData.sort(() => Math.random() - 0.5);
+            
+            // Render cards
+            renderMemoryCards();
+        }
+
+        function renderMemoryCards() {
+            const board = document.getElementById('memory-board');
+            board.innerHTML = '';
+            
+            // Adjust grid based on difficulty
+            if (memoryGame.difficulty === 'easy') {
+                board.className = 'grid grid-cols-4 gap-2 md:gap-3 mb-4 md:mb-6 max-w-2xl mx-auto';
+            } else if (memoryGame.difficulty === 'medium') {
+                board.className = 'grid grid-cols-4 md:grid-cols-6 gap-2 md:gap-3 mb-4 md:mb-6 max-w-3xl mx-auto';
+            } else {
+                board.className = 'grid grid-cols-4 md:grid-cols-6 gap-2 md:gap-3 mb-4 md:mb-6 max-w-4xl mx-auto';
+            }
+            
+            memoryGame.cards.forEach((card, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'memory-card relative aspect-square cursor-pointer transition-all transform hover:scale-105';
+                cardElement.dataset.index = index;
+                cardElement.onclick = () => flipMemoryCard(index);
+                
+                // Card inner (for flip effect)
+                cardElement.innerHTML = `
+                    <div class="card-inner w-full h-full relative" style="transform-style: preserve-3d; transition: transform 0.6s;">
+                        <!-- Card Back -->
+                        <div class="card-back absolute w-full h-full bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg" style="backface-visibility: hidden;">
+                            <span class="text-2xl md:text-3xl">🧠</span>
+                        </div>
+                        <!-- Card Front -->
+                        <div class="card-front absolute w-full h-full bg-white rounded-xl flex items-center justify-center shadow-lg border-2 border-green-200 p-2" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                            <span class="${card.type === 'arabic' ? 'arabic-text text-base md:text-xl' : 'latin-body text-sm md:text-base'} text-gray-800 font-semibold text-center leading-tight">${card.content}</span>
+                        </div>
+                    </div>
+                `;
+                
+                board.appendChild(cardElement);
+            });
+        }
+
+        function flipMemoryCard(index) {
+            const card = memoryGame.cards[index];
+            
+            // Prevent flipping if game not started, already flipped, matched, or two cards already flipped
+            if (!memoryGame.gameStarted || card.isFlipped || card.isMatched || memoryGame.flippedCards.length >= 2) {
+                return;
+            }
+            
+            // Flip the card
+            card.isFlipped = true;
+            memoryGame.flippedCards.push(index);
+            
+            // Update visual
+            const cardElement = document.querySelector(`.memory-card[data-index="${index}"] .card-inner`);
+            cardElement.style.transform = 'rotateY(180deg)';
+            
+            // Check for match when two cards are flipped
+            if (memoryGame.flippedCards.length === 2) {
+                memoryGame.moves++;
+                updateMemoryUI();
+                
+                setTimeout(() => {
+                    checkMemoryMatch();
+                }, 800);
+            }
+        }
+
+        function checkMemoryMatch() {
+            const [index1, index2] = memoryGame.flippedCards;
+            const card1 = memoryGame.cards[index1];
+            const card2 = memoryGame.cards[index2];
+            
+            if (card1.pairId === card2.pairId) {
+                // Match found!
+                card1.isMatched = true;
+                card2.isMatched = true;
+                memoryGame.matchedPairs++;
+                
+                // Add matched visual effect
+                const cardElement1 = document.querySelector(`.memory-card[data-index="${index1}"]`);
+                const cardElement2 = document.querySelector(`.memory-card[data-index="${index2}"]`);
+                
+                cardElement1.classList.add('opacity-50');
+                cardElement2.classList.add('opacity-50');
+                
+                // Check if game is complete
+                if (memoryGame.matchedPairs === memoryGame.totalPairs) {
+                    setTimeout(() => {
+                        completeMemoryGame();
+                    }, 500);
+                }
+            } else {
+                // No match, flip back
+                card1.isFlipped = false;
+                card2.isFlipped = false;
+                
+                const cardElement1 = document.querySelector(`.memory-card[data-index="${index1}"] .card-inner`);
+                const cardElement2 = document.querySelector(`.memory-card[data-index="${index2}"] .card-inner`);
+                
+                cardElement1.style.transform = 'rotateY(0deg)';
+                cardElement2.style.transform = 'rotateY(0deg)';
+            }
+            
+            // Reset flipped cards
+            memoryGame.flippedCards = [];
+            updateMemoryUI();
+        }
+
+        function completeMemoryGame() {
+            // Stop timer
+            clearInterval(memoryGame.timerInterval);
+            memoryGame.gameStarted = false;
+            
+            // Calculate performance
+            const minutes = Math.floor(memoryGame.timer / 60);
+            const seconds = memoryGame.timer % 60;
+            const timeString = minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`;
+            
+            // Performance rating
+            let rating = '⭐⭐⭐';
+            let message = 'Bagus sekali!';
+            
+            const efficiency = memoryGame.totalPairs / memoryGame.moves;
+            if (efficiency > 0.8) {
+                rating = '⭐⭐⭐⭐⭐';
+                message = 'Luar biasa! Ingatan yang sempurna!';
+            } else if (efficiency > 0.6) {
+                rating = '⭐⭐⭐⭐';
+                message = 'Hebat! Daya ingat yang kuat!';
+            } else if (efficiency > 0.4) {
+                rating = '⭐⭐⭐';
+                message = 'Bagus! Terus latih ingatan kamu!';
+            }
+            
+            // Show success modal
+            const statsDiv = document.getElementById('memory-final-stats');
+            statsDiv.innerHTML = `
+                <div class="space-y-3">
+                    <div class="text-4xl mb-2">${rating}</div>
+                    <p class="latin-heading text-lg text-gray-800 font-bold">${message}</p>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="bg-white p-3 rounded-lg">
+                            <div class="text-2xl mb-1">⏱️</div>
+                            <div class="latin-body text-sm text-gray-600">Waktu</div>
+                            <div class="latin-body text-lg font-bold text-gray-800">${timeString}</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg">
+                            <div class="text-2xl mb-1">🎯</div>
+                            <div class="latin-body text-sm text-gray-600">Gerakan</div>
+                            <div class="latin-body text-lg font-bold text-gray-800">${memoryGame.moves}</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg">
+                            <div class="text-2xl mb-1">✅</div>
+                            <div class="latin-body text-sm text-gray-600">Pasangan</div>
+                            <div class="latin-body text-lg font-bold text-gray-800">${memoryGame.totalPairs}</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg">
+                            <div class="text-2xl mb-1">📊</div>
+                            <div class="latin-body text-sm text-gray-600">Efisiensi</div>
+                            <div class="latin-body text-lg font-bold text-gray-800">${Math.round(efficiency * 100)}%</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('memory-success-modal').classList.remove('hidden');
+        }
+
+        function updateMemoryUI() {
+            const minutes = Math.floor(memoryGame.timer / 60);
+            const seconds = memoryGame.timer % 60;
+            const timeString = minutes > 0 ? `${minutes}:${seconds.toString().padStart(2, '0')}` : `${seconds}s`;
+            
+            document.getElementById('memory-time').textContent = `Waktu: ${timeString}`;
+            document.getElementById('memory-moves').textContent = `Gerakan: ${memoryGame.moves}`;
+            document.getElementById('memory-pairs').textContent = `Pasangan: ${memoryGame.matchedPairs}/${memoryGame.totalPairs}`;
+        }
+
+        function restartMemoryGame() {
+            // Hide success modal
+            document.getElementById('memory-success-modal').classList.add('hidden');
+            
+            // Show difficulty selection again
+            document.getElementById('memory-difficulty-select').classList.remove('hidden');
+            document.getElementById('memory-board').classList.add('hidden');
+            document.getElementById('memory-controls').classList.add('hidden');
+            
+            // Clear timer
+            if (memoryGame.timerInterval) {
+                clearInterval(memoryGame.timerInterval);
+            }
+            
+            // Reset state
+            memoryGame.gameStarted = false;
+        }
 
         // Maze Game Variables
         let mazeGame = {
@@ -3409,6 +4060,9 @@
             
             // Add resize listener for responsive canvas
             window.addEventListener('resize', setupResponsiveCanvas);
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function setupResponsiveCanvas() {
@@ -3848,7 +4502,7 @@
             
             if (correct) {
                 mazeGame.score += 20;
-                showToast('Benar! +20 poin 🎉', 'success');
+                showToast('Benar! +20 poin 🎉👏', 'success');
             } else {
                 mazeGame.lives--;
                 showToast('Salah! -1 nyawa 💔', 'error');
@@ -3872,7 +4526,7 @@
                 // Game completed
                 showMazeGameOver(true);
             } else {
-                showToast(`Level ${mazeGame.level - 1} selesai! +50 poin 🎊`, 'success');
+                showToast(`Level ${mazeGame.level - 1} selesai! +50 poin 🎊👏`, 'success');
                 // Generate new maze for next level
                 setTimeout(() => {
                     generateMaze();
@@ -3932,30 +4586,72 @@
         }
 
         function restartMazeGame() {
+            // Hide game over modal
             document.getElementById('maze-game-over').classList.add('hidden');
+            
+            // Reset and reinitialize maze game
+            mazeGame.score = 0;
+            mazeGame.level = 1;
+            mazeGame.lives = 3;
+            mazeGame.coins = [];
+            mazeGame.questions = [];
+            mazeGame.currentQuestion = null;
+            
+            // Reinitialize the game
             initMazeGame();
+            
+            // Ensure game screen is visible
+            document.getElementById('maze-game').classList.remove('hidden');
         }
 
         function backToGames() {
+            // Hide all maze-related screens
             document.getElementById('maze-game').classList.add('hidden');
             document.getElementById('maze-game-over').classList.add('hidden');
             document.getElementById('maze-question-modal').classList.add('hidden');
+            
+            // Hide memory game screens
+            document.getElementById('memory-game').classList.add('hidden');
+            document.getElementById('memory-success-modal').classList.add('hidden');
+            
+            // Hide other screens
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('chapter-content').classList.add('hidden');
+            document.getElementById('quiz-interface').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('guide-page').classList.add('hidden');
+            
+            // Show games page
             document.getElementById('games-page').classList.remove('hidden');
             
-            // Clean up
+            // Clean up maze game
             mazeGame.gameRunning = false;
             document.removeEventListener('keydown', handleMazeKeyboard);
             window.removeEventListener('resize', setupResponsiveCanvas);
             
             // Clean up touch events
             if (mazeGame.canvas) {
-                mazeGame.canvas.removeEventListener('touchstart', addTouchControls);
-                mazeGame.canvas.removeEventListener('touchend', addTouchControls);
+                const canvas = mazeGame.canvas;
+                // Remove all touch listeners by cloning the canvas
+                const newCanvas = canvas.cloneNode(true);
+                if (canvas.parentNode) {
+                    canvas.parentNode.replaceChild(newCanvas, canvas);
+                }
+                mazeGame.canvas = newCanvas;
             }
+            
+            // Clean up memory game
+            if (memoryGame.timerInterval) {
+                clearInterval(memoryGame.timerInterval);
+            }
+            memoryGame.gameStarted = false;
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Initialize app when DOM is loaded
         document.addEventListener('DOMContentLoaded', initApp);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99e2a491f4aae778',t:'MTc2MzA4Mjc3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ac8586653c440fb',t:'MTc2NTQ5MTM3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
